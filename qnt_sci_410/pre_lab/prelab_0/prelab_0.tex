@@ -1,0 +1,196 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{url}
+\usepackage{amsmath}
+\usepackage{graphicx}
+
+\geometry{left=3cm,right=3cm,top=2.5cm,bottom=2.5cm}
+
+\begin{document}
+
+\begin{titlepage}
+    \centering
+    \vspace*{6cm} % Adjust the vertical spacing as needed
+    {\Huge \textbf{Prelab 0}} \par
+    \vspace*{1cm}
+    {\Large Runzhao Guo} \par
+    \vspace*{1cm}
+    {\Large \today} \par
+    \vspace*{2cm}
+    % Add a logo or image here using \includegraphics
+\end{titlepage}
+
+\section{Basics of optical alignment}
+
+\subsection{task 1.(a)}
+{The standard for laser classification changed over time, the currently accepted version is one that 
+specified by IEC 60825-1 standard}\par
+{Class 1 : MPE cannot be exceeded when viewing with naked eyes or through any type of optics.}\par
+{Class 1M : Safe in all conditions except through magnifying optics}\par
+{Class 2 : Since blink reflex limits the exposure time to laser under 0.25 seconds
+\cite{enwiki:1248185910}. It only apply to visible light laser. For continuous wave laser, the power
+ is limited to 1mW.}\par
+{Class 3R : MPE is exceeded but risk of injury remained low. For visible continuous wave,the power 
+is limited to 5mW}\par
+{Class 3B : Hazardous to eyes if exposed directly, its diffused reflection, however, is not
+For continuous wave with wavelength from 315nm to far infrared, the power is limited to 0.5w. For pulsed 
+laser in visible light, the energy is limited to 30mJ.}\par
+{Class 4 : All lasers exceeding the Class 3B AEL are Class 4 Lasers.}\par
+{Optical Density : The measurement of how much light can protective optics attenuate.}\par
+{MPE:the aximum amount of laser can a person take before suffering from any form of injury.}\par
+
+\subsection{1.(b)}
+{the document \{laser+MPE...calculation\} provide an equation that is said to be suitable for visible lasers in Example 
+1.1, where it mentioned a Table 3, which I can't find. According to the equation}\par
+$$
+MPE = 1.8t^{\frac{3}{4}}\times 10^{-3}J\cdot cm^{-2}
+$$
+{radiant exposure $H = 0.636 mJ\cdot cm^{-2}$}\par
+{in terms of irradiance, 
+\begin{equation}
+    \begin{split}
+        E =& \frac{H}{t}\\
+        =&2.55mW\cdot cm^{-2}
+    \end{split}
+\end{equation}}\par
+
+\subsection{1.(c)}
+{according to the video, cornea, retina and the lens are most susceptible to damage.}\par
+
+\subsection{1.(d)}
+{according to the Wikipedia page given in the asignment, visible to near-infrared is the most dangerous to the eye}\par
+
+\subsection{1.(e)}
+{choose goggles according to the specific work mode, wave length range, maximum laser power and coresponding minimum 
+portection level needed for the given power}\par
+
+\subsection{task 2}
+{Fresnel reflection occurs when laser encounter impedance discontinuity, i.e. entering lenses made of fused silica. The amount of 
+laser reflected is discribed by reflecance, calculated by using the following equation:}\par
+$$
+R=(\frac{n_{2}-n_1}{n_2+n_1})^2
+$$
+{where $n_1$ and $n_2$ are the refractiveindex of the mediums int this task, $n_1\approx 1$ and $n_2\approx 1.458$
+therefore}\par
+$$R=0.042$$
+{this means $4.2\% $ of the light is reflected while $95.8\% $ of the light when in the fused silica lens.}\par
+{Now consider the question when a ray of light went through the lens. the discontinuity of impedance occurs twice: both entering 
+and exiting the lens. So the loss during the process can be calculated as such:}\par
+$$
+1-(1-R)^2
+$$
+{the result is: $9.75\% $ of the light is lost going through the lens.}\par
+
+\subsection{task 3}
+{the power of the laser can be calulatd as such:}\par
+$$
+P=\frac{V_{load}}{R_{load}}R_{DET36A2}
+$$
+{according to the product page of DET36A2, in the conditions given in the question, $R_{DET36A2}\approx 0.3A/W $ \cite{DET36A2}, 
+therefore the power of the laser is:}\par
+$$
+P \approx 12 \mu W
+$$
+
+\section{Gaussian Beams and Telescopes}
+\subsection{task 4}
+{The ABCD matrix of the objective lens, the gap between lenses and the eyepiece lens are given as follows:}\par
+$$
+M_{objective}=
+\left[ {\begin{array}{cc}
+    1 & 0 \\
+    -\frac{1}{f_o} & 1 \\
+\end{array} } \right]
+$$
+$$
+M_{gap}=
+\left[ {\begin{array}{cc}
+    1 & f_o + f_e \\
+    0 & 1 \\
+\end{array} } \right]
+$$
+$$
+M_{eyepiece}=
+\left[ {\begin{array}{cc}
+    1 & 0 \\
+    -\frac{1}{f_e} & 1 \\
+\end{array} } \right]
+$$
+{the ABCD matrix of the telescope can be given by:}\par
+\begin{equation}
+    \begin{split}
+        M_{telescope} &=
+        \left[ {\begin{array}{cc}
+            1 & 0 \\
+            -\frac{1}{f_e} & 1 \\
+        \end{array} } \right]
+        \left[ {\begin{array}{cc}
+            1 & f_o + f_e \\
+            0 & 1 \\
+        \end{array} } \right]
+        \left[ {\begin{array}{cc}
+            1 & 0 \\
+            -\frac{1}{f_o} & 1 \\
+        \end{array} } \right]\\
+        &=
+        \left[ {\begin{array}{cc}
+            -\frac{f_e}{f_o} & f_o + f_e \\
+            0 & -\frac{f_o}{f_e} \\
+        \end{array} } \right]
+    \end{split}
+\end{equation}
+{The vector of the input light ray that we actually care:
+\[
+\begin{pmatrix}
+w\\
+0\\
+\end{pmatrix}
+\]
+and the output vector is
+\[
+\begin{pmatrix}
+-\frac{f_e}{f_o}w\\
+0\\
+\end{pmatrix}
+\]
+it is clear that the waist of output ray is $\frac{f_e}{f_o}w$, to answer the question, the ratio of input 
+beam waist to output beam wasit is$\frac{f_o}{f_e}$.}
+
+\subsection{task 5}
+{I am finding this question a little strange, maybe I'm not understanding it corectly.}\par
+{When we are looking into the telescope, our eyes are capturing the light coming out of the eyepiece lens, 
+which is parallel, as stated in the question. When we are looking at the world using our naked eyes, our eyes 
+are also capturing parallel light rays. We can see images with our naked eyes, so it is natural for our eyes 
+to be able to see images from the telescope, because they are taking in input of the same nature.}\par
+{Simply put: naked eyes can translate parallel light rays into image, the light rays coming out of telescope are 
+parallel, therefore we can see image by looking into a telescope}\par
+{As for why naked eyes can translate parallel light rays into image, it is because the optical lens in our eyeballs 
+can focus parallel rays of light onto our retina, where light wave of certain wavelength is translated into some sort 
+of signal apprehensible by human brain.}\par
+
+\subsection{task 6}
+{The magnification M of the telescope is given by the ratio of the output ray angle to the input ray angle. We can easily 
+derive from the ABCD matrix obtained in task 4 that the absolute value of the ratio of the output to input angles 
+is $\frac{f_o}{f_e}$}\par
+
+\subsection{task 7}
+{the modification I'd make is as the picture depicted below:}\par
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.5\textwidth]{t7.jpg}
+    \caption{modification that allow CCD to capture the image}
+    \label{t7}
+\end{figure}
+{the ABCD matrix of the system with the added lens is}\par
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.5\textwidth]{t7_2.jpg}
+    \caption{modification that allow CCD to capture the image}
+    \label{t7_2}
+\end{figure}
+{the magnification changed after my modification}
+
+\bibliographystyle{plain}
+\bibliography{references}
+\end{document}
