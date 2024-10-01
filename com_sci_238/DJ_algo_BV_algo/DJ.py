@@ -2,7 +2,7 @@ import random as rand
 import time
 
 def generate_balanced_map(n, seed):
-    """returns a map of input to output for balanced function"""
+    """returns a map of input to output for balanced function, a map of a balanced function"""
     # for consistency
     rand.seed(seed)
     # generate a sequence of 2**n/2 1s and 0s 
@@ -14,7 +14,7 @@ def generate_balanced_map(n, seed):
     return output
 
 def generate_constant_map(n):
-    """returns a map that is either all zeros or all ones"""
+    """returns a map that is either all zeros or all ones, a map of a constant function"""
     element = rand.choice([0, 1])
     vector = n*[element]
     return vector
