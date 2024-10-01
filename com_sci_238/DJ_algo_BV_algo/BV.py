@@ -21,25 +21,21 @@ def BV_function(a, b, x):
 # parameters
 n = 8
 repeat = 10
+# for consistency
 seed = rand.seed(0)
-
 # an useful vector
 all_zeros = [0]*n
 
 # generate "a"s and "b"s and solve them, several tims if needed
 for j in range(repeat):
-
     # generate a
     a = [rand.choice([0, 1]) for _ in range(n)]
-
     # generate b
     b = rand.choice([0, 1])
 
     a_answer = [0]*n
-
     # calculate b_answer by applying an all-zero input
     b_answer = BV_function(a, b, all_zeros)
-
     # calculate a_answer by applying an modified all-zero input *with 1 on the digit wanted
     for i in range(n):
         get_one_digit = all_zeros.copy()
