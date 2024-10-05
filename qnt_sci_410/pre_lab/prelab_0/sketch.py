@@ -1,12 +1,3 @@
-import numpy as np
-
-# Creating a 2D array (matrix)
-A = np.array([[1, 2], [3, 4]])
-B = np.array([[5, 6], [7, 8]])
-
-print("Matrix A:")
-print(A)
-
-print("Matrix B:")
-print(B)
-print(B[0,0])
+version https://git-lfs.github.com/spec/v1
+oid sha256:bc5ead28c0b7de06d7ea8a29c8cf33f985e390c765421f7afb4ede70f7dfc4cd
+size 195
