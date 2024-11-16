@@ -42,7 +42,49 @@ noise added by applying a noise model onto a aersimulator, noised simulation con
 
 ## time - qubit_number
 
-the time my setup took to make simulation appears to increase exponentially. For 20 qubits, the simulation time for 1000 sampling is about 64s, for 14 qubits, around 1.4s
+the time my setup took to make simulation appears to increase exponentially.
 
-the notebook file contains a plot from 2 to 10 only, because all times are averaged by 10 runs, running 20 qubit simulation is too time consuming。
+| No Noise Constant| No Noise Balanced | Noised Constant | Noised Balanced |
+|----------|----------|----------|----------|
+| 20 qubits, 51.8s | 20 qubits, 1 min 44.2s | 20 qubits, 54.7s | 18 qubits, 1 min 04s |
 
+
+# Grover
+
+## how the Z_f is designed:
+
+add x on 0s, then add multi control cz, then undo x
+
+## how this design change number of qubit easily
+
+the design is suitable for all input, therefore no matter what n is, the design works correctly
+
+## how is this design tested
+
+test with this function:
+
+analyze_results(counts, marked_states, shots):
+
+    """
+    Analyzes the results of Grover's algorithm, printed in terminal
+    
+    Parameters:
+        counts: counts for each measure
+        marked_states: marked states
+        shots: shots
+
+    Returns:
+        None
+    """
+
+## impact of noise
+
+noise added by applying a noise model onto a aersimulator, noised simulation conducted, result in file Grove.ipynb
+
+## time - qubit_number
+
+the time my setup took to make simulation appears to increase exponentially. 
+
+| No Noise | Noised |
+|----------|----------|
+| 18 qubits, 2 min 37.7s | 9 qubits, 37.4s |
