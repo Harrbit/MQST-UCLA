@@ -44,3 +44,6 @@ Result wise the outcome is similar to that of a noisy simulation, but the count 
 ## different Mixer:
 
 Using $U_y$mixer, I got 100 percent in one correct answer in noiseless result, and the result is better in noisy environment, but it faild to give all the results possible in num_qubit=4 runs. Using $R_x$, the results has less counts but both result for num_qubit=4 runs are all given and reproduceable. Two .ipynb submitted compared difference in performence using different mixers under the same qubit number and clause.
+
+## statistics of results:
+no extensive statistics were taken due to limited time I have on my hand, but a simple mean and variance were taken in the R_x.ipynb file under box"simple statistics"
