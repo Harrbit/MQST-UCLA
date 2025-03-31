@@ -31,3 +31,7 @@ hwk7: Paper reading, QEC
 ## [Quantum_Programming](quantum_programming)
 
 The basic of the basic, starting from Deutsch-Jozsa, we went through the famous beginner routine for quantum computing, computer science wise. This folder contains mainly trash, but there is on interesting implementation of QAOA using IBM platform which is kinda cool
+
+## [Atomic_Structure](atomic_structure)
+
+A interesting course took to satisfy credit required to graduate from the program, worth learning, good lecture notes.
