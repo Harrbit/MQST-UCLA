@@ -7,7 +7,7 @@ Below is a ***catalogue for folders***:
 
 ## [Ensamble_Quantum_Computing](ensamble_quantum_computing)
 
-Implementation of two-qubit Deutsch-Jozsa Algorithm using NMR quantum computer, starting from basic operations such as Free Induction Decay all the way up to the altorithm itself, the data and report included
+Implementation of two-qubit Deutsch-Jozsa Algorithm using NMR quantum computer, starting from basic operations such as Free Induction Decay all the way up to the altorithm itself, the data and report included.
 
 ## [Quantum_Algorithm](quantum_algorithm)
 
@@ -35,3 +35,15 @@ The basic of the basic, starting from Deutsch-Jozsa, we went through the famous 
 ## [Atomic_Structure](atomic_structure)
 
 A interesting course took to satisfy credit required to graduate from the program, worth learning, good lecture notes.
+
+## [bits_and_pieces_spring](bits_and_pieces_spring)
+
+residuals of courseworks, just documenting.
+
+## [Quantum_Computing](quantum_computing)
+
+Intro to quantum computing, physics part, notes will be added
+
+
+## [Quantum_Information](quantum_information)
+
