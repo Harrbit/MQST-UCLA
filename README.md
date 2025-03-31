@@ -11,7 +11,11 @@ Implementation of two-qubit Deutsch-Jozsa Algorithm using NMR quantum computer, 
 
 ## [Quantum_Algorithm](quantum_algorithm)
 
-Some of the more modern quantum algorithm explored, implementation of some algo is done.
+Some of the more modern quantum algorithm explored, implementation of some algo is done in the form of homeworks.
+
+1. hwk1: A terrible proof of Gottesman-Knill theorm
+2. hwk2: A implementation of Amplitude Amplification, which can be treated as a generalized version of Grover's algo.
+3. hwk3: An implementation of block encoding
 
 
 ## [Quantum_Programming](quantum_programming)
