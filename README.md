@@ -5,8 +5,15 @@ Coursework and many other stuff for the Master of Quantum Science and Technology
 
 Below is a cataloge for folders in this repo.
 
-## Quantum Programming
-[Quantum_Programming](quantum_programming)
+## [Ensamble_Quantum_Computing](ensamble_quantum_computing)
 
-The basic of the basic, starting from Deutsch-Jozsa, we went through the famous beginner routine for quantum computing, computer science wise. This folder contains mainly
+Implementation of two-qubit Deutsch-Jozsa Algorithm using NMR quantum computer, starting from basic operations such as Free Induction Decay all the way up to the altorithm itself, the data and report included
 
+## [Quantum_Algorithm](quantum_algorithm)
+
+Some of the more modern quantum algorithm explored, implementation of some algo is done.
+
+
+## [Quantum_Programming](quantum_programming)
+
+The basic of the basic, starting from Deutsch-Jozsa, we went through the famous beginner routine for quantum computing, computer science wise. This folder contains mainly trash, but there is on interesting implementation of QAOA using IBM platform which is kinda cool
