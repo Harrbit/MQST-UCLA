@@ -3,7 +3,7 @@ Coursework and many other stuff for the Master of Quantum Science and Technology
 
 **These are badly written codes mostly written several hours before the ddl for homeworks, but somewhere in these trash exist one or two files I actually like**
 
-Below is a cataloge for folders in this repo.
+Below is a ***catalogue for folders***:
 
 ## [Ensamble_Quantum_Computing](ensamble_quantum_computing)
 
@@ -13,9 +13,19 @@ Implementation of two-qubit Deutsch-Jozsa Algorithm using NMR quantum computer, 
 
 Some of the more modern quantum algorithm explored, implementation of some algo is done in the form of homeworks.
 
-    hwk1: A terrible proof of Gottesman-Knill theorm
-    hwk2: A implementation of Amplitude Amplification, which can be treated as a generalized version of Grover's algo.
-    hwk3: An implementation of block encoding
+hwk1: A terrible proof of Gottesman-Knill theorm
+
+hwk2: A implementation of Amplitude Amplification, which can be treated as a generalized version of Grover's algo.
+
+hwk3: An implementation of block encoding
+
+hwk4: Principal Component Analysis implemented, paper included in folder [paper_and_notes](quantum_algorithm/hwk4/paper_and_notes)
+
+hwk5: Hamiltonian Siumlation done, a pretty good demo is shown in [Hamiltonian_Simulation_v3](quantum_algorithm/hwk5/Hamiltonian_Simulation_v3.ipynb)
+
+hwk6: An attempte to find a good approximation of Toffoli using CNOT and H, still a open problem
+
+hwk7: Paper reading, QEC
 
 
 ## [Quantum_Programming](quantum_programming)
