@@ -47,3 +47,6 @@ Intro to quantum computing, physics part, notes will be added
 
 ## [Quantum_Information](quantum_information)
 
+## Trainium
+
+Not sure if I should upload this
