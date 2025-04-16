@@ -1,78 +1,100 @@
-import numpy as np
+import torch
+from torchdiffeq import odeint
 import matplotlib.pyplot as plt
-from qutip import *
+import time
 
-# Parameters
-omega_q = 5.0 * 2 * np.pi * 1e9  # Qubit frequency (5 GHz)
-eta_q = -200 * 2 * np.pi * 1e6    # Anharmonicity (-200 MHz)
-num_levels = 4                     # 4-level system
-t_gate = 70e-9                     # Gate time (70 ns)
-sigma = t_gate / 6                 # Gaussian width
-T1 = 100e-6                        # Relaxation time (100 μs)
-T2 = 150e-6                        # Dephasing time (150 μs)
+# Basic 1-qubit operators in PyTorch
+SIGMA_X = torch.tensor([[0, 1], [1, 0]], dtype=torch.cfloat)
+SIGMA_Y = torch.tensor([[0, -1j], [1j, 0]], dtype=torch.cfloat)
+SIGMA_Z = torch.tensor([[1, 0], [0, -1]], dtype=torch.cfloat)
+SIGMA_M = torch.tensor([[0, 1], [0, 0]], dtype=torch.cfloat)
+IDENTITY = torch.eye(2, dtype=torch.cfloat)
 
-# Transmon Hamiltonian (diagonal in eigenbasis)
-H0 = Qobj(np.diag([0, 
-                   omega_q, 
-                   2*omega_q + eta_q, 
-                   3*omega_q + 3*eta_q]))
+def commutator(A, B):
+    return A @ B - B @ A
 
-# Charge operator (connect neighboring levels)
-n_operator = create(num_levels) + destroy(num_levels)  # σ_x like
-n_operator_y = 1j*(destroy(num_levels) - create(num_levels))  # σ_y like
+def anticommutator(A, B):
+    return A @ B + B @ A
 
-# Time-dependent coefficients
-def envelope(t, args):
-    return args['amp'] * np.exp(-(t - args['t_mid'])**2/(2*args['sigma']**2))
+def flatten_complex_matrix(matrix):
+    matrix = matrix.flatten()
+    return torch.cat([matrix.real, matrix.imag])
 
-def drag(t, args):
-    return args['alpha'] * (t - args['t_mid']) / args['sigma']**2 * envelope(t, args) / args['eta']
+def reconstruct_matrix_from_array(array, shape):
+    half_len = array.numel() // 2
+    real = array[:half_len].reshape(*shape)
+    imag = array[half_len:].reshape(*shape)
+    return real + 1j * imag
 
-# Parameters dictionary
-args = {
-    'amp': np.pi/(np.sqrt(2*np.pi)*sigma),  # Pulse amplitude
-    'alpha': 0.5,        # DRAG parameter
-    'eta': abs(eta_q),   # Anharmonicity
-    't_mid': t_gate/2,
-    'sigma': sigma,
-    't_gate': t_gate
-}
+class LindbladSimulator:
+    def __init__(self, hamiltonian_func, lindblad_operators, device='cpu'):
+        self.H = hamiltonian_func
+        self.L_ops = lindblad_operators
+        self.device = device
 
-# Combine Hamiltonian terms
-H = [
-    H0,
-    [n_operator, envelope],
-    [n_operator_y, drag]
-]
+    def evolve(self, rho0, times):
+        rho0 = rho0.to(self.device)
+        rho0_vec = flatten_complex_matrix(rho0)
 
-# Noise operators
-gamma1 = 1/T1
-gamma_phi = 1/T2 - 1/(2*T1)
-c_ops = [
-    np.sqrt(gamma1) * destroy(num_levels),     # Relaxation
-    np.sqrt(gamma_phi) * num(num_levels)/2    # Dephasing
-]
+        def master_eq(t, rho_vec):
+            rho = reconstruct_matrix_from_array(rho_vec, rho0.shape)
+            Ht = self.H(t)
+            L_ops_t = [L(t) for L in self.L_ops]
+            L_dags = [L.conj().T for L in L_ops_t]
 
-# Initial state (|+> in qubit subspace)
-psi0 = (basis(num_levels,0) + basis(num_levels,1)).unit()
-# psi0 = basis(num_levels, 0).unit()  # Start in ground state
+            dissipator = sum(L @ rho @ L_dag for L, L_dag in zip(L_ops_t, L_dags))
+            anti = sum(L_dag @ L for L, L_dag in zip(L_ops_t, L_dags))
+            drho = -1j * commutator(Ht, rho) + dissipator - 0.5 * anticommutator(anti, rho)
+            return flatten_complex_matrix(drho)
 
-# Time points
-times = np.linspace(0, t_gate, 1000)
+        result = odeint(master_eq, rho0_vec, times.to(self.device))
+        return [reconstruct_matrix_from_array(r, rho0.shape).cpu() for r in result]
 
-# Run simulation
-result = mesolve(H, psi0, times, c_ops, [], args=args)
+if __name__ == '__main__':
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    print("Using device:", device)
 
-# Calculate fidelity with target |+>
-target = (basis(num_levels,0) + basis(num_levels,1)).unit()
-fidelity = [fidelity(state, target) for state in result.states]
+    # Initial state |+⟩⟨+|
+    psi0 = (1 / torch.sqrt(torch.tensor(2.))) * (
+    torch.tensor([[1.0], [0.0]], dtype=torch.cfloat) +
+    torch.tensor([[0.0], [1.0]], dtype=torch.cfloat)
+)
 
-# Plot results
-plt.figure(figsize=(10,6))
-plt.plot(times * 1e9, fidelity, label='With Noise')
-plt.xlabel('Time (ns)')
-plt.ylabel('Fidelity')
-plt.title('Transmon Qubit Gate Fidelity with DRAG Correction')
-plt.legend()
-plt.grid(True)
-plt.show()
+    rho0 = psi0 @ psi0.T.conj()
+
+    # Time-independent operators
+    H = lambda t: 0.5 * SIGMA_Z.to(device)
+    L1 = lambda t: torch.sqrt(torch.tensor(0.5)) * SIGMA_M.to(device)
+    L2 = lambda t: torch.sqrt(torch.tensor(0.3)) * SIGMA_Z.to(device)
+
+    sim = LindbladSimulator(H, [L1, L2], device)
+
+    t0 = 0.0
+    tf = 10.0
+    steps = 1000
+    times = torch.linspace(t0, tf, steps)
+
+    start = time.time()
+    evolution = sim.evolve(rho0, times)
+    end = time.time()
+    print(f"Simulation time: {end - start:.2f} seconds")
+
+    # Plot populations and coherences
+    rho_00 = [r[0, 0].real for r in evolution]
+    rho_11 = [r[1, 1].real for r in evolution]
+    rho_01_re = [r[0, 1].real for r in evolution]
+    rho_01_im = [r[0, 1].imag for r in evolution]
+
+    times_np = times.numpy()
+
+    plt.figure()
+    plt.plot(times_np, rho_00, label='ρ₀₀')
+    plt.plot(times_np, rho_11, label='ρ₁₁')
+    plt.plot(times_np, rho_01_re, label='Re(ρ₀₁)')
+    plt.plot(times_np, rho_01_im, label='Im(ρ₀₁)')
+    plt.xlabel("Time")
+    plt.ylabel("Matrix elements")
+    plt.title("Density Matrix Evolution (Custom Solver)")
+    plt.grid(True)
+    plt.legend()
+    plt.show()
