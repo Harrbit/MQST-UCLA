@@ -1,0 +1,143 @@
+% ****** Start of file apssamp.tex ******
+%
+%   This file is part of the APS files in the REVTeX 4.2 distribution.
+%   Version 4.2a of REVTeX, December 2014
+%
+%   Copyright (c) 2014 The American Physical Society.
+%
+%   See the REVTeX 4 README file for restrictions and more information.
+%
+% TeX'ing this file requires that you have AMS-LaTeX 2.0 installed
+% as well as the rest of the prerequisites for REVTeX 4.2
+%
+% See the REVTeX 4 README file
+% It also requires running BibTeX. The commands are as follows:
+%
+%  1)  latex apssamp.tex
+%  2)  bibtex apssamp
+%  3)  latex apssamp.tex
+%  4)  latex apssamp.tex
+%
+\documentclass[%
+ reprint,
+%superscriptaddress,
+%groupedaddress,
+%unsortedaddress,
+%runinaddress,
+%frontmatterverbose, 
+%preprint,
+%preprintnumbers,
+%nofootinbib,
+%nobibnotes,
+%bibnotes,
+ amsmath,amssymb,
+ aps,
+%pra,
+%prb,
+%rmp,
+%prstab,
+%prstper,
+%floatfix,
+]{revtex4-2}
+
+\usepackage{graphicx}% Include figure files
+\usepackage{dcolumn}% Align table columns on decimal point
+\usepackage{bm}% bold math
+%\usepackage{hyperref}% add hypertext capabilities
+%\usepackage[mathlines]{lineno}% Enable numbering of text and display math
+%\linenumbers\relax % Commence numbering lines
+
+%\usepackage[showframe,%Uncomment any one of the following lines to test 
+%%scale=0.7, marginratio={1:1, 2:3}, ignoreall,% default settings
+%%text={7in,10in},centering,
+%%margin=1.5in,
+%%total={6.5in,8.75in}, top=1.2in, left=0.9in, includefoot,
+%%height=10in,a5paper,hmargin={3cm,0.8in},
+%]{geometry}
+
+\begin{document}
+
+\preprint{APS/123-QED}
+
+\title{Implementation of Quantum Approximate Optimization Algorithm for MAX2SAT Problem on Superconducting Qubits}% Force line breaks with \\
+% \thanks{A footnote to the article title}%
+
+\author{Runzhao Guo}
+\altaffiliation{University of California, Los Angeles}%Lines break automatically or can be forced with \\
+
+
+\date{\today}% It is always \today, today,
+             %  but any date may be explicitly specified
+
+\begin{abstract}
+An article usually includes an abstract, a concise summary of the work
+covered at length in the main body of the article. 
+\begin{description}
+\item[Usage]
+Secondary publications and information retrieval purposes.
+\item[Structure]
+You may use the \texttt{description} environment to structure your abstract;
+use the optional argument of the \verb+\item+ command to give the category of each item. 
+\end{description}
+\end{abstract}
+
+%\keywords{Suggested keywords}%Use showkeys class option if keyword
+                              %display desired
+\maketitle
+
+
+\section{\label{sec:intro}Introduction}
+
+Quantum computing is an rapidly evelving, interdisciplinary field of study that stand on the intersection of computer science, quantum physics, electrical engineering and mathematics. It aims to utilize properties of quantum mechanics such as superposition, entanglement, interference and perform information processing tasks that cannot be efficiently performed by classical computers.
+
+The conceptual foundation was first laid by Paul Benioff, who proposed a quantum mechanical model of the Turing machine in 1980\cite{benioff1980computer}. Richard Fynmann later proposed the idea that simulating quantum systems would require quantum mechanical information processing in 1982\cite{feynman1982simulating}. David Deutsch further developed the concept of universal quantum computer in 1985\cite{deutsch1985quantum}. These early insights have laid a firm foundation for the field of quantum information science and quantum computing and lead to the first landmark quantum algorithm, Shor's algorithm, proposed by Peter Shor in 1994\cite{shor1994algorithms}, followed by Grover's algorithm in 1996, offering quadratic speedup for unstructured search problems\cite{grover1996fast}, these algorithms further demonstrated the potential of quantum computers and fueled the rapid developlment in the past three decades.
+
+In the Noisy Intermediate-Scale Quantum (NISQ) era, quantum machines have made significant progress. In the sub area of superconducting qubits, Error Correction Code such as surface code have been implemented and demonstrated to be effective in suppressing errors in quantum memory\cite{qec_ggl}. Novel Error Correction Code such as the Bivariant Bicyclic (BB) Code Have been proposed\cite{qec_ibm_2024}. Proof of principle demonstration of BB code have been conducted on custom device\cite{wang2025demonstration}. Although significant progress has been made in Quantum Error Correction, the implementation of error corrected quantum algorithm remain a significant challenge, much work remains to be done in multiple ereas such as coherent control, quantum gate fidelity and microwave engineering. 
+
+The near term device is however not without its importance in the context of implementation. Numerous Variational Quantum ALgorithms(VQA) have been proposed to take advantage of current quantum systems through quantum-classical hybrid optimization routine. \cite{McClean_2016, Bharti_2022, Cerezo_2021, Bravo_Prieto_2023, PhysRevA.95.062317} To date, VQAs have found use cases in various areas, including quantum chemistry simulation, machine learning and optimiaztion. \cite{Kokail_2019, Bauer_2020, lloyd2020quantum, PhysRevA.104.052402, Amaro_2022} 
+
+In particular, the Quantum Approximate Optimization Algorithm (QAOA) is one of the more popular VQAs. It is designed to find approximate solutions to har combinatorial opimization porblems on quantum computers. The algorithm encodes the problem into a related Hamiltonian, then into quantum circuit, such that the approximate solution to the problem can be constructed by projecting the quantum state onto certain operator. It leverages adiabatic time evolution and layering to optimize the variational parameters of the circuit, such that the solution to the problem can be obtained by measuring the quantum state with high probability. The performance of QAOA is typically measured by the approximation ratio, which is the ratio of the cost function of the approximate solution to that of the optimal solution, denoted as $\frac{C_{QAOA}}{C_{max}}$. Theoretically, such an approximation ratio increases with the increasing number of layers, denoted as $p$, in the QAOA circuit, and the optimal solution can be obtained in the limit of infinite layers. However, in practice, the approximation ratio is limited by the noise in the quantum device, and the number of layers is limited by the coherence time of the quantum device.
+
+QAOA is suitable for finding good approximate solution to several optimization problems, for instance Maximum Cut (MAXCUT)\cite{farhi2014quantum}, Maximum Independent Set (MIS)\cite{Zhou_2020} and Quadratic Unconstrained Binary Optimization (QUBO)\cite{farhi2014quantum}, which is more general.
+
+In this work, we focus on the Maximum 2-Satisfiability (MAX2SAT) problem, which is a special case of the MAXSAT problem. The MAX2SAT problem is NP-hard and can be formulated as a QUBO problem. The QAOA algorithm can be used to find approximate solutions to the MAX2SAT problem by encoding the problem into a related Hamiltonian and optimizing the variational parameters of the circuit.
+
+
+\section{\label{sec:Background}Background}
+In order to better present the impelmentation of QAOA for MAX2SAT, we first introduce the QUBO problem, the MAX2SAT problem, the classical algorithm for this problem and the QAOA algorithm for this problem.
+\subsection{\label{subsec:QUBO}Quadratic Unconstrained Binary Optimization (QUBO)}
+A more generalized form of the MAX2SAT problem is the Quadratic Unconstrained Binary Optimization (QUBO) problem. QUBO problem belong to NP-complete class. This mathematically assures that any NP-complete problem can be mapped to a QUBO problem in polynomial time. Research has shown taht all the Karp's 21 NP-complete problems can e mapped to a QUBO counterpart\cite{Lucas_2014}. 
+
+In a QUBO problem, the vector of unknowns $$\mathbf{x} = (x_1, x_2, \ldots, x_n)$$ represent decision variables, or in computer science terms boolean variables, where each $x_i$ can take the value of either 0 or 1. The problem is completed with a square symmetric matirx $\mathbf{Q}\in \mathbb{R}^{n\times n}$. The cost function is given as: 
+$$C(x) = \mathbf{x}^T \mathbf{Q} \mathbf{x} = \sum_{i,j=1}^{n}Q_{i,j}x_i x_j$$
+The target of solving a QUBO problem is to find the optimal vector $\mathbf{x}^{*}$ such that 
+$$\mathbf{x}^{*} = \arg\min_{\mathbf{x}\in{0,1}^n} C(x)$$
+QUBO can also be defined as maximization problem, this is done by simply negating the sign of the cost function
+$$\min_{\mathbf{x} \in {0,1}^{n}} C(\mathbf{x}) = \max_{\mathbf{x}\in{0, 1}^n} -C(\mathbf{x}) = \max_{\mathbf{x} \in {0, 1}^n} \sum_{i,j=1}^{n} (-Q_{ij})x_i x_j .$$
+It is important to note taht QUBO problems are unconstrained, that is there exist no constraints on the values of the decision variables $\mathbf{x}$.
+
+As Lucas explained in his paper~\cite{Lucas_2014}, QUBO instances can be mapped one-to-one to Ising models. This mapping is achieved by converting the binary variables $x_i \in \{0,1\}$ used in the QUBO formulation into spin variables $s_i \in \{-1, +1\}$ via the linear transformation $x_i = \frac{1 + s_i}{2}$. When substituted into the quadratic QUBO objective function, this transformation yields a new cost function expressed entirely in terms of spin variables:
+\[
+\sum_{i \le j} Q_{ij} x_i x_j = \sum_{i \le j} Q_{ij} \left( \frac{1 + s_i}{2} \right) \left( \frac{1 + s_j}{2} \right),
+\]
+which expands to a quadratic form in the Ising spin variables. Grouping the resulting terms appropriately, one obtains an Ising Hamiltonian of the form
+\[
+H(s) = -\sum_{i < j} J_{ij} s_i s_j - \sum_i h_i s_i + \mathrm{const.},
+\]
+where the coefficients $J_{ij}$ and $h_i$ are real-valued functions of the original QUBO matrix elements $Q_{ij}$. This transformation preserves the location of the global minimum, thereby ensuring that solving the Ising model is equivalent to solving the original QUBO problem. The resulting spin-glass representation enables direct implementation on quantum annealers and forms the basis for encoding many NP problems in the Ising model framework.
+
+Due to this equivalence with Ising models, QUBO represents a family of problems taht are suitable to be solved by quantum devices, to be more precise, quantum annealers.
+
+As previously mentioned, many optimization problems can be mapped or reformed into QUBO problems. Although QUBO problems are limited to quadratic interactions between variables, they can be extended to higher-order terms. 
+
+% The \nocite command causes all entries in a bibliography to be printed out
+% whether or not they are actually referenced in the text. This is appropriate
+% for the sample file to show the different styles of references, but authors
+% most likely will not want to use it.
+\nocite{*}
+
+\bibliography{apssamp}% Produces the bibliography via BibTeX.
+
+\end{document}
+%
+% ****** End of file apssamp.tex ******
