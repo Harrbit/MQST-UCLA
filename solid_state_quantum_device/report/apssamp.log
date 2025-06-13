@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.12)  6 JUN 2025 15:37
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.12)  9 JUN 2025 22:37
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -256,18 +256,90 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
 \openout3 = `apssampNotes.bib'.
 
-
+LaTeX Font Info:    Trying to load font information for U+msa on input line 77.
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 77.
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
 
 Class revtex4-2 Warning: Assuming \noaffiliation for authors.
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 86.
-(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Trying to load font information for U+msb on input line 86.
- (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./apssamp.bbl
+[1{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
+</Users/runzhaoguo/Documents/MQST-UCLA/solid_state_quantum_device/figures/approx-ratios.png, id=27, 567.68085pt x 354.123pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/solid_state_quantum_device/figures/approx-ratios.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/solid_state_quantum_device/figures/approx-ratios.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/solid_state_quantum_device/figures/approx-ratios.png  used on input line 193.
+(pdftex.def)             Requested size: 246.0pt x 153.45326pt.
+ [3]
+
+LaTeX Warning: A float is stuck (cannot be placed); try class option [floatfix] on input line 209.
+
+[4 </Users/runzhaoguo/Documents/MQST-UCLA/solid_state_quantum_device/figures/approx-ratios.png>]
+Overfull \hbox (7.29924pt too wide) detected at line 299
+ []$[]   [] [] \OT1/cmr/m/n/10 = [] [] [] []$ 
+ []
+
+[5]
+Overfull \hbox (31.23434pt too wide) detected at line 307
+ []$[]   [] [] \OT1/cmr/m/n/10 = [] [] [] []$ 
+ []
+
+
+Underfull \hbox (badness 2351) in paragraph at lines 342--343
+\OT1/cmr/m/n/10 count and depth while pre-serv-ing the math-e-mat-i-
+ []
+
+[6{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
+Underfull \hbox (badness 7704) in paragraph at lines 402--403
+[]\OT1/cmr/m/n/10 The com-plete cir-cuit di-a-gram for QAOA for
+ []
+
+[7]
+</Users/runzhaoguo/Documents/MQST-UCLA/solid_state_quantum_device/figures/Single_Q_sim.png, id=54, 859.2903pt x 711.8595pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/solid_state_quantum_device/figures/Single_Q_sim.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/solid_state_quantum_device/figures/Single_Q_sim.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/solid_state_quantum_device/figures/Single_Q_sim.png  used on input line 486.
+(pdftex.def)             Requested size: 246.0pt x 203.79448pt.
+</Users/runzhaoguo/Documents/MQST-UCLA/solid_state_quantum_device/figures/pnm155.png, id=55, 555.07375pt x 356.33125pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/solid_state_quantum_device/figures/pnm155.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/solid_state_quantum_device/figures/pnm155.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/solid_state_quantum_device/figures/pnm155.png  used on input line 496.
+(pdftex.def)             Requested size: 246.0pt x 157.92259pt.
+ [8]
+
+LaTeX Warning: A float is stuck (cannot be placed); try class option [floatfix] on input line 509.
+
+</Users/runzhaoguo/Documents/MQST-UCLA/solid_state_quantum_device/figures/CVR.png, id=59, 462.528pt x 346.896pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/solid_state_quantum_device/figures/CVR.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/solid_state_quantum_device/figures/CVR.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/solid_state_quantum_device/figures/CVR.png  used on input line 518.
+(pdftex.def)             Requested size: 246.0pt x 184.49977pt.
+[9 </Users/runzhaoguo/Documents/MQST-UCLA/solid_state_quantum_device/figures/Single_Q_sim.png> </Users/runzhaoguo/Documents/MQST-UCLA/solid_state_quantum_device/figures/pnm155.png>]
+
+LaTeX Warning: A float is stuck (cannot be placed); try class option [floatfix] on input line 528.
+
+</Users/runzhaoguo/Documents/MQST-UCLA/solid_state_quantum_device/figures/constantCVR.png, id=65, 290.08376pt x 218.8175pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/solid_state_quantum_device/figures/constantCVR.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/solid_state_quantum_device/figures/constantCVR.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/solid_state_quantum_device/figures/constantCVR.png  used on input line 531.
+(pdftex.def)             Requested size: 246.0pt x 185.56502pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+</Users/runzhaoguo/Documents/MQST-UCLA/solid_state_quantum_device/figures/constantV.png, id=66, 276.03125pt x 206.7725pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/solid_state_quantum_device/figures/constantV.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/solid_state_quantum_device/figures/constantV.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/solid_state_quantum_device/figures/constantV.png  used on input line 546.
+(pdftex.def)             Requested size: 246.0pt x 184.28566pt.
+[10 </Users/runzhaoguo/Documents/MQST-UCLA/solid_state_quantum_device/figures/CVR.png> </Users/runzhaoguo/Documents/MQST-UCLA/solid_state_quantum_device/figures/constantCVR.png> </Users/runzhaoguo/Documents/MQST-UCLA/solid_state_quantum_device/figures/constantV.png>]
+Underfull \hbox (badness 1472) in paragraph at lines 555--556
+\OT1/cmr/m/n/10 tum ap-prox-i-mate op-ti-miza-tion: the al-go-rithm per-
+ []
+
+[11] (./apssamp.bbl
 Underfull \hbox (badness 3428) in paragraph at lines 70--71
  []\OT1/cmr/m/n/9 R. Acharya, D. A. Abanin, L. Aghababaie-Beni,
  []
@@ -292,7 +364,7 @@ Underfull \hbox (badness 1281) in paragraph at lines 70--71
  \OT1/cmr/m/n/9 P. Dono-hoe, I. Droz-dov, A. Dunsworth, C. Earle,
  []
 
-[2]
+[12]
 Underfull \hbox (badness 1968) in paragraph at lines 79--80
  \OT1/cmr/m/n/9 Guzik, The the-ory of vari-a-tional hy-brid quantum-
  []
@@ -302,25 +374,69 @@ Underfull \hbox (badness 10000) in paragraph at lines 109--110
  \OT1/cmr/m/n/9 tum ap-prox-i-mate op-ti-miza-tion al-go-rithm (2014),
  []
 
-) [3] (./apssamp.aux)
+[13]
+Underfull \hbox (badness 2781) in paragraph at lines 127--128
+ []\OT1/cmr/m/n/9 M. X. Goe-mans and D. P. Williamson, New $[]$-
+ []
+
+
+Underfull \hbox (badness 1939) in paragraph at lines 133--134
+ []\OT1/cmr/m/n/9 T. M^^?uller, The quan-tum ap-prox-i-mate op-ti-miza-tion
+ []
+
+)
+</Users/runzhaoguo/Documents/MQST-UCLA/solid_state_quantum_device/figures/pnm133.png, id=83, 564.1075pt x 355.3275pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/solid_state_quantum_device/figures/pnm133.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/solid_state_quantum_device/figures/pnm133.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/solid_state_quantum_device/figures/pnm133.png  used on input line 624.
+(pdftex.def)             Requested size: 246.0pt x 154.95657pt.
+File: /Users/runzhaoguo/Documents/MQST-UCLA/solid_state_quantum_device/figures/pnm155.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/solid_state_quantum_device/figures/pnm155.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/solid_state_quantum_device/figures/pnm155.png  used on input line 626.
+(pdftex.def)             Requested size: 246.0pt x 157.92259pt.
+</Users/runzhaoguo/Documents/MQST-UCLA/solid_state_quantum_device/figures/pnm177.png, id=84, 577.15625pt x 358.33875pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/solid_state_quantum_device/figures/pnm177.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/solid_state_quantum_device/figures/pnm177.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/solid_state_quantum_device/figures/pnm177.png  used on input line 628.
+(pdftex.def)             Requested size: 246.0pt x 152.73758pt.
+</Users/runzhaoguo/Documents/MQST-UCLA/solid_state_quantum_device/figures/pnm233.png, id=85, 354.32375pt x 283.0575pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/solid_state_quantum_device/figures/pnm233.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/solid_state_quantum_device/figures/pnm233.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/solid_state_quantum_device/figures/pnm233.png  used on input line 635.
+(pdftex.def)             Requested size: 246.0pt x 196.52354pt.
+</Users/runzhaoguo/Documents/MQST-UCLA/solid_state_quantum_device/figures/pnm255.png, id=86, 368.37625pt x 280.04625pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/solid_state_quantum_device/figures/pnm255.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/solid_state_quantum_device/figures/pnm255.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/solid_state_quantum_device/figures/pnm255.png  used on input line 637.
+(pdftex.def)             Requested size: 246.0pt x 187.01039pt.
+</Users/runzhaoguo/Documents/MQST-UCLA/solid_state_quantum_device/figures/pnm277.png, id=87, 359.3425pt x 278.03876pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/solid_state_quantum_device/figures/pnm277.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/solid_state_quantum_device/figures/pnm277.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/solid_state_quantum_device/figures/pnm277.png  used on input line 639.
+(pdftex.def)             Requested size: 246.0pt x 190.3451pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[14 </Users/runzhaoguo/Documents/MQST-UCLA/solid_state_quantum_device/figures/pnm133.png> </Users/runzhaoguo/Documents/MQST-UCLA/solid_state_quantum_device/figures/pnm177.png>] [15 </Users/runzhaoguo/Documents/MQST-UCLA/solid_state_quantum_device/figures/pnm233.png> </Users/runzhaoguo/Documents/MQST-UCLA/solid_state_quantum_device/figures/pnm255.png> </Users/runzhaoguo/Documents/MQST-UCLA/solid_state_quantum_device/figures/pnm277.png>] (./apssamp.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 4871 strings out of 474116
- 68829 string characters out of 5743682
- 1971187 words of memory out of 5000000
- 27183 multiletter control sequences out of 15000+600000
- 569198 words of font info for 77 fonts, out of 8000000 for 9000
+ 5057 strings out of 474116
+ 77994 string characters out of 5743682
+ 1958187 words of memory out of 5000000
+ 27358 multiletter control sequences out of 15000+600000
+ 573985 words of font info for 93 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 71i,8n,79p,10145b,321s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on apssamp.pdf (3 pages, 220857 bytes).
+ 71i,14n,79p,10145b,360s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
+Output written on apssamp.pdf (15 pages, 1489740 bytes).
 PDF statistics:
- 104 PDF objects out of 1000 (max. 8388607)
- 62 compressed objects within 1 object stream
+ 213 PDF objects out of 1000 (max. 8388607)
+ 118 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 56 words of extra memory for PDF output out of 10000 (max. 10000000)
 

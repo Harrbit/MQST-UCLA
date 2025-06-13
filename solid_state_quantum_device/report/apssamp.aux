@@ -9,16 +9,99 @@
 \citation{wang2025demonstration}
 \citation{McClean_2016,Bharti_2022,Cerezo_2021,Bravo_Prieto_2023,PhysRevA.95.062317}
 \citation{Kokail_2019,Bauer_2020,lloyd2020quantum,PhysRevA.104.052402,Amaro_2022}
-\citation{farhi2014quantum}
-\citation{Zhou_2020}
-\citation{farhi2014quantum}
 \newlabel{FirstPage}{{}{1}{}{}{}}
 \@writefile{toc}{\contentsline {title}{Implementation of Quantum Approximate Optimization Algorithm for MAX2SAT Problem on Superconducting Qubits}{1}{}}
 \@writefile{toc}{\contentsline {abstract}{Abstract}{1}{}}
 \newlabel{sec:intro}{{I}{1}{}{}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {I}Introduction}{1}{}}
+\citation{farhi2014quantum}
+\citation{Zhou_2020}
+\citation{farhi2014quantum}
 \citation{Lucas_2014}
 \citation{Lucas_2014}
+\citation{Babbush_2013}
+\newlabel{sec:Background}{{II}{2}{}{}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {II}Background}{2}{}}
+\newlabel{subsec:QUBO}{{II\,A}{2}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A}Quadratic Unconstrained Binary Optimization (QUBO)}{2}{}}
+\citation{johnson1974approximation}
+\citation{AlonSpencer2008}
+\citation{GoemansWilliamson1994}
+\citation{farhi2014quantum}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B}Problem definition}{3}{}}
+\newlabel{subsec:problem}{{II\,B}{3}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {C}Uniform random assignment (\(1/2\)-approximation)}{3}{}}
+\newlabel{subsec:random}{{II\,C}{3}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {D}Biased random assignment (\(\approx 0.618\)-approximation)}{3}{}}
+\newlabel{subsec:hunch}{{II\,D}{3}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {E}LP relaxation and randomised rounding (\(\ge 0.632\)-approximation)}{3}{}}
+\newlabel{subsec:lp}{{II\,E}{3}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {F}Hybrid scheme (\(3/4\)-approximation)}{3}{}}
+\newlabel{subsec:hybrid}{{II\,F}{3}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {G}Relation to depth-\(p\) QAOA}{3}{}}
+\newlabel{subsec:qaoa-comparison}{{II\,G}{3}{}{}{}}
+\citation{powell1998direct}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Approximation ratio comparison between classical baseline algorithms and single-layer QAOA for combinatorial optimization. The approximation ratio measures the quality of solutions relative to the optimal value, with higher ratios indicating better performance. Classical baselines include \textbf  {uniform random} sampling (0.50), \textbf  {biased random} sampling toward better solutions (0.618), and \textbf  {linear programming (LP) rounding} (0.632). The \textbf  {hybrid approach} combines classical preprocessing with quantum optimization, achieving 0.75. \textbf  {QAOA with p=1} matches the hybrid performance at 0.75, demonstrating that single-layer quantum circuits can compete with sophisticated classical-quantum hybrid methods. This result establishes a baseline for quantum advantage claims, showing that even shallow quantum circuits achieve approximation ratios comparable to advanced classical heuristics. The gap between simple classical methods (0.50-0.63) and quantum-enhanced approaches (0.75) illustrates the potential benefit of quantum optimization for NP-hard combinatorial problems.}}{4}{}}
+\newlabel{fig:approx-ratios}{{1}{4}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {H}COBYLA Optimization Method}{4}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {1}Theoretical Foundation and Algorithm Structure}{4}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2}Application to Quantum Optimization}{4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {III}QAOA for MAX2SAT}{5}{}}
+\newlabel{sec:qaoa}{{III}{5}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A}QAOA Circuit Construction for MAX2SAT Problems}{5}{}}
+\newlabel{subsec:qaoa_circuits}{{III\,A}{5}{}{}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {1}Problem Encoding and Mathematical Foundation}{5}{}}
+\newlabel{subsubsec:encoding_foundation}{{III\,A\,1}{5}{}{}{}}
+\newlabel{eq:clause_operator}{{11}{5}{}{}{}}
+\newlabel{eq:cost_hamiltonian}{{12}{5}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B}Circuit Architecture and Decomposition}{5}{}}
+\newlabel{subsec:architecture}{{III\,B}{5}{}{}{}}
+\newlabel{eq:cost_unitary_factorization}{{13}{5}{}{}{}}
+\newlabel{eq:unitary_decomposition}{{14}{6}{}{}{}}
+\newlabel{eq:expanded_unitary}{{15}{6}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {C}Gate Sequence Implementation}{6}{}}
+\newlabel{subsec:gate_implementation}{{III\,C}{6}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {D}Circuit Optimization and Depth Reduction}{6}{}}
+\newlabel{subsec:optimization}{{III\,D}{6}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {E}Concrete Circuit Example}{6}{}}
+\newlabel{subsec:example}{{III\,E}{6}{}{}{}}
+\newlabel{eq:example_hamiltonian}{{16}{6}{}{}{}}
+\newlabel{eq:expanded_example}{{17}{6}{}{}{}}
+\@writefile{toc}{\contentsline {paragraph}{\numberline {a}Clause $C_1$ contribution:}{6}{}}
+\@writefile{toc}{\contentsline {paragraph}{\numberline {b}Clause $C_2$ contribution:}{6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {F}Parameterization and Measurement}{7}{}}
+\newlabel{subsec:parameters}{{III\,F}{7}{}{}{}}
+\newlabel{eq:qaoa_circuit}{{18}{7}{}{}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {IV}Circuit Diagram and Simulation}{7}{}}
+\newlabel{sec:circuit_diagram}{{IV}{7}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A}Circuit Diagram}{7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B}Single Qubit Open System Simulation Framework}{7}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {1}Quantum State Representation and Operators}{7}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2}System Hamiltonian Construction}{7}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3}Environmental Noise Models via Kraus Operators}{8}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4}Numerical Integration and Master Equation Approach}{8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {C}Simulation on Quantum Vertual Machine}{8}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {V}Experimental Results and Analysis}{8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A}Performance Varying the Clause-to-Variable Ratio}{8}{}}
+\citation{muller2023quantum}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Temporal evolution of single-qubit state probabilities under four canonical quantum noise channels with identical noise strength $\gamma = 0.1$. Each subplot shows the probability of measuring computational basis state $|0\rangle $ as a function of time. The \textbf  {bit-flip channel} (upper left) exhibits symmetric oscillatory decay toward the maximally mixed state, modeling random $X$-gate errors. The \textbf  {amplitude damping channel} (upper right) demonstrates asymmetric decay with bias toward the ground state, capturing energy dissipation processes. The \textbf  {phase damping channel} (lower left) preserves population while destroying coherence, representing pure dephasing mechanisms. The \textbf  {depolarization channel} (lower right) combines all Pauli errors, showing uniform decay toward classical statistics. The oscillatory behavior in all channels reflects the competition between coherent evolution and environmental decoherence, with distinct asymptotic limits revealing the physical nature of each noise mechanism.}}{9}{}}
+\newlabel{fig:single-q-sim}{{2}{9}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces QAOA optimization convergence on a quantum virtual machine (QVM) incorporating realistic noise models derived from actual quantum hardware measurements and benchmarking data. This simulation provides a faithful representation of quantum optimization performance under real-world conditions rather than idealized noiseless scenarios. The \textbf  {quantum expectation} values (blue circles) exhibit characteristic fluctuations that combine both fundamental quantum shot noise and realistic hardware imperfections including gate errors, decoherence, and measurement uncertainties. The \textbf  {best achieved} score (dark blue line) demonstrates that despite these realistic noise sources, the optimization maintains monotonic progress by tracking the running maximum across all evaluations. The \textbf  {5-point moving average} (orange dashed line) reveals the underlying convergence trend by filtering out both shot-to-shot statistical variations and correlated noise effects from the hardware model. The optimization exhibits three distinct behavioral regimes: initial exploration with high variance reflecting both algorithmic search and noise amplification (iterations 0-8), accelerated improvement as the algorithm identifies promising parameter regions while noise effects stabilize (iterations 8-15), and final convergence to a near-optimal solution around 4.5 where further improvements become limited by the fundamental noise floor (iterations 15-32). This realistic simulation validates that QAOA can achieve approximately 90\% approximation ratios even when subjected to the full spectrum of noise sources present in contemporary quantum processors, providing confidence in the algorithm's viability for near-term quantum advantage demonstrations.}}{9}{}}
+\newlabel{fig:qaoa-circuit-sim155}{{3}{9}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces QAOA performance on MAX-2-SAT instances with varying constraint densities. The expected score (normalized as percentage of optimal) is shown for 3-variable instances (blue line with diamonds) and 5-variable instances (orange line with circles) as the number of clauses increases. The vertical dashed line indicates the boundary of the experimental regime. For 3-variable instances, the clause-to-variable ratio ranges from $\alpha = 1$ (3 clauses) to $\alpha = 3$ (9 clauses), while 5-variable instances span from $\alpha = 0.6$ to $\alpha = 1.8$. The performance degradation patterns reveal how constraint density affects algorithm effectiveness across different problem sizes, with 3-variable instances showing more dramatic sensitivity to increased clause counts.}}{10}{}}
+\newlabel{fig:clause_var_relationship}{{4}{10}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B}Performance Under Equal Variable-Clause Scaling}{10}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces QAOA performance on MAX2SAT instances where the number of variables equals the number of clauses. The expected score represents the fraction of satisfied clauses. Error bars indicate standard deviation across multiple experimental runs. The declining trend reveals how increased problem size with constant constraint density challenges the quantum optimization algorithm.}}{10}{}}
+\newlabel{fig:equal_scaling}{{5}{10}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {C}Performance Under Fixed Constraint Scaling}{10}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces QAOA performance on MAX2SAT instances with a fixed number of clauses as variables increase. The initial decline followed by stabilization illustrates how decreasing constraint density eventually benefits quantum optimization, despite the expanding solution space.}}{10}{}}
+\newlabel{fig:fixed_clauses}{{6}{10}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {D}Hardware Quality Impact on QAOA Performance}{11}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces QAOA performance comparison under varying hardware quality conditions for 3 and 4 qubit implementations. Performance values represent approximation ratios as percentages, with 75\% marking the theoretical lower bound for meaningful quantum algorithm operation.}}{11}{}}
+\newlabel{tab:hardware_quality}{{I}{11}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {E}Performance with Number of QAOA Layers}{11}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {VI}CONCLUSION}{11}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A}Research Contributions and Practical Implications}{11}{}}
 \citation{*}
 \bibdata{apssampNotes,apssamp}
 \bibcite{benioff1980computer}{{1}{1980}{{Benioff}}{{}}}
@@ -27,11 +110,8 @@
 \bibcite{shor1994algorithms}{{4}{1994}{{Shor}}{{}}}
 \bibcite{grover1996fast}{{5}{1996}{{Grover}}{{}}}
 \bibcite{qec_ggl}{{6}{2025}{{Acharya\ \emph  {et~al.}}}{{Acharya, Abanin, Aghababaie-Beni, Aleiner, Andersen, Ansmann, Arute, Arya, Asfaw, Astrakhantsev, Atalaya, Babbush, Bacon, Ballard, Bardin, Bausch, Bengtsson, Bilmes, Blackwell, Boixo, Bortoli, Bourassa, Bovaird, Brill, Broughton, Browne, Buchea, Buckley, Buell, Burger, Burkett, Bushnell, Cabrera, Campero, Chang, Chen, Chen, Chiaro, Chik, Chou, Claes, Cleland, Cogan, Collins, Conner, Courtney, Crook, Curtin, Das, Davies, De~Lorenzo, Debroy, Demura, Devoret, Di~Paolo, Donohoe, Drozdov, Dunsworth, Earle, Edlich, Eickbusch, Elbag, Elzouka, Erickson, Faoro, Farhi, Ferreira, Burgos, Forati, Fowler, Foxen, Ganjam, Garcia, Gasca, Genois, Giang, Gidney, Gilboa, Gosula, Dau, Graumann, Greene, Gross, Habegger, Hall, Hamilton, Hansen, Harrigan, Harrington, Heras, Heslin, Heu, Higgott, Hill, Hilton, Holland, Hong, Huang, Huff, Huggins, Ioffe, Isakov, Iveland, Jeffrey, Jiang, Jones, Jordan, Joshi, Juhas, Kafri, Kang, Karamlou, Kechedzhi, Kelly, Khaire, Khattar, Khezri, Kim, Klimov, Klots, Kobrin, Kohli, Korotkov, Kostritsa, Kothari, Kozlovskii, Kreikebaum, Kurilovich, Lacroix, Landhuis, Lange-Dei, Langley, Laptev, Lau, Le~Guevel, Ledford, Lee, Lee, Lensky, Leon, Lester, Li, Li, Lill, Liu, Livingston, Locharla, Lucero, Lundahl, Lunt, Madhuk, Malone, Maloney, Mandr{\`a}, Manyika, Martin, Martin, Martin, Maxfield, McClean, McEwen, Meeks, Megrant, Mi, Miao, Mieszala, Molavi, Molina, Montazeri, Morvan, Movassagh, Mruczkiewicz, Naaman, Neeley, Neill, Nersisyan, Neven, Newman, Ng, Nguyen, Nguyen, Ni, Niu, O'Brien, Oliver, Opremcak, Ottosson, Petukhov, Pizzuto, Platt, Potter, Pritchard, Pryadko, Quintana, Ramachandran, Reagor, Redding, Rhodes, Roberts, Rosenberg, Rosenfeld, Roushan, Rubin, Saei, Sank, Sankaragomathi, Satzinger, Schurkus, Schuster, Senior, Shearn, Shorter, Shutty, Shvarts, Singh, Sivak, Skruzny, Small, Smelyanskiy, Smith, Somma, Springer, Sterling, Strain, Suchard, Szasz, Sztein, Thor, Torres, Torunbalci, Vaishnav, Vargas, Vdovichev, Vidal, Villalonga, Heidweiller, Waltman, Wang, Ware, Weber, Weidel, White, Wong, Woo, Xing, Yao, Yeh, Ying, Yoo, Yosri, Young, Zalcman, Zhang, Zhu, Zobrist, AI,\ and\ Collaborators}}}
-\newlabel{sec:Background}{{II}{2}{}{}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {II}Background}{2}{}}
-\newlabel{subsec:QUBO}{{II\,A}{2}{}{}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {A}Quadratic Unconstrained Binary Optimization (QUBO)}{2}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {}References}{2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B}Future Directions and Broader Impact}{12}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {}References}{12}{}}
 \bibcite{qec_ibm_2024}{{7}{2024}{{Bravyi\ \emph  {et~al.}}}{{Bravyi, Cross, Gambetta, Maslov, Rall,\ and\ Yoder}}}
 \bibcite{wang2025demonstration}{{8}{2025}{{Wang\ \emph  {et~al.}}}{{Wang, Lu, Zhang, Liu, Chen, Wang, Wu, Xu, Zhu, Jin, Gao, Tan, Cui, Wang, Zou, Zhang, Li, Shen, Zhong, Bao, Zhu, Han, He, Shen, Wang, Yang, Song, Deng, Dong, Sun, Li, Ye, Jiang, Ma, Shen, Zhang, Li, Guo, Wang, Song, Wang,\ and\ Deng}}}
 \bibcite{McClean_2016}{{9}{2016}{{McClean\ \emph  {et~al.}}}{{McClean, Romero, Babbush,\ and\ Aspuru-Guzik}}}
@@ -47,9 +127,22 @@
 \bibcite{farhi2014quantum}{{19}{2014}{{Farhi\ \emph  {et~al.}}}{{Farhi, Goldstone,\ and\ Gutmann}}}
 \bibcite{Zhou_2020}{{20}{2020}{{Zhou\ \emph  {et~al.}}}{{Zhou, Wang, Choi, Pichler,\ and\ Lukin}}}
 \bibcite{Lucas_2014}{{21}{2014}{{Lucas}}{{}}}
+\bibcite{Babbush_2013}{{22}{2013}{{Babbush\ \emph  {et~al.}}}{{Babbush, O’Gorman,\ and\ Aspuru‐Guzik}}}
+\bibcite{johnson1974approximation}{{23}{1974}{{Johnson}}{{}}}
+\bibcite{AlonSpencer2008}{{24}{2008}{{Alon\ and\ Spencer}}{{}}}
+\bibcite{GoemansWilliamson1994}{{25}{1994}{{Goemans\ and\ Williamson}}{{}}}
+\bibcite{powell1998direct}{{26}{1998}{{Powell}}{{}}}
+\bibcite{muller2023quantum}{{27}{2023}{{M{\"u}ller}}{{}}}
 \bibstyle{apsrev4-2}
 \citation{REVTEX42Control}
 \citation{apsrev42Control}
-\newlabel{LastBibItem}{{21}{3}{}{}{}}
-\newlabel{LastPage}{{}{3}{}{}{}}
-\gdef \@abspage@last{3}
+\newlabel{LastBibItem}{{27}{14}{}{}{}}
+\@writefile{toc}{\appendix }
+\@writefile{toc}{\contentsline {section}{\numberline {A}QAOA Layer Performance Simulation}{14}{}}
+\newlabel{sec:appendix_qaoa_layers}{{A}{14}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces QAOA performance on MAX2SAT problem with 1 layer of circuit, the number of clauses is 3/5/7 and the number of variables is 3/5/7 from top to bottom respectively. The expected score represents the fraction of satisfied clauses. Error bars indicate standard deviation across multiple experimental runs. The performance is around 80.4\%, 86.2\% and 89.9\% respectively.}}{14}{}}
+\newlabel{fig:qaoa_layers_simulation}{{7}{14}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces QAOA performance on MAX2SAT problem with 2 layer of circuit, the number of clauses is 3/5/7 and the number of variables is 3/5/7 from top to bottom respectively. The expected score represents the fraction of satisfied clauses. Error bars indicate standard deviation across multiple experimental runs. The performance is around 83.3\%, 91.1\% and 88.8\% respectively.}}{15}{}}
+\newlabel{fig:qaoa_layers_simulation2}{{8}{15}{}{}{}}
+\newlabel{LastPage}{{}{15}{}{}{}}
+\gdef \@abspage@last{15}
