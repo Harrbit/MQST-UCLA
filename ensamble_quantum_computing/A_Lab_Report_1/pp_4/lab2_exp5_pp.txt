@@ -1,3 +1,28 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f911834e511f28978fb730cae810855cbf598b5725f8384545b7ee5b3bfcce5d
-size 758
+# Pulse sequence
+   initpp(dir) # Reset internal parameter list
+
+      cleardata(n1)
+      waltzdecsetup(1,aDEC) 
+   
+     # NOE transfer 1H->13C
+      loop(l2,n3)
+         WALTZ16(1, aNOE, d90, d180, d270, d360, p2, p3)
+      endloop(l2)  
+    
+     # 45 pulse on FID_NOE_13C_4
+      delay(dAcq)           
+      pulse(2, a45C, p1, d45C)  # 45 degree 13C RF pulse
+      delay(dPreAcq)
+   
+     # Acquire with 1H decoupling
+      acquireon(n1)
+        waltzdec(1, n2, aDEC, d90, d180, d270, d360, p2, p3)
+      acquireoff("overwrite", n1)
+
+   lst = endpp(mode) # Return parameter list
+
+# Phase cycle list
+   phaseList = [0,2,0,2; # 90 phase
+                0,0,2,2;
+                2,2,0,0;
+                0,2,0,2] # Acquire phase

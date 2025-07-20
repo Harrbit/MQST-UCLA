@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:c14eed4f6abd3557dca10c768d56dd78d3880c98492212066a010c8a484f5990
-size 194
+import numpy as np
+
+
+
+wh = 401.28e6
+wc = 100.923e6
+beta = 1/(297*1.38064e-23)
+
+E = -(0.5 * 1.0545e-34 * wh) - (0.5 * 1.0545e-34 * wc) + (0.5 * 1.0545e-34* np.pi * 1300)
+
+print(np.exp(-1*beta*E))

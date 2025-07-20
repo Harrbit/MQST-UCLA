@@ -1,3 +1,8 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:5ba2fb7b17a8a0e78335473afb75f8df5b3a1fd4d458a7a10157292ba14d753f
-size 385
+1. Lab 1 Exp 1, need off resonance data
+2. Lab 1 Exp 1, collected data not exactly on resonance
+3. Lab 1 Exp 1, need data for out-side window scenario
+4. Lab 1 Exp 1, need time domain data
+5. Lab 1 Exp 1, need more experiment on different number of points and dwell time
+6. Lab 1 Exp 3, need more data points
+7. Lab 1 Exp 5, need Time Domain data
+8. Lab 2 Exp 6/6decop Time domain data

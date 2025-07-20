@@ -1,3 +1,724 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:df1324490e4d611a9c5b2192595ccb49e9e880be1f031a25c515acab2cbbdcd2
-size 25104
+\hbadness=10000
+%==============================================================================
+% Homework Assignment Template
+%==============================================================================
+\documentclass[11pt]{article}
+
+%------------------------------------------------------------------------------
+% PACKAGES
+%------------------------------------------------------------------------------
+\usepackage[margin=1in]{geometry}   % Adjust margins
+\usepackage{amsmath,amssymb,amsthm} % Math packages
+\usepackage{graphicx}               % Include images
+\usepackage{hyperref}               % Hyperlinks
+\usepackage{enumitem}               % Better control over lists
+\usepackage{fancyhdr}               % Header/footer customization
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{braket}  % For Dirac notation if needed
+\usepackage{amsmath,amssymb}
+
+%------------------------------------------------------------------------------
+% CUSTOM COMMANDS & SETTINGS
+%------------------------------------------------------------------------------
+\newcommand{\courseName}{Ensemble Quantum Computing Laboratory}     % Change to your course name
+\newcommand{\assignmentTitle}{Prelab 4} % Change to your assignment title
+\newcommand{\studentName}{Runzhao Guo}       % Change to your name
+\newcommand{\Date}{March 2, 2025}   % Change to your due date
+
+% Set up the page header
+\pagestyle{fancy}
+\fancyhf{} % Clear header and footer
+\lhead{\courseName}
+\chead{\assignmentTitle}
+\rhead{\studentName}
+\rfoot{\thepage}
+
+%------------------------------------------------------------------------------
+% DOCUMENT START
+%------------------------------------------------------------------------------
+\begin{document}
+%------------------------------------------------------------------------------
+% TITLE SECTION
+%------------------------------------------------------------------------------
+\begin{center}
+    {\large \textbf{\courseName}} \\
+    \vspace{3pt}
+    {\Large \textbf{\assignmentTitle}} \\
+    \vspace{3pt}
+    \studentName \\
+    \vspace{3pt}
+    \Date
+\end{center}
+
+\vspace{0.5in} % Add some space before the content starts
+
+\section*{Problem 1}
+
+\subsection*{part a).}
+One-qubit X gate: $180I_{x}$\\
+One-qubit H gate: $45I_{y}$ - $180I_{x}$ - $45I_{-y}$\\
+CNOT: $180I_{x}$ - $90I_y$ - $\frac{1}{4J}$ - $90I_{-x}$ - $180I_{x}$\\
+CZ(CNOT with Hadamard on both side of target qubit):$45S_{y}$ - $180S_{x}$ - $45S_{-y}$ - $180I_{x}$ - $90I_y$ - $\frac{1}{4J}$ - $90I_{-x}$ - $180I_{x}$ - $45S_{y}$ - $180S_{x}$ - $45S_{-y}$
+
+\subsection*{part b).}
+The unitary evolution of pulse sequence for X gate on the first qubit is:
+
+\[
+\begin{pmatrix}
+0 & 0 & -i & 0 \\
+0 & 0 & 0 & -i \\
+-i & 0 & 0 & 0 \\
+0 & -i & 0 & 0 \\
+\end{pmatrix}
+\]
+
+The unitary evolution of pulse sequence for H gate is:
+
+\[
+-\frac{1}{\sqrt{2}}i
+\begin{pmatrix}
+1 & 0 & 1 & 0 \\
+0 & 1 & 0 & 1 \\
+1 & 0 & -1 & 0 \\
+0 & 1 & 0 & -1 \\
+\end{pmatrix}
+\]
+
+The unitary evolution of pulse sequence for CNOT gate with the first qubit as control qubit and the second qubit as target qubit is:
+
+\[
+\frac{1}{\sqrt{2}}
+\begin{pmatrix}
+1-i & 0 & 0 & 0 \\
+0 & 1-i & 0 & 1 \\
+0 & 0 & 0 & 1-i \\
+0 & 0 & 1-i & 0 \\
+\end{pmatrix}
+\]
+
+The unitary evolution of pulse sequence for CZ gate with the first qubit is the control qubit and the second qubit is the target qubit is:
+
+\[
+-\frac{1}{\sqrt{2}}
+\begin{pmatrix}
+1-i & 0 & 0 & 0 \\
+0 & 1-i & 0 & 1 \\
+0 & 0 & 1-i & 0 \\
+0 & 0 & 0 & -(1-i) \\
+\end{pmatrix}
+\]
+These gates are correct up to a global phase, the main function that produce this result is shown in Appendix, program section.
+
+
+\section*{Problem 2}
+\subsection*{Part 1}
+\subsubsection*{(a) The Four Classical Functions}
+
+Since \(x\) is a single bit, the possible output bits are either constants or else (possibly) depend on \(x\). The four distinct classical functions are:
+
+\[
+  f_1(x) = 0, 
+  \quad
+  f_2(x) = 1, 
+  \quad
+  f_3(x) = x, 
+  \quad
+  f_4(x) = \overline{x} \quad (\text{the NOT of } x).
+\]
+
+\subsubsection*{(b) Classical Circuit Implementations}
+
+\begin{itemize}
+\item \(\boldsymbol{f_1(x) = 0}\):
+
+  A circuit that ignores the input and outputs `0` can be implemented by simply tying the output bit to logic-level 0 (ground) or using a constant-zero gate. In standard logic symbols:
+  \[
+    \text{Output} = 0.
+  \]
+
+\item \(\boldsymbol{f_2(x) = 1}\):
+
+  Similarly, output is always 1, which can be implemented by connecting the output to a logic-level 1 (supply voltage). Symbolically:
+  \[
+    \text{Output} = 1.
+  \]
+
+\item \(\boldsymbol{f_3(x) = x}\):
+
+  This is the \textit{identity} function. A classical circuit is simply a \textit{wire}; the output is just the same as the input:
+  \[
+    \text{Output} = x.
+  \]
+
+\item \(\boldsymbol{f_4(x) = \overline{x}}\):
+
+  This is the \textit{NOT} gate. A classical circuit is a standard inverter:
+  \[
+    \text{Output} = \overline{x}.
+  \]
+\end{itemize}
+
+\subsubsection*{(c) Quantum Circuits with Rotations \& CNOT}
+
+\begin{itemize}
+\item For \(f_1\) and \(f_2\) (constant functions), we can implement them using single-qubit rotations that effectively flip the second qubit if necessary (to set the output to 1, or leave it at 0).
+\item For \(f_3\) and \(f_4\), we can use a \(\mathrm{CNOT}\) from the first qubit (control) to the second qubit (target). If we want \(\ket{y \oplus x}\), we apply a standard CNOT. For \(\ket{y \oplus \overline{x}}\), we can apply an additional \(\pi\)-phase rotation or an \(X\) gate on the target prior to the CNOT, etc.
+\end{itemize}
+
+\[
+\begin{aligned}
+& \text{(i) } f_1(x) = 0: 
+  && U_{f_1}(\ket{x}\ket{y})
+    = \ket{x}\,\ket{\,y \oplus 0}
+    = \ket{x}\,\ket{y}.
+  \\
+& \text{(ii) } f_2(x) = 1: 
+  && U_{f_2}(\ket{x}\ket{y})
+    = \ket{x}\,\ket{\,y \oplus 1}
+    = X(1)\ket{x}\,\ket{y}.
+  \\
+& \text{(iii) } f_3(x) = x: 
+  && U_{f_3}(\ket{x}\ket{y})
+    = \ket{x}\,\ket{\,y \oplus x}
+    = \mathrm{CNOT(0,1)}\ \ket{x}\ket{y}.
+  \\
+& \text{(iv) } f_4(x) = x: 
+  && U_{f_4}(\ket{x}\ket{y})
+    = \ket{x}\,\ket{\,y \oplus 1 \oplus x}
+    = X(1)\mathrm{CNOT(0,1)}\ \ket{x}\ket{y}.
+\end{aligned}
+\]
+
+
+\subsection*{Part 2: Pulse Sequences for Each \texorpdfstring{$f_k$}{fk}}
+
+We now specify four pulse sequences (labeled $U_{f_1}, U_{f_2}, U_{f_3}, U_{f_4}$)
+that implement the quantum circuits from Part~1 
+
+\subsubsection*{\boldmath{$f_1(x) = 0$}}
+
+\textbf{Goal:} 
+$\ket{x}\ket{y} \mapsto \ket{x}\,\ket{y\oplus 0} = \ket{x}\ket{y}$,
+i.e.\ the \emph{identity} on two qubits.
+
+\textbf{Implementation:}\\
+Since the overall operation is simply the identity, 
+an NMR pulse sequence can just do \emph{nothing} (no pulses, no free evolution), or equivalently:
+\[
+  U_{f_1} \;=\; \hat{I} 
+  \quad (\text{no pulses, no delay}).
+\]
+
+\subsubsection*{\boldmath{$f_2(x) = 1$}}
+
+\textbf{Goal:} 
+$\ket{x}\ket{y} \mapsto \ket{x}\,\ket{y\oplus 1} = \ket{x}\,X\ket{y}.$
+
+\textbf{Implementation:}\\
+Apply a single-qubit $\pi$ rotation on the \emph{second} spin (qubit~1) about, say, the $\hat{x}$ axis:
+\[
+  U_{f_2} \;=\; R_{x}^{(1)}(\pi)
+\]
+
+
+\subsubsection*{\boldmath{$f_3(x) = x$}}
+
+\textbf{Goal:} 
+$\ket{x}\ket{y} \mapsto \ket{x}\,\ket{y\oplus x}$,
+which is exactly a \emph{CNOT} (control = qubit~0, target = qubit~1).
+
+\textbf{Implementation (typical NMR CNOT):}\\
+A standard way to realize \textsc{CNOT} using the Ising-like coupling is
+\[
+  U_{f_3} \;=\;
+    R_{y}^{(0)}\!\bigl(\tfrac{\pi}{2}\bigr)\;
+    U_{zz}\!\bigl(\tfrac{1}{4J}\bigr)\;
+    R_{x}^{(0)}\!\bigl(-\tfrac{\pi}{2}\bigr)\;
+\]
+where
+\[
+  U_{\text{ZZ}}\!(\tau) \;=\; 
+  e^{-\,i\,2\pi J\,\tau\,\hat{I}_z^{(1)}\hat{I}_z^{(2)}}
+  \quad\text{(free evolution for time $\tau$)}.
+\]
+By choosing $\tau = 1/(4J)$, 
+this sequence implements the usual controlled-NOT up to an overall phase, 
+i.e.\ $|x\rangle|y\rangle \mapsto |x\rangle\,|x\oplus y\rangle$. 
+
+\subsubsection*{\boldmath{$f_4(x) = \overline{x}$}}
+
+\textbf{Goal:} 
+$\ket{x}\ket{y} \mapsto \ket{x}\,\ket{\,y\oplus \overline{x}} 
+= \ket{x}\,\ket{\,y \oplus 1 \oplus x}.$
+
+\textbf{Implementation Idea:}\\
+We can realize $y\oplus \overline{x}$ as $y\oplus x \oplus 1$, 
+i.e.\ do a \textsc{CNOT} \emph{and} then flip the target qubit. 
+Hence one simple pulse sequence is just 
+\[
+  U_{f_4} \;=R_{y}^{(1)}\!\bigl(\tfrac{\pi}{4}\bigr)\; R_{x}^{(1)}\!\bigl(\pi \bigr)\; R_{y}^{(0)}\!\bigl(-\tfrac{\pi}{4}\bigr)\; \times \; U_{f_3}\;\times \; R_{y}^{(1)}\!\bigl(\tfrac{\pi}{4}\bigr)\; R_{x}^{(1)}\!\bigl(\pi \bigr)\; R_{y}^{(1)}\!\bigl(-\tfrac{\pi}{4}\bigr)\;
+\]
+
+\bigskip
+
+\noindent
+These four pulse sequences $U_{f_1}, U_{f_2}, U_{f_3}, U_{f_4}$ 
+directly correspond to the four 2‐qubit unitaries that implement the classical functions $f_k(x)$ 
+as described in Part~1, but now in an \emph{NMR pulse language} using 
+(i) single‐qubit $\hat{x}$/$\hat{y}$ rotations and 
+(ii) a free‐evolution (scalar‐coupling) period $U_{\text{ZZ}}(\tau)$.
+
+\subsection*{Part 3: }
+\noindent
+$U_k = R_{\bar{y}2}(\frac{\pi}{2}) R_{y1}(\frac{\pi}{2}) U_{fk} R_{y2}(\frac{\pi}{2}) R_{\bar{y}1}(\frac{\pi}{2})$\\
+\noindent
+$k=1$, \(f_1(x) = 0\), $U_1 = $
+
+\[
+\begin{pmatrix}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 \\
+\end{pmatrix}
+\]
+\noindent
+$k=2$, \(f_2(x) = 1\), $U_2 = $
+
+\[
+i
+\begin{pmatrix}
+1 & 0 & 0 & 0 \\
+0 & -1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & -1 \\
+\end{pmatrix}
+\]
+
+\noindent
+$k=3$, \(f_3(x) = x\), $U_3 = $
+
+\[
+0.35
+\begin{pmatrix}
+-1+i & 1-i & 1+i & 1+i \\
+-1-i & -1-i & -1+i & 1-i \\
+1+i & 1+i & -1+i & 1-i \\
+-1-i & 1-i & -1-i & -1-i \\
+\end{pmatrix}
+\]
+
+\noindent
+$k=4$, \(f_4(x) = \bar{x}\), $U_4 = $
+
+\[
+0.35
+\begin{pmatrix}
+-1-i & -1-i & -1+i & 1-i \\
+1-i & -1+i & -1-i & -1-i \\
+-1+i & 1-i & -1-i & -1-i \\
+-1-i & -1-i & 1-i & -1+i \\
+\end{pmatrix}
+\]
+
+\section*{Problem 3}
+The density matrix for final state averaged for three permutation matrices for $f_1$ is as follows:
+
+\[
+\begin{pmatrix}
+0.67 & 0.33 & 0 & 0 \\
+0.33 & 0.67 & 0 & 0 \\
+0 & 0 & 0.33 & 0 \\
+0 & 0 & 0 & 0.33 \\
+\end{pmatrix}
+\]
+
+The density matrix for final state averaged for three permutation matrices for $f_2$ is as follows:
+\[
+\begin{pmatrix}
+    0.67 & 0.33 & 0 & 0 \\
+    0.33 & 0.67 & 0 & 0 \\
+    0 & 0 & 0.33 & 0 \\
+    0 & 0 & 0 & 0.33 \\
+    \end{pmatrix}
+\]
+
+The density matrix for final state averaged for three permutation matrices for $f_3$ is as follows:
+
+\[
+\begin{pmatrix}
+0.5 & 0.167i & 0.167i & -0.167 \\
+-0.167i & 0.5 & 0.167 & 0.167i \\
+-0.167i & 0.167 & 0.5 & 0.167i \\
+-0.167 & -0.167i & -0.167i & 0.5 \\
+\end{pmatrix}
+\]
+
+The density matrix for final state averaged for three permutation matrices for $f_4$ is as follows:
+
+\[
+\begin{pmatrix}
+0.5 & 0.167i & 0.167i & -0.167 \\
+-0.167i & 0.5 & 0.167 & 0.167i \\
+-0.167i & 0.167 & 0.5 & 0.167i \\
+-0.167 & -0.167i & -0.167i & 0.5 \\
+\end{pmatrix}
+\]
+
+The output for constant function is $|0\rangle$ and output for balanced function is $\frac{1}{\sqrt{2}}(|0\rangle+|1\rangle)$, these indecate my simulation of two-qubit Deutsche-Jozsa Algorithm is correct. The complete pulse sequence along with a simple explaination of the syntax used is in Appendix, section Sequence.
+
+\section*{Problem 4}
+
+\subsection*{How ASP is used to prepare the system qubit in the ground state?}
+The system qubit (${}^{13}C$ in choloroform) is initially prepared in the ground state of Hamiltonian $H_0 = -\sigma x$ via pseudo-Hadamard gate. \\
+
+The system Hamiltonian is gradually changed from $H_0$ to the target molecular Hamiltonian $H$ using the interpolation:
+\[ H_{ad} = (1-s)H_0 + sH\], where $s = \frac{t}{T}$ and $t$ grows from 0 to $T$. \\
+This ensures that the system remains in the instantaneous ground state throughout the evolution, as long as the evolution is slow enough (according to the adiabatic theorem).\\
+The final state at $t = T$is the ground state of $H$, which represents the molecular ground state of $H_2$.\\
+The adiabatic evolution is discretized into multiple small steps. Each step is implemented by a sequence of NMR pulses corresponding to a unitary transformation:
+\[U^{ad}_{m} = e^{-i(\frac{\delta}{2})(1-s_m)\sigma_x}e^{-is_mH\delta}e^{-i(\frac{tau}{2})(1 - s_m)\sigma_x} + O(\delta^3)\]
+Which can be implemented by pulse sequence $R^s_{-x}(\theta_1) - R^s_{-y}(\theta_2) - R^s_{x}(\theta_3)$.
+Here,$\tau$ is the small time increment, and $s_m = \frac{m}{M+1}$where $M$ is the total number of steps, $\theta_1 = -(\frac{\tau}{2})(1-s_m)$, $\theta_2 = -s_mH\tau$, $\theta_3 = -(\frac{\tau}{2})(1-s_m)$. In the letter the fidelity of the adiabatic preparation was numerically and experimentally analyzed, they confirmed that longer evolution times lead to higher fidelity, matching the adiabatic theorem.
+
+\subsection*{What is the role of the inital Hamiltonian $H_0$}
+The adiabatic theorem states that if a system starts in the ground state of a Hamiltonian $H_0$ and is slowly evolved to a new Hamiltonian $H$, it will remain in the ground state throughout, to achieve this, the system is evolved under the time-dependent Hamiltonian, written above.\\
+The choice of $H_0$ ensures that the evolution from $H_0$ to $H$ maintains a finite energy gap between the ground state and excited state. This is important because according to the adiabatic theorem, the system will remain in the ground state as long as the evolution is slow enough. The quantum adiabatic theorem states that if a quantum system starts in the ground state of an initial Hamiltonian $H_0$ and the Hamiltonian is varied slowly enough over time, the system will remain in the instantaneous ground state of the evolving Hamiltonian, provided that There is a nonzero energy gap between the ground state and the first excited state throughout the evolution and the Hamiltonian changes slowly enough so that transitions to excited states are negligible. \\
+The success of this process depends on the energy gap $\Delta E$ between the ground and excited states of $H(s)$, ff the gap is too small, small perturbations or fast changes in s can cause non-adiabatic transitions (jumping to excited states).\\
+
+\subsection*{Iterative Phase Estimation}
+The goal of phase estimation is to determine the eigenvalue associated with an eigenstate of a unitary operator. Given the molecular Hamiltonian \( H \), the corresponding time evolution operator is 
+
+\[
+U = e^{-i H \tau},
+\]
+
+which acts on its eigenstate \( |\psi\rangle \) as 
+
+\[
+U |\psi\rangle = e^{i 2\pi \phi} |\psi\rangle,
+\]
+
+where the phase \( \phi \) encodes the energy eigenvalue via
+
+\[
+E = -\frac{2\pi \phi}{\tau}.
+\]
+
+Since a full quantum Fourier transform (QFT) would require additional qubits, the experiment employs an iterative approach, extracting \( \phi \) bit by bit.
+
+The process begins by preparing the system qubit (the \( ^{13}C \) nucleus) in the ground state of \( H \) using adiabatic state preparation (ASP), while the probe qubit (\( ^{1}H \)) is initialized in \( |+\rangle = \frac{1}{\sqrt{2}} (|0\rangle + |1\rangle) \). The algorithm then applies a series of controlled-\( U_k \) operations, where 
+
+\[
+C U_k = |0\rangle \langle 0| \otimes I + |1\rangle \langle 1| \otimes U_k.
+\]
+
+The evolution operator is recursively updated as
+
+\[
+U_{k+1} = (e^{-i 2\pi \phi_k} U_k)^{2^n},
+\]
+
+ensuring that each iteration refines the precision of \( \phi \). After each controlled operation, the probe qubit’s phase is measured using an NMR interferometer, which extracts relative phase shifts from spectral patterns. These measurements provide bits of the binary expansion of \( \phi \), which are used to update subsequent controlled operations.\\
+
+
+
+\appendix
+\section*{Appendix}
+
+\subsection*{Program}
+\begin{verbatim}
+    import numpy as np
+    from qutip import (Qobj, basis, tensor, qeye, sigmax, sigmay, sigmaz)
+    
+    def product_operator(target, axis, angle):
+        """
+        Calculate the product operator on a two-qubit system (using QuTiP).
+        
+        Parameters:
+        -----------
+        target (tuple): 
+            Tuple containing the indices of target qubits (0, 1, or both). 
+            Length must be 1 or 2.
+        axis (str): 
+            Axis of rotation ('x', 'y', 'z', '-x', '-y', '-z').
+        angle (float): 
+            Rotation angle in radians.
+        
+        Returns:
+        --------
+        (qutip.Qobj): 
+            4x4 Qobj representing the product operator for two qubits.
+        """
+        # Define QuTiP identity and Pauli matrices
+        I_q = qeye(2)
+        X_q = sigmax()
+        Y_q = sigmay()
+        Z_q = sigmaz()
+        
+        # Map axis string to QuTiP Pauli operators
+        axis_to_pauli = {
+            'x': X_q,  'y': Y_q,  'z': Z_q,
+            '-x': -X_q, '-y': -Y_q, '-z': -Z_q
+        }
+        
+        axis_lower = axis.lower()
+        if axis_lower not in axis_to_pauli:
+            raise ValueError("Axis must be one of: 'x', 'y', 'z', '-x', '-y', '-z'")
+    
+        if not isinstance(target, tuple) or len(target) < 1 or len(target) > 2:
+            raise ValueError("Target must be a tuple of length 1 or 2")
+        
+        for t in target:
+            if t not in [0, 1]:
+                raise ValueError("Target qubits must be 0 or 1")
+        
+        pauli_op = axis_to_pauli[axis_lower]
+        
+        # Construct the generator via tensor products
+        if len(target) == 1:
+            q = target[0]
+            if q == 0:
+                generator = tensor(pauli_op, I_q)
+            else:  # q == 1
+                generator = tensor(I_q, pauli_op)
+        else:  # Two-qubit operation
+            if target == (0, 1) or target == (1, 0):
+                generator = tensor(pauli_op, pauli_op)
+            else:
+                raise ValueError("For two-qubit operation, target must be (0,1) or (1,0)")
+        
+        # Calculate the unitary operation using the matrix exponential
+        operator = (-1j * angle / 2 * generator).expm()
+        return operator
+    
+    
+    def apply_operator_sequence(sequence, initial_state=None, threshold=1e-15):
+        """
+        Apply a sequence of product operators to a two-qubit system (using QuTiP).
+        
+        Parameters:
+        -----------
+        sequence (list of tuples):
+            List of operations in the form [(target, axis, angle), ...] 
+            where target is a tuple of qubit indices, axis is 'x', 'y', or 'z', 
+            and angle is the rotation angle in radians.
+        initial_state (numpy.ndarray, optional):
+            Initial state vector (4x1) or density matrix (4x4). 
+            If None, starts with |00⟩ state.
+        threshold (float, optional):
+            Values with absolute magnitude smaller than this threshold 
+            will be set to zero. Default is 1e-15.
+        
+        Returns:
+        --------
+        final_state (numpy.ndarray):
+            Final state after applying all operations (vector or density matrix).
+        filtered_count (int):
+            Number of values that were set to zero.
+        """
+        # Define |00> in QuTiP
+        ket_0 = basis(2, 0)
+        ket_00_qobj = tensor(ket_0, ket_0)  # two-qubit |00>
+        
+        # If no initial state given, use |00>
+        if initial_state is None:
+            # Start as a ket (Qobj)
+            state_qobj = ket_00_qobj
+        else:
+            # Convert the given NumPy array to a QuTiP object
+            arr = np.array(initial_state, dtype=complex)
+            if arr.shape == (4, 4):
+                # Density matrix
+                state_qobj = Qobj(arr, dims=[[2, 2], [2, 2]])
+            elif arr.shape == (4,):
+                # State vector
+                state_qobj = Qobj(arr.reshape((4, 1)), dims=[[2, 2], [1, 1]])
+            else:
+                raise ValueError("Initial state must be a 4x1 vector or 4x4 density matrix")
+        
+        # Check if state_qobj is density matrix or ket
+        is_density_matrix = state_qobj.isoper  # True if operator (density matrix)
+        
+        # Initialize the net unitary as identity
+        unitary_net = tensor(qeye(2), qeye(2))  # 4x4 identity
+        
+        # Build up the net unitary
+        for op in sequence:
+            if len(op) != 3:
+                raise ValueError("Each operation must be a tuple of (target, axis, angle)")
+            target, axis, angle = op
+            
+            operator_qobj = product_operator(target, axis, angle)
+            # Accumulate unitary
+            unitary_net = operator_qobj * unitary_net
+        
+        # Apply the net unitary
+        if is_density_matrix:
+            final_qobj = unitary_net * state_qobj * unitary_net.dag()
+        else:
+            final_qobj = unitary_net * state_qobj
+        # print(unitary_net)
+        
+        # Convert back to NumPy array to filter small values
+        final_array = final_qobj.full()
+        
+        filtered_count = 0
+        if is_density_matrix:
+            # Filter small values in density matrix
+            for i in range(4):
+                for j in range(4):
+                    if abs(final_array[i, j]) < threshold:
+                        final_array[i, j] = 0
+                        filtered_count += 1
+        else:
+            # Filter small values in state vector
+            for i in range(4):
+                if abs(final_array[i, 0]) < threshold:
+                    final_array[i, 0] = 0
+                    filtered_count += 1
+        
+        # Return final state (shaped as original: 4x1 for ket, 4x4 for density matrix)
+        if is_density_matrix:
+            final_state = final_array
+        else:
+            # Flatten back to (4,) if it was a state vector
+            final_state = final_array[:, 0]
+        
+        return final_state, filtered_count
+\end{verbatim}
+
+
+\subsection* {Sequence}
+Each pulse is discribed by a tuple of three elements: which qubit(s), which axis, what angle.\\
+\noindent
+For example, ((0,), 'x', pi) indecate apply a pi pulse on 0th qubit along x-axis.
+\begin{verbatim}
+    sequence = [
+        [
+        ## P1
+            ((0,),'x',pi*4),
+        ## P1 end
+        
+        ## D.J.Pulse
+        # H(0)
+            ((0,), 'y', pi/4),
+            ((0,), 'x', pi),
+            ((0,), '-y', pi/4),
+        # H(1)
+            ((1,), 'y', pi/4),
+            ((1,), 'x', pi),
+            ((1,), '-y', pi/4),
+        
+        ## Oracle
+        # x(1) **apply this for f2 and f4 **
+            # ((1,),'x',pi),
+        # CNOT(0,1) **apply this for f3 and f4 **
+            ((0,),'x',pi),
+            ((1,), 'y', pi/2),
+            ((0, 1), 'z', pi/2),
+            ((1,), '-x', pi/2),
+            ((0,),'x',pi),
+        
+        # H(0)
+            ((0,), 'y', pi/4),
+            ((0,), 'x', pi),
+            ((0,), '-y', pi/4)
+        ## D.J. Pulse end
+        ],
+        [
+        ## P2
+        # CNOT(0,1)
+            ((0,),'x',pi),
+            ((1,), 'y', pi/2),
+            ((0, 1), 'z', pi/2),
+            ((1,), '-x', pi/2),
+            ((0,),'x',pi),
+        # CNOT(1,0)
+            ((1,),'x',pi),
+            ((0,), 'y', pi/2),
+            ((0, 1), 'z', pi/2),
+            ((0,), '-x', pi/2),
+            ((1,),'x',pi),
+        ## P2 end
+        
+        
+        ## D.J.Pulse
+        # H(0)
+            ((0,), 'y', pi/4),
+            ((0,), 'x', pi),
+            ((0,), '-y', pi/4),
+        # H(1)
+            ((1,), 'y', pi/4),
+            ((1,), 'x', pi),
+            ((1,), '-y', pi/4),
+        
+        ## Oracle
+        # x(1)  **apply this for f2 and f4 **
+            # ((1,),'x',pi),
+        # CNOT(0,1)  **apply this for f3 and f4 **
+            ((0,),'x',pi),
+            ((1,), 'y', pi/2),
+            ((0, 1), 'z', pi/2),
+            ((1,), '-x', pi/2),
+            ((0,),'x',pi),
+        
+        # H(0)
+            ((0,), 'y', pi/4),
+            ((0,), 'x', pi),
+            ((0,), '-y', pi/4)
+        ## D.J. Pulse end
+        ],
+        [
+        ## P3
+        # CNOT(1,0)
+            ((1,),'x',pi),
+            ((0,), 'y', pi/2),
+            ((0, 1), 'z', pi/2),
+            ((0,), '-x', pi/2),
+            ((1,),'x',pi),
+        # CNOT(0,1)
+            ((0,),'x',pi),
+            ((1,), 'y', pi/2),
+            ((0, 1), 'z', pi/2),
+            ((1,), '-x', pi/2),
+            ((0,),'x',pi),
+        ## P3 end
+        
+        
+        ## D.J.Pulse
+        # H(0)
+            ((0,), 'y', pi/4),
+            ((0,), 'x', pi),
+            ((0,), '-y', pi/4),
+        # H(1)
+            ((1,), 'y', pi/4),
+            ((1,), 'x', pi),
+            ((1,), '-y', pi/4),
+        
+        ## Oracle
+        # x(1)  **apply this for f2 and f4 **
+            # ((1,),'x',pi),
+        # CNOT(0,1)  **apply this for f3 and f4 **
+            ((0,),'x',pi),
+            ((1,), 'y', pi/2),
+            ((0, 1), 'z', pi/2),
+            ((1,), '-x', pi/2),
+            ((0,),'x',pi),
+        
+        # H(0)
+            ((0,), 'y', pi/4),
+            ((0,), 'x', pi),
+            ((0,), '-y', pi/4)
+        ## D.J. Pulse end
+        ]
+        ]
+\end{verbatim}
+% \begin{thebibliography}{9}
+% \bibitem{exampleRef} Author Name, \textit{Title of the Book}, Publisher, Year.
+% \end{thebibliography}
+%------------------------------------------------------------------------------
+% DOCUMENT END
+%------------------------------------------------------------------------------
+\end{document}

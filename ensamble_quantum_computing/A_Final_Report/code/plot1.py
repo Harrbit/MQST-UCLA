@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:46a407c22f1b7132fa37a1fd96016ec270bc3ccc1f86b45a11ab51da8af8a32f
-size 471
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Read the CSV file
+data = pd.read_csv('/Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_data_C/CPMG_Had(1).csv')
+
+# Plot the data
+data.plot(x=data.columns[0], y=data.columns[1], kind='line')  # Specify the x and y columns
+plt.xlabel('Time(s)')  # Replace with your x-axis label
+plt.ylabel('Amplitude')  # Replace with your y-axis label
+# plt.title('Plot Title')  # Replace with your plot title
+plt.show()

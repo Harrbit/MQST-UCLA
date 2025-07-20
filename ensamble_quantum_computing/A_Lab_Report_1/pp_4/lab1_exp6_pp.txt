@@ -1,3 +1,1 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:13d4ff0993c2438bb1fa6668b5536d49b0cfbcf298b1bd336f789b73ee981251
-size 21
+pulse(1,a90H,p1,d90H)

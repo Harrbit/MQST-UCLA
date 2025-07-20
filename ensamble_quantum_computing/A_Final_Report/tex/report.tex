@@ -1,3 +1,733 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:07468950cfb0bcddef02137f41084d4012b1446504848ae97f9c4f57524e90b3
-size 58027
+\hbadness=10000
+% ****** Start of file apssamp.tex ******
+%
+%   This file is part of the APS files in the REVTeX 4.2 distribution.
+%   Version 4.2a of REVTeX, December 2014
+%
+%   Copyright (c) 2014 The American Physical Society.
+%
+%   See the REVTeX 4 README file for restrictions and more information.
+%
+% TeX'ing this file requires that you have AMS-LaTeX 2.0 installed
+% as well as the rest of the prerequisites for REVTeX 4.2
+%
+% See the REVTeX 4 README file
+% It also requires running BibTeX. The commands are as follows:
+%
+%  1)  latex apssamp.tex
+%  2)  bibtex apssamp
+%  3)  latex apssamp.tex
+%  4)  latex apssamp.tex
+%
+\documentclass[%
+ reprint,
+%superscriptaddress,
+%groupedaddress,
+%unsortedaddress,
+%runinaddress,
+%frontmatterverbose, 
+%preprint,
+%preprintnumbers,
+%nofootinbib,
+%nobibnotes,
+%bibnotes,
+ amsmath,amssymb,
+ aps,
+%pra,
+%prb,
+%rmp,
+%prstab,
+%prstper,
+%floatfix,
+]{revtex4-2}
+
+\usepackage{graphicx}% Include figure files
+\usepackage{dcolumn}% Align table columns on decimal point
+\usepackage{bm}% bold math
+%\usepackage{hyperref}% add hypertext capabilities
+%\usepackage[mathlines]{lineno}% Enable numbering of text and display math
+%\linenumbers\relax % Commence numbering lines
+
+%\usepackage[showframe,%Uncomment any one of the following lines to test 
+%%scale=0.7, marginratio={1:1, 2:3}, ignoreall,% default settings
+%%text={7in,10in},centering,
+%%margin=1.5in,
+%%total={6.5in,8.75in}, top=1.2in, left=0.9in, includefoot,
+%%height=10in,a5paper,hmargin={3cm,0.8in},
+%]{geometry}
+
+\begin{document}
+
+\preprint{APS/123-QED}
+
+\title{A Nuclear Magnetic Resonance Implementation of Deutsch-Jozsa Algorithm}% Force line breaks with \\
+% \thanks{A footnote to the article title}%
+
+\author{Runzhao Guo}
+
+\date{\today}% It is always \today, today,
+             %  but any date may be explicitly specified
+
+\begin{abstract}
+This report presents the implementation of the Deutsch-Jozsa algorithm using a two-qubit Nuclear Magnetic Resonance (NMR) quantum computer. The experiment employs a \(^{13}\mathrm{C}\)-labeled chloroform (\(^{13}\mathrm{CHCl}_3\)) sample, with the nuclear spins of \(^{1}\mathrm{H}\) and \(^{13}\mathrm{C}\) nuclei serving as the qubits. Beginning with the preparation of pseudopure states from a highly mixed thermal state, we calibrated single-qubit and two-qubit quantum gates, including the Hadamard and CNOT gates, through precise RF pulse engineering. The Deutsch-Jozsa algorithm was executed for both constant and balanced oracle functions, and the experimental outcomes were observed through the free induction decay (FID) signals on the proton channel. The results successfully distinguish between constant and balanced functions by the characteristic signs of their spectral peaks, demonstrating the algorithm’s theoretical predictions. This experiment illustrates the capability of NMR quantum information processors to implement small-scale quantum algorithms and highlights the key techniques for quantum state preparation, gate calibration, and coherent control in NMR-based quantum computing.
+
+% \begin{description}
+% \item[Usage]
+% Secondary publications and information retrieval purposes.
+% \item[Structure]
+% You may use the \texttt{description} environment to structure your abstract;
+% use the optional argument of the \verb+\item+ command to give the category of each item. 
+% \end{description}
+\end{abstract}
+
+%\keywords{Suggested keywords}%Use showkeys class option if keyword
+                              %display desired
+\maketitle
+
+%\tableofcontents
+\section{Introduction}
+The practice of information process and storage has always been done on physical representations that follows certain pattern. Starting from wooden abacus and mechanical calculators where classical machanics are used all the way, to integrated semiconductor computer where laws of electricity and semiconductor physics are implemented, various classical laws of nature have proven their validity in information processing. Quantum computers, first pointed out in 1982\cite{feynman1982simulating}, leverage the principle of quantum machanics including entanglement and superposition, is promissed with exponential acceleration in certain problems that are difficult for classical computers to solve in reasonable time. Accounting to the continuous, complex states of unity element, usually qubits, of quantum computer and their entanglement, quantum computers are promissed to be able to contain and process amount of information exponentially large to its system size. The wave function of $n$ qubits contains $4^n$ real numbers. A rapidly growing community of quantum computing has been persuing such theoretical advantage, attempting to answer the big question: how much computational power could be obtained by using the dynamics of quantum systems to solve classical problems.
+
+Nuclear Magnetic Resonance (NMR) quantum computing is one of the earliest and most experimentally accessible platforms for realizing small-scale quantum algorithms. In NMR quantum computers, quantum information is encoded in the spin states of atomic nuclei within molecules dissolved in a liquid solvent. These spin${}^{-\frac{1}{2}}$ nuclei serve as qubits, which can be manipulated with high precision using sequences of radio-frequency (RF) pulses and controlled through well-established techniques from magnetic resonance spectroscopy. Although inherently limited in scalability due to ensemble averaging and challenges in maintaining pure quantum states, NMR systems have played a pivotal role in demonstrating fundamental quantum algorithms and error correction protocols. Their robustness, long coherence times, and precise control make them an excellent testbed for exploring the practical implementation of quantum algorithms.
+
+Since its inception, NMR quantum computing has been instrumental in demonstrating some of the first experimental realizations of quantum algorithms and quantum information processing protocols. Early landmark experiments include the implementation of Deutsch-Jozsa and Grover's search algorithms on two- and three-qubit NMR systems, providing proof-of-concept demonstrations of quantum speedup over classical counterparts\cite{Chuang1998}\cite{Jones1998}. Additionally, NMR platforms were among the first to implement quantum error correction\cite{Cory1998} and quantum teleportation\cite{Nielsen1998} and and simulate simple quantum systems\cite{Vandersypen2001}. Despite limitations in scalability and the use of highly mixed pseudo-pure states, these pioneering works have significantly contributed to validating the principles of quantum computing and exploring the dynamics of multi-qubit systems. Continued advancements in control techniques and pulse engineering have allowed for more complex algorithms and simulations to be tested on NMR-based quantum processors.
+
+The Deutsch-Jozsa algorithm is one of the earliest examples illustrating the potential of quantum computation to outperform classical algorithms. It addresses the problem of determining whether a given Boolean function$f:\{0, 1\}^n\rightarrow\{0, 1\}$is constant (outputting the same value for all inputs) or balanced (outputting 0 for exactly half of the inputs and 1 for the other half). Classically, solving this problem requires evaluating the function on up to$2^{n-1}+1$inputs in the worst case. In contrast, the Deutsch-Jozsa algorithm can determine with certainty whether$f$is constant or balanced by evaluating the function only once using quantum parallelism and interference. The algorithm exploits the principles of superposition and entanglement to efficiently encode and extract global properties of $f$, demonstrating an exponential speedup over deterministic classical approaches.\cite{Deutsch1992}
+
+In section II, we introduce the theory of single-qubit and two-qubit gates, pseudopure states and Deutsch-Jozsa algorithm, as well as simulation. In Section III, we Present the experimental procedure and experimental results. In section IV is the conclusion.
+
+\section{Theory and Simulations}
+
+Here we introduce the Single-Qubit and Two-Qubits gates that will be implemented in the following experiments, some perlimibary information is provided in the Appendix \ref{Append:per}
+
+\subsection{Single-Qubit Gates}
+Single-qubit gates are unitary operations that act on a single qubit, typically represented by $2 \times 2$ unitary matrices. As noted, Pauli matrices ($X$, $Y$, $Z$) and the identity ($I$) form a natural basis for constructing these gates. Commonly used single-qubit gates include the Pauli gates themselves, which can be viewed as $\pi$ rotations about the corresponding Bloch axes, and the Hadamard gate, defined by
+\[
+H = \frac{1}{\sqrt{2}}
+\begin{pmatrix}
+1 & 1 \\
+1 & -1
+\end{pmatrix}.
+\]
+The Hadamard gate creates an equal superposition of $\lvert 0 \rangle$ and $\lvert 1 \rangle$ when acting on either computational basis state, another way of looking at this operation is it transform a state in the $|0\rangle$ and $|1\rangle$ basis into the $|+\rangle$ and $|-\rangle$ basis. Another key family of single-qubit gates comprises phase gates, such as
+\[
+S = 
+\begin{pmatrix}
+1 & 0 \\
+0 & i
+\end{pmatrix}
+\quad \text{and} \quad
+T = 
+\begin{pmatrix}
+1 & 0 \\
+0 & e^{i \pi/4}
+\end{pmatrix}.
+\]
+These gates introduce controlled phase shifts crucial for many quantum algorithms and for constructing a universal set of gates. More generally, any single-qubit rotation about an arbitrary axis on the Bloch sphere can be written in the exponential form $e^{-i \theta \hat{n}\cdot\vec{\sigma}/2}$, where $\hat{n}$ is a unit vector in $\mathbb{R}^3$ and $\vec{\sigma} = (X, Y, Z)$. This captures the versatility of single-qubit transformations, underscoring their fundamental role in quantum state manipulation.
+
+\emph{Simulations} are done to the X gate and Hadamard gate operating on the pseudopure state$|00\rangle$, the pseudopure state will be explained further in the sections followed, results are shown in Figure \ref{fig:X_Sim} and \ref{fig:H_Sim}. The experimental execution of these single-qubit gates will be discussed in the following section.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.45\textwidth]{/Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/beforexon1.png}
+    \caption{The simulated frequency signal of the pseudopure state$|00\rangle$ without any operation}
+    \label{fig:pseudopure}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.45\textwidth]{/Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/afterxon1.png}
+    \caption{The simulated frequency signal of the pseudopure state with X gate operating on the Proton channel}
+    \label{fig:X_Sim}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.45\textwidth]{/Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/Hadamardon1.png}
+    \caption{The simulated frequency signal of the pseudopure state with Hadamard gate operating on the Proton channel, please notice the Proton channel is effectively giving no signal, this is due to the Hadamard gate brings the state vector into a transverse plane where our observation is not receving signal, theoretically the signal should be 0, the residual is most likely the inaccuracy of numerical simulation.}
+    \label{fig:H_Sim}
+\end{figure}
+
+
+
+\subsection{Two-Qubits Gates}
+While single-qubit operations allow for rotations and phase shifts on individual qubits, two-qubit gates are crucial for creating and manipulating entanglement. One of the most commonly used two-qubit gates is the controlled-NOT (CNOT), defined by its action on the computational basis states:
+\[
+\text{CNOT}\,\lvert a, b \rangle = \lvert a, a \oplus b \rangle,
+\]
+
+Or 
+
+\[
+\text{CNOT} = 
+\begin{pmatrix}
+1 & 0 & 0 & 0\\
+0 & 1 & 0 & 0\\
+0 & 0 & 0 & 1\\
+0 & 0 & 1 & 0
+\end{pmatrix}
+\]
+
+where $a,b \in \{0,1\}$ and $\oplus$ denotes addition modulo 2. This gate flips the state of the target qubit ($b$) if and only if the control qubit ($a$) is in the $\lvert 1 \rangle$ state. Within the Clifford+T framework, CNOT is a standard Clifford gate, and together with single-qubit Clifford operations (e.g., Hadamard $H$ and phase $S$) and the non-Clifford $T$ gate, forms a universal set for quantum computation. Other two-qubit gates, such as the controlled-phase or the SWAP gate, can also be employed in various quantum algorithms and error-correction schemes, but the core idea remains the same: two-qubit gates enable correlated operations across multiple qubits, underpinning the ability of quantum computers to process information in ways that have no classical analog.
+
+We made Numerical \emph{simulation} of CNOT gate operation on the pseudopure state $|11\rangle$, for operating CNOT on this pseudopure state is significant in both CNOT with control on 1H and with control on 13C, shown in Figure\ref{fig:CNOTHC_Sim} and \ref{fig:CNOTCH_Sim} respectively, other initial states are also simulated and the results can be found in Appendix\ref{Append:Simulat_CNOT}, the experimental execution will be shown in the following sections.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.45\textwidth]{/Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/pseudopure11.png}
+    \caption{The simulated frequency signal of the pseudopure state $|11\rangle$ without any operation}
+    \label{fig:pseudopure11}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.45\textwidth]{/Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOTHC.png}
+    \caption{The simulated frequency signal of the pseudopure state $|11\rangle$ with CNOT gate controling on the Proton channel, from the logical representation we can see that the operation should result in one peak in each channel with opposite sign.}
+    \label{fig:CNOTHC_Sim}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.45\textwidth]{/Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOTCH.png}
+    \caption{The simulated frequency signal of the pseudopure state $|11\rangle$ with CNOT gate controling on the Carbon channel, from the logical representation we can see that the operation should result in one peak in each channel with opposite sign taht is opposite of what is shown in the other CNOT simulation.}
+    \label{fig:CNOTCH_Sim}
+\end{figure}
+
+\subsection{Deutsch-Jozsa Algorithm}
+The Deutsch-Jozsa algorithm \cite{Deutsch1992} is a foundational example demonstrating the potential speedup of quantum over classical computation. It solves the problem of determining whether a given Boolean function 
+\[
+f: \{0,1\}^n \to \{0,1\}
+\]
+is \emph{constant} (the same output for all possible inputs) or \emph{balanced} (an equal number of 0 and 1 outputs). Classically, one may need up to $2^{n-1} + 1$ queries to be certain of which case applies. By contrast, the Deutsch-Jozsa algorithm can solve this problem with just a single query to a suitably defined quantum oracle.
+
+\begin{enumerate}
+    \item \textbf{Initialization:} 
+    Prepare $n$ qubits in the $\lvert 0 \rangle^{\otimes n}$ state and one ancillary qubit in the $\lvert 1 \rangle$ state, so the overall initial state is:
+    \[
+    \lvert 0 \rangle^{\otimes n} \,\otimes\, \lvert 1 \rangle.
+    \]
+    
+    \item \textbf{Hadamard Transform:} 
+    Apply a Hadamard gate $H$ to all $n+1$ qubits, generating the state:
+    \[
+    \Bigl(H^{\otimes n}\lvert 0 \rangle^{\otimes n}\Bigr) \,\otimes\, \Bigl(H \lvert 1 \rangle\Bigr).
+    \]
+    Since $H \lvert 0 \rangle = \tfrac{1}{\sqrt{2}}(\lvert 0 \rangle + \lvert 1 \rangle)$ and 
+    $H \lvert 1 \rangle = \tfrac{1}{\sqrt{2}}(\lvert 0 \rangle - \lvert 1 \rangle)$,
+    the resulting state of the $n$ qubits is a uniform superposition of all computational basis states, and the ancilla acquires a relative phase.
+    
+    \item \textbf{Oracle Application:} 
+    Apply the oracle $U_f$, which acts on an $(n+1)$-qubit state as
+    \[
+    U_f \,\lvert x \rangle \,\lvert y \rangle 
+    \;=\; \lvert x \rangle \,\lvert\, y \oplus f(x)\rangle,
+    \]
+    where $x \in \{0,1\}^n$ and $y \in \{0,1\}$. This step encodes $f$ into the phase of the multi-qubit state when the ancilla is initially in the $\lvert - \rangle$ state (up to normalization).
+    
+    \item \textbf{Final Hadamard on the First $n$ Qubits:}
+    Apply another round of Hadamard gates on the \emph{first $n$ qubits}, leaving the ancilla untouched. This effectively undoes the uniform superposition \emph{if} the function is constant, causing constructive or destructive interference that signals whether $f$ is constant or balanced.
+    
+    \item \textbf{Measurement:} 
+    Measure the first $n$ qubits in the computational basis. If the outcome is $\lvert 0 \rangle^{\otimes n}$, then the function is constant; otherwise, with high probability, the function is balanced. 
+\end{enumerate}
+
+The quantum oracle $U_f$ is a unitary operator that encodes $f$ via bitwise addition (modulo 2) on an ancillary register. In practice, one must design $U_f$ so it implements the map 
+\[
+\lvert x \rangle \,\lvert y \rangle \;\longmapsto\; \lvert x \rangle \,\lvert\, y \oplus f(x) \rangle.
+\]
+Below are two illustrative cases:
+
+\begin{itemize}
+    \item \textbf{Constant Oracles:} 
+    If $f(x) = c$ for all $x$ (where $c \in \{0,1\}$), the oracle acts simply as
+    \[
+    U_f: \lvert x \rangle \,\lvert y \rangle \;\mapsto\; \lvert x \rangle \,\lvert y \oplus c \rangle.
+    \]
+    For $c=0$, $U_f$ leaves the second register unchanged, while for $c=1$, it flips the ancilla qubit. Either way, a constant function’s oracle introduces no $x$-dependent phase in the overall wavefunction.
+
+    \item \textbf{Balanced Oracles:}
+    If $f(x)$ takes on 0 for exactly half of the $2^n$ inputs $x$ and 1 for the other half, one can construct an oracle that introduces a phase flip (via $y \oplus f(x)$) only for certain $x$. A prototypical example is the \textit{parity} function:
+    \[
+    f(x) = x_1 \oplus x_2 \oplus \cdots \oplus x_n,
+    \]
+    which equals 1 if the sum of the qubit indices is odd and 0 otherwise. The corresponding oracle will flip the ancilla qubit precisely when the parity of $x$ is 1.
+\end{itemize}
+
+\emph{Simulations} are done to simulate this algorithm, here we show simulation with constant oracle $f(x) = 0$ and balanced oracle $f(x) = x$, the first in terms of circuit is simply do nothing, the second one is a CNOT gate with control on Proton. The simulation results presenting in frequency signal is shown in Figure\ref{fig:DJ1}. Please note previous experiment have been done on this algorithm with different approach\cite{10.1063/1.476739}, the expected frequency signal is not the same in our experiment, our method distinguish constant and balanced results by giving two equal possitive peaks for constant and equal negative peaks for balanced oracle. Our implementation is discribed in the following experimental section and the proof of the correctness of this method is given succinctly in the Appendix\ref{Append:Proof_DJ}.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.45\textwidth]{/Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/DJ1.png}
+    \caption{This is the simulated result for Deutsch-Jozsa algorithm with a constant oracle $f(x) = 0$, we expect to see two equal possitive peaks on the Proton channel and no peak in the Carbon channel, please note the small order of magnitude for the Carbon channel.}
+    \label{fig:DJ1}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.45\textwidth]{/Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/DJ3.png}
+    \caption{This is the simulated result for Deutsch-Jozsa algorithm with a constant oracle $f(x) = x$, we expect to see two equal negative peaks on the Proton channel and no peak in the Carbon channel, please note the small order of magnitude for the Carbon channel.}
+    \label{fig:DJ3}
+\end{figure}
+
+
+
+\subsection{State Preparation}
+In nuclear magnetic resonance (NMR), the Deutsch-Jozsa algorithm can be experimentally implemented using the nuclear spins of a molecule—specifically, the proton and carbon nuclei in a chloroform molecule ($^{13}\text{CHCl}_3$). 
+
+Initially, the system is prepared in a pseudopure state due to the high-temperature mixed state, referred to later in the article as the thermal state, nature of NMR at room temperature. This thermal state can be mathematically written as 
+
+\[
+    \rho = e^{+\beta H}/\mathcal{Z}
+\]
+where \( \beta = \frac{1}{k_B T} and \mathcal{Z} = \text{tr}e^{BH}\). Given $\beta\hbar\omega$ is realtively small, we can make what is called the high temperature approximation 
+
+\[
+    \rho \approx 2^{-n}[1+\beta H]
+\]
+
+The initial state is approximately
+\[
+\rho \approx \frac{I}{4} + 10^{-4}
+\begin{pmatrix}
+5 & 0 & 0 & 0\\
+0 & 3 & 0 & 0\\
+0 & 0 & -3 &0\\
+0 & 0 & 0 & -5
+\end{pmatrix}
+\]
+
+To prepare the pseuopure state, we start with the thermal state 
+\[
+\rho_1 = 
+\begin{pmatrix}
+a & 0 & 0 & 0\\
+0 & b & 0 & 0\\
+0 & 0 & c &0\\
+0 & 0 & 0 & d
+\end{pmatrix}
+\]
+
+We can use sequences to construct CNOT, the sequence will be explained later in the article, and permute the elements to get 
+
+\[
+\rho_2 = P\rho_1P = 
+\begin{pmatrix}
+a & 0 & 0 & 0\\
+0 & c & 0 & 0\\
+0 & 0 & d & 0\\
+0 & 0 & 0 & b
+\end{pmatrix}
+\]
+
+and similarly
+
+\[
+\rho_3 = P\rho_1P = 
+\begin{pmatrix}
+a & 0 & 0 & 0\\
+0 & d & 0 & 0\\
+0 & 0 & b & 0\\
+0 & 0 & 0 & c
+\end{pmatrix}
+\]
+
+When a unitary is applied to all of these initial states, the conbined result is effectively
+\[
+\rho = 2^n(1-\epsilon)I + \epsilon U|00\rangle\langle00|U^{\dag}
+\]
+This is the effective pure state or pseuopure state.\cite{cory2000nmr}
+This pseudopure state preparation represents a fundamental breakthrough in quantum computation with NMR systems, effectively circumventing the limitations imposed by room temperature operation. While the signal-to-noise ratio remains a challenge due to the small value of $\epsilon$ (typically on the order of $10^{-4}$), this technique transforms an inherently mixed-state system into one that behaves functionally like a pure quantum state. The elegance of this approach lies in its ability to isolate quantum coherence through clever manipulation of density matrices, thereby enabling the implementation of quantum algorithms like Deutsch-Jozsa in systems previously thought unsuitable for quantum computation. This methodology has since become a cornerstone technique in liquid-state NMR quantum computing and has inspired similar approaches in other quantum platforms facing thermal noise challenges.
+
+We simulated the result of state preparation for all cases, the $|00\rangle$ pseudopurestate in shown in Figure \ref{fig:pseudopure}, the rest of the cases are presented in the Appendix \ref{Append:pseudopure}
+
+\subsection{Longitudinal and Transverse Relaxation (T$_1$ and T$_2$)}
+In NMR spectroscopy, two fundamental time constants characterize how nuclear spins return to equilibrium after being perturbed by RF pulses. The first is the \emph{longitudinal relaxation time}, T$_1$, which governs the recovery of the spin polarization along the static magnetic field (the $z$-axis). After a pulse tips the magnetization away from $z$, interactions with the surrounding environment (the thermal reservoir of lattice vibrations, molecular motions, etc.) allow the $z$-component of the magnetization to return exponentially to its equilibrium value $M_0$:
+\[
+M_z(t) \;=\; M_0 \bigl(1 - e^{-t/T_1}\bigr).
+\]
+A longer T$_1$ implies that it takes more time for the system to re-establish thermal equilibrium along $+z$. Hence, experiments that require repeated excitations often must pause for times on the order of 5T$_1$ to allow full thermal equilibrium to re-form.
+
+The second key constant is the \emph{transverse relaxation time}, T$_2$, which governs the loss of phase coherence in the transverse plane (the $xy$-plane). Immediately after a pulse places magnetization into the transverse plane, spins begin to dephase relative to one another due to small differences in local magnetic environments (e.g., chemical shift offsets or inhomogeneities in the applied field). Even if the net precession frequency for each spin is the same on average, microscopic variations cause the ensemble-averaged transverse magnetization $M_{xy}(t)$ to decay exponentially:
+\[
+M_{xy}(t) \;=\; M_{\perp}(0)\,e^{-t/T_2}.
+\]
+Typically, T$_2 \leq T_1$, reflecting that it is generally easier for spins to lose phase coherence in the transverse plane than to exchange energy with the environment and realign along $z$. In NMR quantum computing, T$_1$ and T$_2$ directly limit how many gate operations can be performed before decoherence dominates, imposing constraints on the circuit depth and overall algorithmic complexity achievable on a given NMR platform.
+
+\section{Experimental Procedure and Results}
+In this secton we present the experimental procedure from native gate calibration which is of fundamental importance to the implementation of the algorithm, as well as the universal gate set and the execution of two-qubit Deutsch-Jozsa Algorithm. 
+The NMR Spectrometer we used is Spinsolve 60, operating in room temperature of 20 degree celceous and machine internal temperature between 25 to 26 degree celceous. 
+In this experiment, we employed two primary solvent systems. First, ${}^{13}CHCl3$ (chloroform enriched with ${}^{13}C$ served as one solvent. Second, we utilized a mixture of 95\% $D_2O$ (deuterium oxide) and 5\% $H2O$ (water). The ${}^{13}CHCl3$ provides a well-defined NMR signal due to its ${}^{13}C$ isotope enrichment, while the 95\%$D_2O$/5\%$H2O$ mixture offers the benefits of a deuterated environment for proton decoupling, with a small amount of residual proton content serving as a lock signal.
+The experiments are conducted by programing the Spectrometer to produce pulse sequence and aquire on demand.
+
+
+\subsection{Free Induction Decay(FID)}
+In a typical pulsed nuclear magnetic resonance (NMR) experiment, spins are initially aligned with a strong static magnetic field $B_0$ in the $+z$ direction. After an RF pulse tips the net magnetization into the transverse plane (say, the $xy$-plane), the spins begin to precess about the $z$ axis at their Larmor frequency. As they precess, the transverse component of the magnetization induces a voltage in the receiver coil, creating a signal known as the \emph{free induction decay} (FID). The term \emph{free} refers to the fact that during this period no additional RF pulses are applied, and \emph{induction decay} captures the decaying amplitude of the signal due to dephasing and relaxation effects.
+\par
+\textbf{Time-Domain Signal.} Immediately following the RF pulse, the transverse magnetization $M_{xy}(t)$ evolves under both the static field in the rotating frame and the spin-spin interactions. Experimentally, one measures the induced voltage in the coil, often written as $V(t)$. In an idealized picture, this signal has a form
+\[
+  V(t) \propto M_{xy}(t) e^{i(\omega_0 t + \phi)} e^{-t/T_2},
+\]
+where $\omega_0$ is the resonance (carrier) frequency in the rotating frame, $\phi$ is an initial phase set by the pulse and detection reference, and $T_2$ is the transverse relaxation time capturing the loss of phase coherence. This decaying oscillation in the time domain is the hallmark of the free induction decay. We performed Free Induction Decay on our ${}^13 CHCl_3$ sample and collect signal on both the $1H$ channel and the $13C$ channel. The time domain signal is shown in Figure \ref{fig:time_domain_on} and \ref{fig:time_domain_off}.
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.45\textwidth]{/Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/figure/output.png}
+    \caption{Experimental result for Time-domain signal of FID that is on resonance, the real part shows the envelope of the decay.}
+    \label{fig:time_domain_on}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.45\textwidth]{/Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/figure/output1.png}
+    \caption{Experimental result for Time-domain signal of FID that is off resonance, the real part is oscillating within the decay envelope.}
+    \label{fig:time_domain_off}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.45\textwidth]{/Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/figure/output2.png}
+    \caption{Experimental result for Frequency-domain signal of FID that is on resonance, the real part displays an absorption pattern and the imaginary part displays a dispersion pattern.}
+    \label{fig:freq_domain_on}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.45\textwidth]{/Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/figure/output3.png}
+    \caption{Experimental result for Frequency-domain signal of FID that is off resonance slightly, the real part displays an absorption pattern and the imaginary part displays a dispersion pattern, the SNR is reduced slightly.}
+    \label{fig:frequency_domain_off}
+\end{figure}
+
+\par
+\textbf{Frequency-Domain Spectrum.} The Fourier transform of $V(t)$ with respect to time yields the NMR spectrum,
+\[
+  \tilde{V}(\omega) = \int_{0}^{\infty} V(t) e^{-i\omega t} \, dt.
+\]
+In practice, the data is digitized over a finite time window (the acquisition time) and numerically Fourier-transformed. The resulting frequency-domain signal typically displays Lorentzian-like peaks centered around the Larmor frequencies of the nuclei. Each peak's position, linewidth, and amplitude provide information on chemical shift, relaxation times, and the population or coherence of spin states. This frequency-domain representation is especially convenient for identifying various spins in a molecule, measuring coupling constants, and performing state tomography in NMR quantum computing. Experimental result for frequency domain is shown in Figure \ref{fig:freq_domain_on} and \ref{fig:frequency_domain_off}, minor difference in detail is shown.
+In the context of quantum computing with NMR, analyzing the FID after a pulse sequence allows experimenters to infer the final quantum state of the spins. Specific spin states produce characteristic spectral signatures, meaning one can effectively \emph{read out} the outcome of the quantum algorithm by examining the processed FID in the frequency domain.\\
+
+\subsection{Pulse Length Calibration}
+NMR quantum computing is based on RF pulses, on-resonance RF pulse on the transverse plane of certain length will rotate the spin vector by certain degree, allowing various operations, and measurement. The accuracy of these pulses is of central importance, therefore we perform pulse length and amplitude calibration to ensure good operation fedelity in the follosing experimental procedures.
+
+The pulse length calibration default the pulse amplitude to 0dB of the amplifier of the mechine we use, then different pulse length are tesetd with a stable increament. From previous section on rotation by RF pulses, we notice the peak integration of the measured frequency domain is expected to present a sinesoidal relation with pulse length, we can therefore fit the result integration to a sin function and extract the correct pulse length needed to conduct a $\pi/2$ and thereby any other rotation. Experiments are done for both Carbon and Hygrogen channel, results are shown in Figure \ref{fig:plc1} \ref{fig:plc2}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.45\textwidth]{/Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/figure/plc1.png}
+    \caption{Experimental result for pulse length calibration in the 1H channel, frequency domain siganl for different pulse length}
+    \label{fig:plc1}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.45\textwidth]{/Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/figure/plc2.png}
+    \caption{Peak integrals for results for 1H channel and the fitted result on the top left}
+    \label{fig:plc2}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.45\textwidth]{/Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/figure/plc3.png}
+    \caption{Peak integrals for results for 13C channel and the fitted result on the top right}
+    \label{fig:plc3}
+\end{figure}
+
+\subsection{Hadamard Gate and Fine-Tuning of Native Gates}
+
+Here we implement the Hadamard gate by applying the Pulse sequence $45_y-180_x-45_{-y}$. The experimental result for operating a single Hadamard gate is not implemented due to time constraints.
+
+The Hadamard gate can be approximately execute by applying a $90R_y$ rotation, the unitary of this rotation is 
+\[
+\frac{1}{\sqrt{2}}
+    \begin{pmatrix}
+        1 & 1\\
+        -1 & 1
+    \end{pmatrix}
+\]
+It is clear that this operation is cyclic with period of 4 operations. This attribute allow us to calibrate the $\pi/2$ pulses. We execute this operation repeatedly within a short time frame, the pulse is optimized by optimizing the number of cycle. The experimental result is shown in Figure \ref{fig:CPMG}
+
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.45\textwidth]{/Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/CPMG.png}
+    \caption{Experimental result for execute approximate Hadamard repeatedly, the pattern maintained 10 cycles after optimization, indecating satisfactry precision.}
+    \label{fig:CPMG}
+\end{figure}
+
+
+\subsection{$T_1$ Measurement}
+The longitudinal relaxation time, or $T_1$ determines the speed of sample returning to thermal equilibrium, which decides the minimum interval needed between repeatitions. We performed Inversion Recovery to measure the $T_1$ of ${}^1H$ and ${}^{13}C$.
+
+\emph{Inversion Recovery} starts by inverting the spin population with a 180$^\circ$ pulse. Immediately after this pulse, the magnetization points along $-z$. The system is again allowed to relax for a variable delay $\tau$, after which a 90$^\circ$ pulse is applied to measure how far $M_z(\tau)$ has progressed back toward $+z$. The detected signal then follows
+\[
+M_z(\tau)\;=\;M_0\Bigl(1 - 2\,e^{-\tau/T_1}\Bigr),
+\]
+which crosses zero at the so-called \emph{null point}, offering a sensitive way to extract T$_1$. Inversion recovery is often preferred for its robustness and for generating larger signal changes, particularly when T$_1$ values vary substantially across different sites in a molecule.
+
+Experimental result for both experiments are shown in Figure \ref{fig:T11} and 
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.45\textwidth]{/Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/figure/T11.png}
+    \caption{Inversion recovery to measure the $T_1$ time for $1H$, the $T_1$ is fitted to be 3.57s}
+    \label{fig:T11}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.45\textwidth]{/Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/figure/T12.png}
+    \caption{Inversion recovery to measure the $T_1$ time for $13C$, the $T_1$ is fitted to be 12.16s}
+    \label{fig:T12}
+\end{figure}
+
+\subsection{pseudopure State Preparation}
+The pseudopure state is prepared experimentally by implementing the pulse sequence that produce the unitary
+\[
+    \begin{pmatrix}
+    1 & 0 & 0 & 0\\
+    0 & 0 & 1 & 0\\
+    0 & 0 & 0 & 1\\
+    0 & 1 & 0 & 0
+    \end{pmatrix}
+\]
+and
+\[
+    \begin{pmatrix}
+    1 & 0 & 0 & 0\\
+    0 & 0 & 0 & 1\\
+    0 & 1 & 0 & 0\\
+    0 & 0 & 1 & 0
+    \end{pmatrix}
+\]
+The pusle sequence we used is attached in the Appendix \ref{Append:PP}. The experimental result is shown in Figure \ref{fig:pspH}, in Appendix. It is clear that the spectras exhibit single-peak patter, which is expected, with acceptable amount of residual peak. We attribute the residual to slight phase differences caused by minor inaccuracy of the transmittor pulse.
+
+\subsection{CNOT gate}
+We implement CNOT on pseudopure states $|00\rangle$,$|01\rangle$,$|10\rangle$,$|11\rangle$ experimentally and integrated the results to present the effect they have on the pseudopure states. Experimental result of applying CNOT on these pseudopure state observed is shown in Figure \ref{fig:CNOT_H}, in Appendix. Our observation in the Carbon channel is troubled by phases error, low SNR and long execution time, due to time constrain we were unable to present spectra in Carbon channel. Although this is the case, we are still able to gather information regarding the population of 13C, the states of 1H and infer information regarding the population of 1H. The pseudopure state before and after operating CNOT translates to the truth table \ref{tab:CNOT}.
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        \textbf{Input} & \textbf{Output} \\
+        \hline
+        $|00\rangle$ & $|00\rangle$ \\
+        \hline
+        $|01\rangle$ & $|01\rangle$ \\
+        \hline
+        $|10\rangle$ & $|11\rangle$ \\
+        \hline
+        $|11\rangle$ & $|10\rangle$ \\
+        \hline
+    \end{tabular}
+    \caption{Truth table for the CNOT gate}
+    \label{tab:CNOT}
+\end{table}
+
+
+\subsection{The Deutsch-Jozsa Algorithm}
+
+We implement one of the most popular version of Deutsch-Jozsa\cite{enwiki:1280319525}, the two-qubit Deutsch-Jozsa circuit consist of two Hadamard before the Oracle, the Oracle, and one Hadamard after the oracle on the least significant qubit, in this cast the $1H$. This circuit operates on the initial state of $|01\rangle$. From the simulation conbined with prior knowledge\cite{Deutsch1992}, we conclude the measurement should be done in the proton channel. The measurements in Proton channel yields good results because of the higher gyromagnetic ratio. The result of executing Deutsch-Jozsa is shown in Figure \ref{fig:DJ}
+
+
+\section{Conclusion}
+
+In this experiment, we successfully implemented the Deutsch-Jozsa algorithm on a two-qubit quantum system realized through Nuclear Magnetic Resonance (NMR) spectroscopy, using a \(^{13}\mathrm{C}\)-labeled chloroform (\(^{13}\mathrm{CHCl}_3\)) sample. Starting from scratch, we prepared the system in a pseudopure state, calibrated native gates, and implemented the universal gate set necessary for executing the algorithm.
+
+We demonstrated the preparation of pseudopure states through controlled RF pulse sequences, achieving the effective initialization required for quantum computation on an ensemble-based NMR platform. Key parameters such as the longitudinal (\(T_1\)) relaxation times were measured, ensuring appropriate timing of pulse sequences and data acquisition to maximize coherence and minimize signal decay during gate operations.
+
+Pulse calibration and optimization of single- and two-qubit gates, including the Hadamard and CNOT gates, were performed to high fidelity, despite the inherent challenges of working with a highly mixed state system at room temperature. The Deutsch-Jozsa algorithm was executed for both constant and balanced oracle functions, and the experimental results, observed through the proton channel, clearly distinguished between these two cases by exhibiting characteristic spectral signatures: two equal positive peaks for constant functions and two equal negative peaks for balanced functions.
+
+This experiment not only validates the theoretical foundation and feasibility of implementing quantum algorithms on NMR-based quantum computers but also highlights the practical considerations necessary for accurate quantum control in such systems. Despite the limitations of scalability and ensemble measurements inherent in NMR quantum computing, the successful implementation of the Deutsch-Jozsa algorithm provides further evidence of its value as a testbed for small-scale quantum algorithm demonstrations and advances in quantum control techniques.
+
+
+
+\appendix
+\subsection{Figures}
+Here present the figures that are too large to fit int the main text, shown in Figuer\ref{fig:pspH}, Figure\ref{fig:CNOT_H} and  Figure\ref{fig:DJ}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.45\textwidth]{/Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/psp_H/psp00.png}
+    \includegraphics[width=0.45\textwidth]{/Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/psp_H/psp01.png}
+    \includegraphics[width=0.45\textwidth]{/Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/psp_H/psp10.png}
+    \includegraphics[width=0.45\textwidth]{/Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/psp_H/psp11.png}
+    \caption{The experimental result for pseudopure state preparation in the Proton channel, the subplots a to d correspond to $|00\rangle$,$|01\rangle$,$|10\rangle$,$|11\rangle$ respectively}
+    \label{fig:pspH}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.45\textwidth]{/Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/psp_C/00.png}
+    \includegraphics[width=0.45\textwidth]{/Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/psp_C/01.png}
+    \includegraphics[width=0.45\textwidth]{/Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/psp_C/10.png}
+    \includegraphics[width=0.45\textwidth]{/Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/psp_C/11.png}
+    \caption{The experimental result for pseudopure state preparation in the Carbon channel, the subplots a to d correspond to $|00\rangle$,$|01\rangle$,$|10\rangle$,$|11\rangle$ respectively}
+    \label{fig:pspC}
+\end{figure}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.35\textwidth]{/Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/cnoth_compare/CNOTC00.png}
+    \includegraphics[width=0.35\textwidth]{/Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/cnoth_compare/CNOTC01.png}
+    \includegraphics[width=0.35\textwidth]{/Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/cnoth_compare/CNOTC10.png}
+    \includegraphics[width=0.35\textwidth]{/Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/cnoth_compare/CNOTC11.png}
+    \caption{The experimental result for applying CNOT on four two-qubit pseudopure state, subplots are the result of applying CNOT on initial state $|00\rangle$,$|01\rangle$,$|10\rangle$,$|11\rangle$ from top to bottom, observed in the Proton channel. Overlayed with the pseudopure state of the expeced result to show correctness. These figures witness significant difference in amplitude for the CNOT output and pseudopure state expected, we attribute this difference to the fact that CNOT after perumtation experience significant amount of operations, most of which is operation under maximum power of the transimitter of the spectrometer, during which the coherence of Proton was lost rapidly.}
+    \label{fig:CNOT_H}
+\end{figure}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.35\textwidth]{/Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/cnotc_compare/00.png}
+    \includegraphics[width=0.35\textwidth]{/Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/cnotc_compare/01.png}
+    \includegraphics[width=0.35\textwidth]{/Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/cnotc_compare/10.png}
+    \includegraphics[width=0.35\textwidth]{/Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/cnotc_compare/11.png}
+    \caption{The experimental result for applying CNOT on four two-qubit pseudopure state, subplots are the result of applying CNOT on initial state $|00\rangle$,$|01\rangle$,$|10\rangle$,$|11\rangle$ from top to bottom, observed in the Carbon channel. Overlayed with the pseudopure state of the expeced result to show correctness. Here we see amplitude of the result of CNOT in most cases is greater to the comparison, we attribute this differrence to the fact that these experiments are done in different lab sessions and the finess of calibration is different. Here in the experiment we adjust phase of each spectra individually for the delay time is added differently for each pulse program. The integrals with the same receiver phase setting does not give any interpretable results in our experiments}
+    \label{fig:CNOT_C}
+\end{figure}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.40\textwidth]{/Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/DJ/1.png}
+    \includegraphics[width=0.40\textwidth]{/Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/DJ/2.png}
+    \includegraphics[width=0.40\textwidth]{/Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/DJ/3.png}
+    \includegraphics[width=0.40\textwidth]{/Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/DJ/4.png}
+    \caption{The experimental result from implementing Deutsch Jozsa Algorithm, four oracles used are $f(x)=0$,$f(x)=1$,$f(x)=x$, and $f(x) = -x$ from top to bottom. The algorithm's output indecates the type of the input oracle, two equal possitive peaks for constaint function and two equal negative peak for balanced function}
+    \label{fig:DJ}
+\end{figure}
+
+\subsection{Simulation Results of Applying CNOT on All Possible Inputs}\label{Append:Simulat_CNOT}
+Here present the result for operation CNOT with control on Hydrogen and Caobon respectively. Shown in Figure\ref{fig:CNOT_sim} and \ref{fig:CNOTH_sim}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{/Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOT_00.png}
+    \includegraphics[width=0.8\textwidth]{/Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOT_01.png}
+    \includegraphics[width=0.8\textwidth]{/Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOT_10.png}
+    \includegraphics[width=0.8\textwidth]{/Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOT_11.png}
+    \caption{The simulation result for CNOT gates that operate with control on Proton, the inputs are $|00\rangle$,$|01\rangle$,$|10\rangle$, and $|11\rangle$ from top to bottom}
+    \label{fig:CNOT_sim}
+\end{figure}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{/Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOTH_00.png}
+    \includegraphics[width=0.8\textwidth]{/Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOTH_01.png}
+    \includegraphics[width=0.8\textwidth]{/Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOTH_10.png}
+    \includegraphics[width=0.8\textwidth]{/Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOTH_11.png}
+    \caption{The simulation result for CNOT gates that operate with control on Carbon, the inputs are $|00\rangle$,$|01\rangle$,$|10\rangle$, and $|11\rangle$ from top to bottom}
+    \label{fig:CNOTH_sim}
+\end{figure}
+
+\subsection{Proof of Correctness}\label{Append:Proof_DJ}
+We now prove the correctnes of this implementation by first evaluate the result state using state vector, then analyze the relation between the final state and the spectra.
+
+By simple pencil-and-paper calculation we can see the terminal states of Deutsch-Jozsa with four oracles are $|0-\rangle$, $|0-\rangle$, $|1-\rangle$, $|1-\rangle$. It is clear that constant input correspond to $|0-\rangle$ and balanced input correspond to $|1-\rangle$. The corresponding density matrix are 
+\[
+    \begin{pmatrix}
+        1&-1&0&0\\
+        -1&1&0&0\\
+        0&0&0&0\\
+        0&0&0&0\\
+    \end{pmatrix}
+\]
+and
+\[
+    \begin{pmatrix}
+        0&0&0&0\\
+        0&0&0&0\\
+        0&0&1&-1\\
+        0&0&-1&1\\
+    \end{pmatrix}
+\]
+respectively.
+
+Take the partial trace for proton, we get diag{1,1} and diag{-1,-1}. We can then conclude, supplementary information \cite{jones2011quantum}, the constant oracles correspond to two equal possitive peaks while the balanced oracles correspond to negative equal peaks.
+
+
+\subsection{All Pseudopure States}\label{Append:pseudopure}
+Here presents the figures for all simulated pseudopure states, shown in Figure \ref{fig:PSP}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{/Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/PSP_00.png}
+    \includegraphics[width=0.8\textwidth]{/Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/PSP_01.png}
+    \includegraphics[width=0.8\textwidth]{/Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/PSP_10.png}
+    \includegraphics[width=0.8\textwidth]{/Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/PSP_11.png}
+    \caption{The simulation results for pseudopure state, $f(x)=0$,$f(x)=1$,$f(x)=x$, and $f(x) = -x$ from top to bottom}
+    \label{fig:PSP}
+\end{figure}
+
+\subsection{Pulse Sequences}\label{Append:PP}
+Here $I$ represents operation on the first qubit and $S$ represents operation on the second qubit. No specification represents operation on both qubits or is single-qubit operation, and $J_{IS}$ is the J-coupling
+For CNOT: $90S_y-1/4J_{IS}-180_x-1/4J_{IS}-180_x-90I_y-90I_x-90_{-y}-90S_x$
+For Hadamard: $45_y-180_x-45_{-y}$
+For permutations, we use two permutation matrices, $p_1$ and $p_2$ where $P_1 = CNOT(1,0)CNOT(0,1)$ and $P_1 = CNOT(0,1)CNOT(1,0)$. Please note here the operations are executed from left to right.
+
+\subsection{Preliminary}\label{Append:per}
+\subsubsection{Qubits}
+A qubit is the fundamental unit of quantum information, analogous to the classical bit but governed by the principles of quantum mechanics. Whereas a classical bit takes one of two discrete values (0 or 1), a qubit can exist in a superposition of both $\lvert 0 \rangle$ and $\lvert 1 \rangle$. Mathematically, a single qubit is represented as 
+\[
+\alpha \lvert 0 \rangle + \beta \lvert 1 \rangle,
+\]
+where $\alpha$ and $\beta$ are complex numbers satisfying $|\alpha|^2 + |\beta|^2 = 1$. This allows for inherently richer computations, as many qubits can store exponential amounts of information compared to the same number of classical bits. Geometrically, a qubit state can be visualized on the Bloch sphere, where each point on the sphere's surface corresponds to a possible pure quantum state. Measuring a qubit in the computational basis collapses it into either $\lvert 0 \rangle$ or $\lvert 1 \rangle$, with respective probabilities $|\alpha|^2$ and $|\beta|^2$. This dual wave-particle nature---encompassed by superposition and probabilistic measurement---enables powerful new forms of computation not possible in classical systems.
+
+\subsubsection{Hamiltonian}
+The Hamiltonian of a quantum system, denoted by $H$, is the Hermitian operator that governs the system's time evolution according to the Schr\"odinger equation. Formally, for a time-independent Hamiltonian, the system evolves under
+\[
+\frac{d}{dt}\lvert \psi(t)\rangle = -\frac{i}{\hbar} H \lvert \psi(t)\rangle,
+\]
+where $\lvert \psi(t)\rangle$ is the time-dependent state vector of the system and $\hbar$ is the reduced Planck constant. The solution to this differential equation is given by the time-evolution operator 
+\[
+U(t) = e^{-\tfrac{i}{\hbar} H t},
+\]
+which acts on an initial state $\lvert \psi(0)\rangle$ to produce the state at any later time, $\lvert \psi(t)\rangle = U(t) \lvert \psi(0)\rangle$. In the context of qubits, $H$ often takes the form of a linear combination of Pauli matrices (plus the identity), enabling explicit representations of quantum gates as exponentials of these basis operators. The Hamiltonian thus provides a fundamental description of how quantum information is manipulated and how interactions between qubits give rise to entangling operations crucial for quantum computing. 
+\subsubsection{Pauli matrices}
+A central set of operators in quantum mechanics are the Pauli matrices, commonly denoted by $X$, $Y$, and $Z$. They act on the two-dimensional Hilbert space of a single qubit and are defined as
+\[
+X = 
+\begin{pmatrix}
+0 & 1 \\
+1 & 0
+\end{pmatrix}, 
+\quad
+Y = 
+\begin{pmatrix}
+0 & -i \\
+i & 0
+\end{pmatrix}, 
+\quad
+Z = 
+\begin{pmatrix}
+1 & 0 \\
+0 & -1
+\end{pmatrix}.
+\]
+Together with the identity operator $I$, these matrices form a convenient basis for describing single-qubit operations. Each Pauli matrix is unitary and Hermitian, making them fundamental both for analyzing qubit dynamics and for constructing quantum gates. By taking exponentials of Pauli matrices, one obtains rotations on the Bloch sphere, which can implement a variety of single-qubit gates. Additionally, Pauli matrices are essential tools in the study of error correction and fault tolerance, allowing one to characterize and detect various error channels that can occur in quantum systems.
+
+\subsubsection{Product operators}
+When dealing with multi-qubit systems, one often extends the concept of single-qubit operators to higher dimensions via the tensor product. Specifically, if $\hat{A}$ and $\hat{B}$ are operators acting on individual qubits, then their product operator is given by the tensor product $\hat{A} \otimes \hat{B}$. For two qubits, the complete basis set of product operators can be constructed from the Pauli and identity matrices for each qubit, leading to $4 \times 4 = 16$ distinct operators (e.g., $I \otimes I$, $I \otimes X$, $Z \otimes Y$, etc.). This approach generalizes naturally to $n$-qubit systems, where the product operator basis consists of $4^n$ elements formed by tensor products of $I, X, Y, Z$. Such a basis provides a powerful way to represent multi-qubit states, operations, and even certain types of noise models.
+
+In the context of quantum computing and especially in nuclear magnetic resonance (NMR), product operators are widely used to analyze both state evolution and the effects of specific control pulses. An $n$-qubit density matrix $\rho$ can be decomposed as a linear combination of these product operators, allowing one to track how each component evolves under a given Hamiltonian. For instance, in NMR-based quantum computing, the system's effective Hamiltonian often takes a form that naturally couples specific product operators (e.g., $Z \otimes Z$ for Ising-type interactions). By monitoring how each tensor product term changes during a pulse sequence, experimenters gain a clear picture of the global evolution of the quantum state. This decomposition strategy is not only mathematically elegant but also provides a systematic framework for designing, optimizing, and analyzing quantum control protocols.
+
+\subsubsection{RF Pulses and Rotations}
+In NMR spectroscopy, radiofrequency (RF) pulses induce controlled rotations of the spin magnetization vector. Initially, the bulk magnetization vector $\mathbf{M}$ aligns along the static magnetic field ($B_0$), typically chosen as the $z$-axis. An RF field of amplitude $B_1$ applied along the transverse plane, say the $x$-axis, oscillates at frequency $\omega_{\text{RF}}$ close to the Larmor frequency $\omega_0 = -\gamma B_0$, where $\gamma$ is the gyromagnetic ratio. To simplify the analysis, it is convenient to consider a rotating reference frame that rotates about the $z$-axis at frequency $\omega_{\text{RF}}$. 
+
+In this rotating frame, the effective magnetic field experienced by spins becomes static and is described as the vector sum of the applied RF field $\vec{B}_1$ and the offset field $\Delta \vec{B} = (\omega_0 - \omega_{\text{RF}})/(-\gamma)\hat{z}$. Thus, the effective magnetic field is given by:
+\[
+\vec{B}_{\text{eff}} = \vec{B}_1 + \Delta \vec{B} = B_1 \hat{x} + \frac{\omega_0 - \omega_{\text{RF}}}{-\gamma}\hat{z}.
+\]
+
+The magnitude of this effective field is then:
+\[
+B_{\text{eff}} = \sqrt{B_1^2 + (\Delta B)^2} = \frac{1}{|\gamma|}\sqrt{\omega_1^2 + (\omega_0 - \omega_{\text{RF}})^2},
+\]
+where $\omega_1 = |\gamma| B_1$ is the RF field strength in angular frequency units. The magnetization vector precesses around $\vec{B}_{\text{eff}}$ at an angular frequency
+\[
+\omega_{\text{eff}} = |\gamma| B_{\text{eff}} = \sqrt{\omega_1^2 + (\omega_0 - \omega_{\text{RF}})^2}.
+\]
+
+If the RF pulse is applied exactly at resonance (i.e., $\omega_{\text{RF}} = \omega_0$), the offset field $\Delta B$ vanishes, and the effective field aligns purely along the $x$-axis. Under these conditions, the magnetization undergoes a rotation about the $x$-axis by an angle $\beta$, known as the flip angle, given by:
+\[
+\beta = \omega_1 t_p,
+\]
+where $t_p$ is the duration of the RF pulse. Common flip angles used in NMR experiments are $90^\circ$ ($\pi/2$ pulses), which rotate magnetization from the $z$-axis into the transverse plane, and $180^\circ$ ($\pi$ pulses), which invert the magnetization vector from $+z$ to $-z$.
+
+In NMR-based quantum computing, the measurement process differs significantly from projective measurements in other qubit technologies. NMR hardware detects the ensemble-averaged transverse magnetization of a bulk liquid sample, rather than the state of individual qubits. At the conclusion of a quantum algorithm, a carefully chosen readout pulse (e.g.\ an effective rotation) maps the final populations of the nuclear spin states onto measurable transverse coherences. The resulting free induction decay (FID), explained in the following section, signal is then acquired and Fourier transformed to yield frequency-domain spectra, whose peak integrals or phases encode the populations of computational basis states. Effectively, measuring ``$\lvert 0\rangle$ or $\lvert 1\rangle$'' translates to detecting the intensity distribution among multiple resonance lines. Since the readout occurs over an ensemble of identically prepared molecules, the measurement outcome reflects an average state. Although this ensemble measurement limits certain demonstrations of genuine quantum effects (such as collapse on individual qubits), it enables precise control of multi-qubit states and the performance of key quantum algorithms within the accessible spin manifold of molecular systems.
+
+
+\bibliographystyle{apsrev4-2}
+\bibliography{report}% Produces the bibliography via BibTeX.
+
+\end{document}
+%
+% ****** End of file apssamp.tex ******

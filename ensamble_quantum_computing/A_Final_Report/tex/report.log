@@ -1,3 +1,643 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:17ce34cdcaf0083ffd4487b811a9004d843978e5ec4557b2c8fcf51cbe680433
-size 45206
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.12)  19 MAR 2025 19:18
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**/Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/tex/report.tex
+(/Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/tex/report.tex
+LaTeX2e <2023-11-01> patch level 1
+L3 programming layer <2024-02-20>
+(/usr/local/texlive/2024/texmf-dist/tex/latex/revtex/revtex4-2.cls
+Document Class: revtex4-2 2022/06/05 4.2f (https://journals.aps.org/revtex/ for documentation)
+ Copyright (c) 2019 American Physical Society.
+ mailto:revtex@aps.org
+ Licensed under the LPPL:
+http://www.ctan.org/tex-archive/macros/latex/base/lppl.txt
+ Arthur Ogawa <arthur_ogawa at sbcglobal dot net>
+ Based on work by David Carlisle <david at dcarlisle.demon.co.uk>
+ Version (4.2d--4.2f): Modified by Mark Doyle and Phelype Oleinik
+ .
+ltxutil[2022/06/05 4.2f utilities package (portions licensed from W. E. Baxter web at superscript.com)]
+LaTeX Info: Redefining \@centercr on input line 356.
+Class revtex4-2 Info: Repairing broken LaTeX eqnarray on input line 417.
+\eqncolsep=\skip48
+Class revtex4-2 Info: Repairing hyperref-unfriendly LaTeX definition of \mpfootnote on input line 492.
+Class revtex4-2 Info: Repairing broken LateX \@sect on input line 814.
+\intertabularlinepenalty=\count188
+\@tbpen=\count189
+\@arstrutbox@hline=\box51
+Class revtex4-2 Info: Repairing broken LaTeX \@xbitor on input line 1845.
+Class revtex4-2 Info: Making \typeout \long on input line 2110.
+ltxfront[2022/06/05 4.2f frontmatter package (AO,DPC,MD)]
+\c@affil=\count190
+\c@collab=\count191
+\absbox=\box52
+ltxgrid[2022/06/05 4.2f page grid package (portions licensed from W. E. Baxter web at superscript.com)]
+\c@linecount=\count192
+\output@latex=\toks17
+\box@size@1=\box53
+\box@size@2=\box54
+\@protection@box=\box55
+\@topmark@saved=\toks18
+\footins@saved=\box56
+\footins@recovered=\box57
+\column@recovered=\box58
+\pagesofar=\box59
+\footsofar=\box60
+\pagegrid@col=\count193
+Class revtex4-2 Info: Overriding \@vspace, \@vspacer, \@no@pgbk, \@newline, and \\  on input line 5676.
+\c@part=\count194
+\c@section=\count195
+\c@subsection=\count196
+\c@subsubsection=\count197
+\c@paragraph=\count198
+\c@subparagraph=\count199
+\abovecaptionskip=\skip49
+\belowcaptionskip=\skip50
+\c@figure=\count266
+\fbox@1=\box61
+\c@table=\count267
+\fbox@2=\box62
+\c@video=\count268
+\fbox@4=\box63
+\@bibdataout=\write3
+\widetext@top=\box64
+\widetext@bot=\box65
+Class revtex4-2 Info: Selecting society aps on input line 7669.
+(/usr/local/texlive/2024/texmf-dist/tex/latex/revtex/aps4-2.rtx
+File: aps4-2 2022/06/05 4.2f (https://journals.aps.org/revtex/ for documentation)
+Class revtex4-2 Info: RevTeX society APS selected on input line 40.
+)
+
+Class revtex4-2 Warning: No journal specified, using default pra.
+
+Class revtex4-2 Info: APS journal PRA selected on input line 7672.
+(/usr/local/texlive/2024/texmf-dist/tex/latex/revtex/aps10pt4-2.rtx
+File: aps10pt4-2 2022/06/05 4.2f (https://journals.aps.org/revtex/ for documentation)
+Class revtex4-2 Info: RevTeX pointsize 10pt selected on input line 39.
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/textcase/textcase.sty
+Package: textcase 2023/07/27 v1.04 Text only upper/lower case changing (DPC)
+Package textcase Info: Defining Legacy names on input line 20.
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\@emptytoks=\toks19
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)) (/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2023/05/13 v2.17o AMS math features
+\@mathmargin=\skip51
+
+For additional information on amsmath, use the `?' option.
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2021/08/26 v2.01 AMS text
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks20
+\ex@=\dimen140
+)
+LaTeX Info: Redefining \text on input line 28.
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen141
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2022/04/08 v2.04 operator names
+)
+\inf@bad=\count269
+LaTeX Info: Redefining \frac on input line 234.
+\uproot@=\count270
+\leftroot@=\count271
+LaTeX Info: Redefining \overline on input line 399.
+LaTeX Info: Redefining \colon on input line 410.
+\classnum@=\count272
+\DOTSCASE@=\count273
+LaTeX Info: Redefining \ldots on input line 496.
+LaTeX Info: Redefining \dots on input line 499.
+LaTeX Info: Redefining \cdots on input line 620.
+\Mathstrutbox@=\box66
+\strutbox@=\box67
+LaTeX Info: Redefining \big on input line 722.
+LaTeX Info: Redefining \Big on input line 723.
+LaTeX Info: Redefining \bigg on input line 724.
+LaTeX Info: Redefining \Bigg on input line 725.
+\big@size=\dimen142
+LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
+\macc@depth=\count274
+LaTeX Info: Redefining \bmod on input line 905.
+LaTeX Info: Redefining \pmod on input line 910.
+LaTeX Info: Redefining \smash on input line 940.
+LaTeX Info: Redefining \relbar on input line 970.
+LaTeX Info: Redefining \Relbar on input line 971.
+\c@MaxMatrixCols=\count275
+\dotsspace@=\muskip16
+\c@parentequation=\count276
+\dspbrk@lvl=\count277
+\tag@help=\toks21
+\row@=\count278
+\column@=\count279
+\maxfields@=\count280
+\andhelp@=\toks22
+\eqnshift@=\dimen143
+\alignsep@=\dimen144
+\tagshift@=\dimen145
+\tagwidth@=\dimen146
+\totwidth@=\dimen147
+\lineht@=\dimen148
+\@envbody=\toks23
+\multlinegap=\skip52
+\multlinetaggap=\skip53
+\mathdisplay@stack=\toks24
+LaTeX Info: Redefining \[ on input line 2953.
+LaTeX Info: Redefining \] on input line 2954.
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip17
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/natbib/natbib.sty
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip54
+\bibsep=\skip55
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count281
+)
+Class revtex4-2 Info: Repairing natbib's \BibitemShut on input line 7676.
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/revtex/revsymb4-2.sty
+Package: revsymb4-2 2022/06/05 4.2f (https://journals.aps.org/revtex/ for documentation)
+LaTeX Info: Redefining \frak on input line 104.
+LaTeX Info: Redefining \Bbb on input line 120.
+LaTeX Info: Redefining \REV@mathfrak on input line 128.
+)) (/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks25
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 107.
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen149
+\Gin@req@width=\dimen150
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/tools/dcolumn.sty
+Package: dcolumn 2023/07/08 v1.06 decimal alignment package (DPC)
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/tools/array.sty
+Package: array 2023/10/16 v2.5g Tabular extension package (FMi)
+\col@sep=\dimen151
+\ar@mcellbox=\box68
+\extrarowheight=\dimen152
+\NC@list=\toks26
+\extratabsurround=\skip56
+\backup@length=\skip57
+\ar@cellbox=\box69
+)) (/usr/local/texlive/2024/texmf-dist/tex/latex/tools/bm.sty
+Package: bm 2023/07/08 v1.2f Bold Symbol Support (DPC/FMi)
+\symboldoperators=\mathgroup6
+\symboldletters=\mathgroup7
+\symboldsymbols=\mathgroup8
+Package bm Info: No bold for \OMX/cmex/m/n, using \pmb.
+Package bm Info: No bold for \U/msa/m/n, using \pmb.
+Package bm Info: No bold for \U/msb/m/n, using \pmb.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 149.
+LaTeX Info: Redefining \bm on input line 219.
+)
+Class revtex4-2 Info: Unrecognized array package. Please update this document class! (Proceeding with fingers crossed.) on input line 59.
+Class revtex4-2 Info: cite was not loaded (OK!) on input line 59.
+Class revtex4-2 Info: mcite was not loaded (OK!) on input line 59.
+Class revtex4-2 Info: multicol was not loaded (OK!) on input line 59.
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2024-02-20 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count282
+\l__pdf_internal_box=\box70
+) (./report.aux)
+\openout1 = `report.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+ (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count283
+\scratchdimen=\dimen153
+\scratchbox=\box71
+\nofMPsegments=\count284
+\nofMParguments=\count285
+\everyMPshowfont=\toks27
+\MPscratchCnt=\count286
+\MPscratchDim=\dimen154
+\MPnumerator=\count287
+\makeMPintoPDFobject=\count288
+\everyMPtoPDFconversion=\toks28
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+))
+\openout3 = `reportNotes.bib'.
+
+LaTeX Font Info:    Trying to load font information for U+msa on input line 72.
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 72.
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+
+Class revtex4-2 Warning: Assuming \noaffiliation for authors.
+
+[1{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+</Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/beforexon1.png, id=17, 860.013pt x 354.123pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/beforexon1.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/beforexon1.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/beforexon1.png  used on input line 132.
+(pdftex.def)             Requested size: 229.49844pt x 94.49596pt.
+</Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/afterxon1.png, id=19, 860.013pt x 354.123pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/afterxon1.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/afterxon1.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/afterxon1.png  used on input line 139.
+(pdftex.def)             Requested size: 229.49844pt x 94.49596pt.
+</Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/Hadamardon1.png, id=20, 860.013pt x 354.123pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/Hadamardon1.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/Hadamardon1.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/Hadamardon1.png  used on input line 146.
+(pdftex.def)             Requested size: 229.49844pt x 94.49596pt.
+ [2 </Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/beforexon1.png> </Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/afterxon1.png> </Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/Hadamardon1.png>]
+</Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/pseudopure11.png, id=31, 860.013pt x 354.123pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/pseudopure11.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/pseudopure11.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/pseudopure11.png  used on input line 177.
+(pdftex.def)             Requested size: 229.49844pt x 94.49596pt.
+</Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOTHC.png, id=32, 860.013pt x 354.123pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOTHC.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOTHC.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOTHC.png  used on input line 184.
+(pdftex.def)             Requested size: 229.49844pt x 94.49596pt.
+</Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOTCH.png, id=33, 860.013pt x 354.123pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOTCH.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOTCH.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOTCH.png  used on input line 191.
+(pdftex.def)             Requested size: 229.49844pt x 94.49596pt.
+ [3 </Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/pseudopure11.png> </Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOTHC.png> </Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOTCH.png>]
+</Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/DJ1.png, id=41, 860.013pt x 354.123pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/DJ1.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/DJ1.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/DJ1.png  used on input line 260.
+(pdftex.def)             Requested size: 229.49844pt x 94.49596pt.
+</Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/DJ3.png, id=42, 860.013pt x 354.123pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/DJ3.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/DJ3.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/DJ3.png  used on input line 267.
+(pdftex.def)             Requested size: 229.49844pt x 94.49596pt.
+ [4{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc} </Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/DJ1.png> </Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/DJ3.png>] [5]
+</Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/figure/output.png, id=54, 602.0091pt x 395.3169pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/figure/output.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/figure/output.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/figure/output.png  used on input line 373.
+(pdftex.def)             Requested size: 229.49844pt x 150.70453pt.
+</Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/figure/output1.png, id=55, 609.9588pt x 395.3169pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/figure/output1.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/figure/output1.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/figure/output1.png  used on input line 380.
+(pdftex.def)             Requested size: 229.49844pt x 148.73808pt.
+</Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/figure/output2.png, id=56, 619.3539pt x 395.3169pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/figure/output2.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/figure/output2.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/figure/output2.png  used on input line 387.
+(pdftex.def)             Requested size: 229.49844pt x 146.4821pt.
+</Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/figure/output3.png, id=57, 625.8582pt x 395.3169pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/figure/output3.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/figure/output3.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/figure/output3.png  used on input line 394.
+(pdftex.def)             Requested size: 229.49844pt x 144.96204pt.
+ [6 </Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/figure/output.png> </Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/figure/output1.png> </Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/figure/output2.png> </Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/figure/output3.png>]
+</Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/figure/plc1.png, id=65, 467.5869pt x 475.5366pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/figure/plc1.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/figure/plc1.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/figure/plc1.png  used on input line 414.
+(pdftex.def)             Requested size: 229.49844pt x 233.39954pt.
+</Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/figure/plc2.png, id=66, 714.0276pt x 426.393pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/figure/plc2.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/figure/plc2.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/figure/plc2.png  used on input line 421.
+(pdftex.def)             Requested size: 229.49844pt x 137.04712pt.
+</Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/figure/plc3.png, id=67, 607.7907pt x 395.3169pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/figure/plc3.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/figure/plc3.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/figure/plc3.png  used on input line 428.
+(pdftex.def)             Requested size: 229.49844pt x 149.2689pt.
+</Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/CPMG.png, id=68, 462.528pt x 346.896pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/CPMG.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/CPMG.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/CPMG.png  used on input line 450.
+(pdftex.def)             Requested size: 229.49844pt x 172.12427pt.
+ [7 </Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/figure/plc1.png> </Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/figure/plc2.png> </Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/figure/plc3.png>]
+
+LaTeX Warning: A float is stuck (cannot be placed); try class option [floatfix] on input line 458.
+
+</Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/figure/T11.png, id=76, 714.7503pt x 426.393pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/figure/T11.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/figure/T11.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/figure/T11.png  used on input line 468.
+(pdftex.def)             Requested size: 229.49844pt x 136.91048pt.
+</Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/figure/T12.png, id=77, 609.9588pt x 395.3169pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/figure/T12.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/figure/T12.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/figure/T12.png  used on input line 475.
+(pdftex.def)             Requested size: 229.49844pt x 148.73808pt.
+[8 </Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/CPMG.png> </Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/figure/T11.png> </Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/figure/T12.png>]
+
+LaTeX Warning: A float is stuck (cannot be placed); try class option [floatfix] on input line 527.
+
+</Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/psp_H/psp00.png, id=84, 578.16pt x 433.62pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/psp_H/psp00.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/psp_H/psp00.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/psp_H/psp00.png  used on input line 546.
+(pdftex.def)             Requested size: 229.49844pt x 172.12163pt.
+</Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/psp_H/psp01.png, id=85, 578.16pt x 433.62pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/psp_H/psp01.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/psp_H/psp01.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/psp_H/psp01.png  used on input line 547.
+(pdftex.def)             Requested size: 229.49844pt x 172.12163pt.
+</Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/psp_H/psp10.png, id=86, 578.16pt x 433.62pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/psp_H/psp10.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/psp_H/psp10.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/psp_H/psp10.png  used on input line 548.
+(pdftex.def)             Requested size: 229.49844pt x 172.12163pt.
+</Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/psp_H/psp11.png, id=87, 578.16pt x 433.62pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/psp_H/psp11.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/psp_H/psp11.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/psp_H/psp11.png  used on input line 549.
+(pdftex.def)             Requested size: 229.49844pt x 172.12163pt.
+
+LaTeX Warning: Float too large for page by 65.23651pt on input line 552.
+
+</Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/psp_C/00.png, id=88, 578.16pt x 433.62pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/psp_C/00.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/psp_C/00.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/psp_C/00.png  used on input line 556.
+(pdftex.def)             Requested size: 229.49844pt x 172.12163pt.
+</Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/psp_C/01.png, id=89, 578.16pt x 433.62pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/psp_C/01.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/psp_C/01.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/psp_C/01.png  used on input line 557.
+(pdftex.def)             Requested size: 229.49844pt x 172.12163pt.
+</Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/psp_C/10.png, id=90, 578.16pt x 433.62pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/psp_C/10.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/psp_C/10.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/psp_C/10.png  used on input line 558.
+(pdftex.def)             Requested size: 229.49844pt x 172.12163pt.
+</Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/psp_C/11.png, id=91, 578.16pt x 433.62pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/psp_C/11.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/psp_C/11.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/psp_C/11.png  used on input line 559.
+(pdftex.def)             Requested size: 229.49844pt x 172.12163pt.
+
+LaTeX Warning: Float too large for page by 65.23651pt on input line 562.
+
+</Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/cnoth_compare/CNOTC00.png, id=92, 245.718pt x 180.675pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/cnoth_compare/CNOTC00.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/cnoth_compare/CNOTC00.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/cnoth_compare/CNOTC00.png  used on input line 565.
+(pdftex.def)             Requested size: 178.50311pt x 131.25755pt.
+</Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/cnoth_compare/CNOTC01.png, id=93, 245.718pt x 180.675pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/cnoth_compare/CNOTC01.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/cnoth_compare/CNOTC01.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/cnoth_compare/CNOTC01.png  used on input line 566.
+(pdftex.def)             Requested size: 178.50311pt x 131.25755pt.
+</Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/cnoth_compare/CNOTC10.png, id=94, 245.718pt x 180.675pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/cnoth_compare/CNOTC10.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/cnoth_compare/CNOTC10.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/cnoth_compare/CNOTC10.png  used on input line 567.
+(pdftex.def)             Requested size: 178.50311pt x 131.25755pt.
+</Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/cnoth_compare/CNOTC11.png, id=95, 245.718pt x 180.675pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/cnoth_compare/CNOTC11.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/cnoth_compare/CNOTC11.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/cnoth_compare/CNOTC11.png  used on input line 568.
+(pdftex.def)             Requested size: 178.50311pt x 131.25755pt.
+</Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/cnotc_compare/00.png, id=96, 245.718pt x 180.675pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/cnotc_compare/00.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/cnotc_compare/00.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/cnotc_compare/00.png  used on input line 574.
+(pdftex.def)             Requested size: 178.50311pt x 131.25755pt.
+</Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/cnotc_compare/01.png, id=97, 245.718pt x 180.675pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/cnotc_compare/01.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/cnotc_compare/01.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/cnotc_compare/01.png  used on input line 575.
+(pdftex.def)             Requested size: 178.50311pt x 131.25755pt.
+</Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/cnotc_compare/10.png, id=98, 245.718pt x 180.675pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/cnotc_compare/10.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/cnotc_compare/10.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/cnotc_compare/10.png  used on input line 576.
+(pdftex.def)             Requested size: 178.50311pt x 131.25755pt.
+</Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/cnotc_compare/11.png, id=99, 245.718pt x 180.675pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/cnotc_compare/11.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/cnotc_compare/11.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/cnotc_compare/11.png  used on input line 577.
+(pdftex.def)             Requested size: 178.50311pt x 131.25755pt.
+
+LaTeX Warning: Float too large for page by 6.28021pt on input line 580.
+
+</Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/DJ/1.png, id=100, 578.16pt x 433.62pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/DJ/1.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/DJ/1.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/DJ/1.png  used on input line 583.
+(pdftex.def)             Requested size: 203.99689pt x 152.99332pt.
+</Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/DJ/2.png, id=101, 578.16pt x 433.62pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/DJ/2.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/DJ/2.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/DJ/2.png  used on input line 584.
+(pdftex.def)             Requested size: 203.99689pt x 152.99332pt.
+</Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/DJ/3.png, id=102, 578.16pt x 433.62pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/DJ/3.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/DJ/3.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/DJ/3.png  used on input line 585.
+(pdftex.def)             Requested size: 203.99689pt x 152.99332pt.
+</Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/DJ/4.png, id=103, 578.16pt x 433.62pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/DJ/4.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/DJ/4.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/DJ/4.png  used on input line 586.
+(pdftex.def)             Requested size: 203.99689pt x 152.99332pt.
+
+LaTeX Warning: Float too large for page by 19.72327pt on input line 589.
+
+</Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOT_00.png, id=104, 860.013pt x 354.123pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOT_00.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOT_00.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOT_00.png  used on input line 595.
+(pdftex.def)             Requested size: 408.00156pt x 167.99942pt.
+</Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOT_01.png, id=105, 860.013pt x 354.123pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOT_01.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOT_01.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOT_01.png  used on input line 596.
+(pdftex.def)             Requested size: 408.00156pt x 167.99942pt.
+</Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOT_10.png, id=106, 860.013pt x 354.123pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOT_10.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOT_10.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOT_10.png  used on input line 597.
+(pdftex.def)             Requested size: 408.00156pt x 167.99942pt.
+</Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOT_11.png, id=107, 860.013pt x 354.123pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOT_11.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOT_11.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOT_11.png  used on input line 598.
+(pdftex.def)             Requested size: 408.00156pt x 167.99942pt.
+
+Overfull \hbox (162.00156pt too wide) in paragraph at lines 595--599
+ [][] 
+ []
+
+
+Overfull \hbox (162.00156pt too wide) in paragraph at lines 595--599
+ [] 
+ []
+
+
+Overfull \hbox (162.00156pt too wide) in paragraph at lines 595--599
+ [] 
+ []
+
+
+Overfull \hbox (162.00156pt too wide) in paragraph at lines 595--599
+ [] 
+ []
+
+
+LaTeX Warning: Float too large for page by 48.24768pt on input line 601.
+
+</Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOTH_00.png, id=108, 860.013pt x 354.123pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOTH_00.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOTH_00.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOTH_00.png  used on input line 604.
+(pdftex.def)             Requested size: 408.00156pt x 167.99942pt.
+</Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOTH_01.png, id=109, 860.013pt x 354.123pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOTH_01.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOTH_01.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOTH_01.png  used on input line 605.
+(pdftex.def)             Requested size: 408.00156pt x 167.99942pt.
+</Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOTH_10.png, id=110, 860.013pt x 354.123pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOTH_10.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOTH_10.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOTH_10.png  used on input line 606.
+(pdftex.def)             Requested size: 408.00156pt x 167.99942pt.
+</Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOTH_11.png, id=111, 860.013pt x 354.123pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOTH_11.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOTH_11.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOTH_11.png  used on input line 607.
+(pdftex.def)             Requested size: 408.00156pt x 167.99942pt.
+
+Overfull \hbox (162.00156pt too wide) in paragraph at lines 604--608
+ [][] 
+ []
+
+
+Overfull \hbox (162.00156pt too wide) in paragraph at lines 604--608
+ [] 
+ []
+
+
+Overfull \hbox (162.00156pt too wide) in paragraph at lines 604--608
+ [] 
+ []
+
+
+Overfull \hbox (162.00156pt too wide) in paragraph at lines 604--608
+ [] 
+ []
+
+
+LaTeX Warning: Float too large for page by 48.24768pt on input line 610.
+
+</Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/PSP_00.png, id=112, 860.013pt x 354.123pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/PSP_00.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/PSP_00.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/PSP_00.png  used on input line 642.
+(pdftex.def)             Requested size: 408.00156pt x 167.99942pt.
+</Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/PSP_01.png, id=113, 860.013pt x 354.123pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/PSP_01.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/PSP_01.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/PSP_01.png  used on input line 643.
+(pdftex.def)             Requested size: 408.00156pt x 167.99942pt.
+</Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/PSP_10.png, id=114, 860.013pt x 354.123pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/PSP_10.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/PSP_10.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/PSP_10.png  used on input line 644.
+(pdftex.def)             Requested size: 408.00156pt x 167.99942pt.
+</Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/PSP_11.png, id=115, 860.013pt x 354.123pt>
+File: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/PSP_11.png Graphic file (type png)
+<use /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/PSP_11.png>
+Package pdftex.def Info: /Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/PSP_11.png  used on input line 645.
+(pdftex.def)             Requested size: 408.00156pt x 167.99942pt.
+
+Overfull \hbox (162.00156pt too wide) in paragraph at lines 642--646
+ [][] 
+ []
+
+
+Overfull \hbox (162.00156pt too wide) in paragraph at lines 642--646
+ [] 
+ []
+
+
+Overfull \hbox (162.00156pt too wide) in paragraph at lines 642--646
+ [] 
+ []
+
+
+Overfull \hbox (162.00156pt too wide) in paragraph at lines 642--646
+ [] 
+ []
+
+
+LaTeX Warning: Float too large for page by 38.24768pt on input line 648.
+
+[9]
+
+LaTeX Warning: A float is stuck (cannot be placed); try class option [floatfix] on input line 655.
+
+[10]
+
+LaTeX Warning: A float is stuck (cannot be placed); try class option [floatfix] on input line 701.
+
+(./report.bbl) [11] [12 </Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/psp_H/psp00.png> </Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/psp_H/psp01.png> </Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/psp_H/psp10.png> </Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/psp_H/psp11.png>] [13 </Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/psp_C/00.png> </Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/psp_C/01.png> </Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/psp_C/10.png> </Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/psp_C/11.png>] [14 </Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/cnoth_compare/CNOTC00.png> </Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/cnoth_compare/CNOTC01.png> </Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/cnoth_compare/CNOTC10.png> </Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/cnoth_compare/CNOTC11.png>] [15 </Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/cnotc_compare/00.png> </Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/cnotc_compare/01.png> </Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/cnotc_compare/10.png> </Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/cnotc_compare/11.png>] [16 </Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/DJ/1.png> </Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/DJ/2.png> </Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/DJ/3.png> </Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/exp_plot/DJ/4.png>] [17 </Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOT_00.png> </Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOT_01.png> </Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOT_10.png> </Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOT_11.png>] [18 </Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOTH_00.png> </Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOTH_01.png> </Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOTH_10.png> </Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/CNOTH_11.png>] [19 </Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/PSP_00.png> </Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/PSP_01.png> </Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/PSP_10.png> </Users/runzhaoguo/Documents/MQST-UCLA/411/A_Final_Report/sim_fig/PSP_11.png>] (./report.aux)
+ ***********
+LaTeX2e <2023-11-01> patch level 1
+L3 programming layer <2024-02-20>
+ ***********
+ ) 
+Here is how much of TeX's memory you used:
+ 5232 strings out of 474116
+ 98440 string characters out of 5743682
+ 1963187 words of memory out of 5000000
+ 27544 multiletter control sequences out of 15000+600000
+ 569104 words of font info for 76 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 71i,8n,79p,1378b,315s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
+Output written on report.pdf (19 pages, 1592750 bytes).
+PDF statistics:
+ 274 PDF objects out of 1000 (max. 8388607)
+ 109 compressed objects within 2 object streams
+ 0 named destinations out of 1000 (max. 500000)
+ 251 words of extra memory for PDF output out of 10000 (max. 10000000)
+

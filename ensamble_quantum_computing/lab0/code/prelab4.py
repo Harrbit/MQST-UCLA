@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9f1ea1cb8742f83aae3c60faa4f75d3ab3f51188ae38182b9bb6bdcf11d6f2fc
-size 436
+import numpy as np
+import matplotlib.pyplot as plt
+
+gamma_p = 42.6  
+
+B = np.linspace(0, 3, 100)
+
+E_up = -0.5 * gamma_p * B
+E_down = +0.5 * gamma_p * B
+
+plt.figure(figsize=(7,5))
+plt.plot(B, E_up, label='Spin Up (m = +1/2)')
+plt.plot(B, E_down, label='Spin Down (m = -1/2)')
+
+plt.xlabel('Magnetic Field B [T]')
+plt.ylabel('Energy [MHz]')
+plt.title('Proton Spin Energy Levels vs. Magnetic Field')
+plt.legend()
+plt.grid(True)
+
+plt.show()

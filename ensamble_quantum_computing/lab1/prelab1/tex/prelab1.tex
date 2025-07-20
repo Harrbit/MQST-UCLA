@@ -1,3 +1,192 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2dccc293c67560a65d13e640d1717656abef2f0b091dcceacc11fdb7e05dce36
-size 9889
+\hbadness=10000
+%==============================================================================
+% Homework Assignment Template
+%==============================================================================
+\documentclass[11pt]{article}
+
+%------------------------------------------------------------------------------
+% PACKAGES
+%------------------------------------------------------------------------------
+\usepackage[margin=1in]{geometry}   % Adjust margins
+\usepackage{amsmath,amssymb,amsthm} % Math packages
+\usepackage{graphicx}               % Include images
+\usepackage{hyperref}               % Hyperlinks
+\usepackage{enumitem}               % Better control over lists
+\usepackage{fancyhdr}               % Header/footer customization
+
+%------------------------------------------------------------------------------
+% CUSTOM COMMANDS & SETTINGS
+%------------------------------------------------------------------------------
+\newcommand{\courseName}{Ensemble Quantum Computing Laboratory}     % Change to your course name
+\newcommand{\assignmentTitle}{Prelab 1} % Change to your assignment title
+\newcommand{\studentName}{Runzhao Guo}       % Change to your name
+\newcommand{\Date}{January 21, 2025}   % Change to your due date
+
+% Set up the page header
+\pagestyle{fancy}
+\fancyhf{} % Clear header and footer
+\lhead{\courseName}
+\chead{\assignmentTitle}
+\rhead{\studentName}
+\rfoot{\thepage}
+
+
+
+%------------------------------------------------------------------------------
+% DOCUMENT START
+%------------------------------------------------------------------------------
+\begin{document}
+%------------------------------------------------------------------------------
+% TITLE SECTION
+%------------------------------------------------------------------------------
+\begin{center}
+    {\large \textbf{\courseName}} \\
+    \vspace{3pt}
+    {\Large \textbf{\assignmentTitle}} \\
+    \vspace{3pt}
+    \studentName \\
+    \vspace{3pt}
+    \Date
+\end{center}
+
+\vspace{0.5in} % Add some space before the content starts
+
+
+\section*{Problem 1}
+
+\begin{enumerate}[label=(\alph*)]
+    \item Free Induction Decay(FID),\\
+    pulse sequence: \\
+    \\
+    pulse(1, a90H, p1, d90H)\\
+    \\
+    Information found:\\
+    To begin with, by performing a FID, we can acquire the chemical shift of the nuclei in question.\\ In the case of spin-spin coupling, we can also acquire the information of the coupling constant.\\ In the case of multiple exitation and acquisiton, we can get the relaxation time.\\
+    \item Spin Echo,\\
+    pulse sequence: \\
+    \\
+    pulse(1, a90H, p1, d90H)\\
+    wait(w1)\\
+    pulse(1, a90H, p1, d180H)\\
+    wait(w1)
+    \\
+    Information found:\\
+    By conducting spin echo, the effect of inhomogeneity of the magnetic field can be eliminated, allowing us to acquire the real T2.\\
+    I believe this experiment is designed to measure the T2 relaxation time. However, there are other information we can acquire as side product such as the T1, the chemical shift and the coupling strength.\\    
+    \item Inversion Recovery,\\
+    pulse sequence: \\
+    \\
+    pulse(1, a90H, p1, d180H)\\
+    wait(w1)\\
+    pulse(1, a90H, p1, d90H)\\
+    \\
+    Information found:\\
+    By conducting inversion recovery, we can acquire the T1 relaxation time, the time for spins to recover to equilibrium.\\
+\end{enumerate}
+
+\section*{Problem 2}
+
+\begin{enumerate}[label=(\alph*)]
+    \item y-axis: despersion mode\\
+
+    By shifting the pulse from x-axis to y-axis, the phase of the pulse is changed by $\pi/2$ degree. Assuming the original signal is $S(t) = \text{exp}(i\phi)\text{exp}(i\Omega t)\text{exp}(-\frac{t}{T_2})$ and its FT is $F_x$, then the signal corresponding to pulse from y-axis is $S(t) = \text{exp}(\frac{\pi}{2})\text{exp}(i\phi)\text{exp}(i\Omega t)\text{exp}(-\frac{t}{T_2})$, by the linearity of FT, the FT of the signal is $F_y = \text{exp}(\frac{\pi}{2})F_x$. Which is multipling the original FT by a constant $i$, making the imaginary part of the original frequency domain(in despersion mode because the real part is in absorption mode) the conjucation of current real part.\\
+
+    \item -x-axis: absorption mode, inverted\\
+
+    The time and frequency domain of the signal is now multiplied by -1(phase difference $\pi$), therefore the signal is inverted in time domain and frequency domain.\\
+
+    \item 270 about x-axis: absorption mode, inverted\\
+
+    This is essentially the same as the previous one, the signal is inverted in time domain and frequency domain.\\
+\end{enumerate}
+
+\section*{Problem 3}
+
+\begin{enumerate}[label=(\alph*)]
+    \item lab frame Hamiltonian and rot. fram. Hamiltonian: \\
+    A generalized enough magnetic field in this case is: $B_0 \hat{z} + B_1(\text{cos}(\omega t + \phi)+\text{sin}(\omega t + \phi))$, the Hamilitonian of a magnetic moment in this field is $H = -\vec{\mu}\cdot\vec{B} = -\gamma \vec{S}\cdot\vec{B}$, where $\gamma$ is the gyromagnetic ratio.\\
+    \\
+    lab frame Hamiltonian:\\
+    $H_{lab} = \frac{\hbar \omega_0}{2}\hat{\sigma_z} + \frac{\hbar \omega_1}{2}(\text{cos}(\omega(t)+\phi)\hat{\sigma_x}+\text{sin}(\omega(t)+\phi)\hat{\sigma_y)}$.\\
+    lab frame unitary proporgator: \\
+    This Hamiltonian is time dependent therefore difficult to solve its unitary proporgator, the unitary proporgator is solved by transforming the Hamiltonian to rotating frame, calculate the proporgator and transform it back to lab frame.\\
+
+    $U_{lab}(t) = \text{exp}[\frac{i}{2}(\omega t + \phi)]\text{exp}[-\frac{i}{2}\Omega_R\hat{n}\cdot \sigma t]$\\
+    
+    where$\Omega_R = \sqrt{(\omega_0 - \omega)^2 + \omega_1^2}$, and $\hat{n} = \frac{1}{\Omega_R}(\omega_1 \text{cos}\phi, \omega_1 \text{sin}\phi, \omega_0 - \omega)$\\
+    \\
+    rotating frame Hamiltonian: \\
+    After making the Rotating Wave Approximation(RWA), and assue the RF field is on resonance, we get $H_{rot. fram.}(t) =\frac{\hbar}{2}(\omega_0 - \omega)\sigma_z + \frac{\hbar \omega_1}{2}(\text{cos}(\phi)\sigma_x+ \text{sin}(\phi)\sigma_y)$\\
+
+    rotating frame unitary proporgator: \\
+    $\text{cos}(\frac{\Omega_R t}{2})\mathbb{I} - i\text{sin}(\frac{\Omega_R t}{2})\hat{n}\cdot \sigma$\\
+
+    \item evolution of the state under ther given magnetic field: \\
+    \begin{figure}[htbp]
+        \centering
+        % Adjust the width factor as desired (0.5 means 50% of text width)
+        \includegraphics[width=0.5\textwidth]{Figure_2.png}
+        \caption{Observation of the state under the given magnetic field, in $x $ and $y$ basis}
+        \label{fig:2}
+    \end{figure}
+    \begin{figure}[htbp]
+        \centering
+        % Adjust the width factor as desired (0.5 means 50% of text width)
+        \includegraphics[width=0.5\textwidth]{Figure_4.png}
+        \caption{Observation of the state under the given magnetic field, in $\sigma + $ and $ \sigma -$ basis}
+        \label{fig:4}
+    \end{figure}
+    \item evaluate signal in x, y and $\sigma +$ basis: \\
+    see above
+    \item the bloch sphere representation
+    \begin{figure}[htbp]
+        \centering
+        % Adjust the width factor as desired (0.5 means 50% of text width)
+        \includegraphics[width=0.5\textwidth]{Figure_6.png}
+        \caption{Observation of the state under the given magnetic field, presented in bloch sphere, the blue line is the trajectory of the state vector}
+        \label{fig:6}
+    \end{figure}
+\end{enumerate}
+
+\section*{Problem 4}
+
+one-sided FT for $e^{i(\omega_0t - \phi)}e^{-\frac{t}{T_2}}$ is $\int_{0}^{+\infty}e^{-i\omega t}e^{i(\omega t - \phi)}e^{-\frac{t}{T_2}}dt$\\
+$=e^{-i\phi}\int_{0}^{+\infty}e^{-\frac{t}{T_2}}e^{i(\omega - \omega_0)t}dt$\\
+$=e^{-i\phi}\int_{0}^{+\infty}e^{[-\frac{1}{T_2}+i(\omega-\omega_0)]t}dt$\\
+$=e^{-i\phi}\frac{1}{-\frac{1}{T_2}+i(\omega-\omega_0)}$\\
+notice if $\Gamma=-\frac{1}{T_2}$ and $\alpha=\frac{e^{-i\phi}}{-1\frac{1}{T_2}}$, then $g(\omega)=\frac{\alpha \Gamma}{i(\omega-\omega_0)+\Gamma}$, the standard parameterization of lorentzian function.\\
+
+\section*{Problem 5}
+
+Since the typical linewidth in question is 25Hz, the maximum acceptable change in frequency is 2.5Hz. The Homogeneity in question is 1per$10^8$, for Lamor frequency of 180MHz, meaning the change in given magnetic field is 1.8Hz, which is acceptable. Meaning the magnetic field is sufficiently homogeneous.\\
+
+\section*{Problem 6}
+
+A ``two bit ADC'' is a device that can convert the amplitude of a analog signal to a digital signal with 2 bits. The output of the ADC is a binary number with 2 bits.\\
+
+\begin{figure}[htbp]
+    \centering
+    % Adjust the width factor as desired (0.5 means 50% of text width)
+    \includegraphics[width=0.5\textwidth]{fig1.jpeg}
+    \caption{A possible digital signal for sin signal after a two bit ADC}
+    \label{fig:1}
+\end{figure}
+
+The reason why it is often generally desireable to have a higher bit ADC is that the higher the bit, the higher the resolution of the digital signal is. The higher the resolution, the more accurate the digital signal is to the analog signal.\\
+
+\section*{Problem 7}
+
+For a spectrometer operating at 800MHz, in order to cover 15ppm, the spectral range of the spectrometer should be 800MHz*15ppm = 12kHz.\\
+
+In the case of quadrature detection, the dwell time should be 1/12kHz = 83.3us.\\
+
+I have some doubts about my interpretation of the question, I am not certain if it means the total range is 15ppm or the spectrometer should cover 15ppm on each side of the center frequency. I am assuming the prior assumption, in the case of the latter, we simply need to double the spectral range and half the dwell time.\\
+
+% \begin{thebibliography}{9}
+% \bibitem{exampleRef} Author Name, \textit{Title of the Book}, Publisher, Year.
+% \end{thebibliography}
+
+%------------------------------------------------------------------------------
+% DOCUMENT END
+%------------------------------------------------------------------------------
+\end{document}

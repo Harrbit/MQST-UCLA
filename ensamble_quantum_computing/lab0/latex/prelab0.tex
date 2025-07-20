@@ -1,3 +1,242 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e93ed6af90e27ab7a7670408e5e14fe272da106ad3a19cf32f79ec95395a55d1
-size 9785
+%==============================================================================
+% Homework Assignment Template
+%==============================================================================
+\documentclass[11pt]{article}
+
+%------------------------------------------------------------------------------
+% PACKAGES
+%------------------------------------------------------------------------------
+\usepackage[margin=1in]{geometry}   % Adjust margins
+\usepackage{amsmath,amssymb,amsthm} % Math packages
+\usepackage{graphicx}               % Include images
+\usepackage{hyperref}               % Hyperlinks
+\usepackage{enumitem}               % Better control over lists
+\usepackage{fancyhdr}               % Header/footer customization
+
+%------------------------------------------------------------------------------
+% CUSTOM COMMANDS & SETTINGS
+%------------------------------------------------------------------------------
+\newcommand{\courseName}{Ensemble Quantum Computing Laborator}     % Change to your course name
+\newcommand{\assignmentTitle}{Prelab 0} % Change to your assignment title
+\newcommand{\studentName}{Runzhao Guo}       % Change to your name
+\newcommand{\Date}{January 12, 2025}   % Change to your due date
+
+% Set up the page header
+\pagestyle{fancy}
+\fancyhf{} % Clear header and footer
+\lhead{\courseName}
+\chead{\assignmentTitle}
+\rhead{\studentName}
+\rfoot{\thepage}
+
+
+
+%------------------------------------------------------------------------------
+% DOCUMENT START
+%------------------------------------------------------------------------------
+\begin{document}
+
+%------------------------------------------------------------------------------
+% TITLE SECTION
+%------------------------------------------------------------------------------
+\begin{center}
+    {\large \textbf{\courseName}} \\
+    \vspace{3pt}
+    {\Large \textbf{\assignmentTitle}} \\
+    \vspace{3pt}
+    \studentName \\
+    \vspace{3pt}
+    \Date
+\end{center}
+
+\vspace{0.5in} % Add some space before the content starts
+
+%------------------------------------------------------------------------------
+% INSTRUCTIONS / ABSTRACT
+%------------------------------------------------------------------------------
+%\noindent \textit{Instructions:} Provide any useful instructions or an abstract 
+% for your homework assignment here. For example, due date, collaboration policies, 
+% citation requirements, etc.
+
+%------------------------------------------------------------------------------
+% PROBLEM 1
+%------------------------------------------------------------------------------
+\section*{Values and dimensions of relevance to NMR}
+
+\section{} 
+\begin{enumerate}[label=\alph*)]
+    \item Magnetic moment of a Dirac electron: 
+    \[
+        \mu_{Dirac} = \frac{e \hbar}{2m} = 9.274010 \times 10^{-27} \text{J/T}.
+    \]
+    \[
+        1\,\text{eV} = 1.602176634 \times 10^{-19}\,\text{J}.
+    \]
+    \[
+        \mu_{\mathrm{Dirac}} = 5.788 \times 10^{-8}\,\text{eV}.
+    \]
+
+
+    \item The current (CODATA-recommended) best-measured value for the magnetic moment of an electron is $9.2848 \times 10^{-27} \text{J/T} = 5.79 \times10^{-8} \text{eV/T}$
+    \item A simple expectation of the magnetic moment of a proton using the same method is:
+    \[
+        \mu_{Proton} = \frac{e \hbar}{2m_{Proton}} = 5.0508 \times 10^{-27} \text{J/T} = 3.152 \times 10 ^{-8} \text{eV/T}
+    \]
+    \item However the measured value is very different:
+    \[
+        \mu_{p measured} = 1.4106 \times 10^{-26} \text{J/T} = 8.8030 \times 10^{-8} \text{eV/T}
+    \]
+    Which is 2.7 times larger the naive expectation, the reason to this is the g fector of a proton is approximately 5.585, which is way bigger then 2.
+\end{enumerate}
+
+\section{}
+\begin{enumerate}[label=\alph*)]
+    \item 
+        Using equaton $\gamma = \frac{2\mu}{\hbar} $, The gyromagnetic ratio of the expected magnetic moment of Dirac electon is $1.7589 \times10^{8} \text{rad} \cdot \text{s}^{-1} \cdot \text{T}^{-1}$.\\
+        \\
+        The gyromagnetic ration of the measured magnetic moment of Dirac electon is $1.7609 \times10^{8} \text{rad} \cdot \text{s}^{-1} \cdot \text{T}^{-1}$.\\ 
+        \\
+        The gyromagnetic ratio of the proton(exptected) is $9.5944 \times10^{7} \text{rad} \cdot \text{s}^{-1} \cdot \text{T}^{-1}$.\\
+        \\
+        The gyromagnetic ratio of the proton(measured) is $2.6753 \times10^{8} \text{rad} \cdot \text{s}^{-1} \cdot \text{T}^{-1}$.\\
+    \item In \text{MHz/T}:
+        The gyromagnetic ratio of the expected magnetic moment of Dirac electon is $2.8007 \times10^{7} \text{MHz/T}$.\\
+        \\
+        The gyromagnetic ration of the measured magnetic moment of Dirac electon is $2.803 \times10^{7} \text{MHz/T}.$\\ 
+        \\
+        The gyromagnetic ratio of the proton(exptected) is $1.5277 \times10^{7} \text{MHz/T}.$\\
+        \\
+        The gyromagnetic ratio of the proton(measured) is $4.26 \times10^{7} \text{MHz/T}$.\\
+\end{enumerate}
+
+\section{}
+    The simplest reason is that the proton is not a point-like Dirac particle but a composite object made of quarks bound together by gluons. Its internal quark-gluon dynamics gives it a magnetic moment that deviates significantly from the value predicted by the naive Dirac equation.
+
+\section{}
+\begin{enumerate}[label=\alph*)]
+    \item in Figure 1
+    \begin{figure}[ht]
+        \centering
+        \includegraphics[width=0.5\textwidth]{/Users/runzhaoguo/Documents/MQST-UCLA/411/lab0/Figure/Figure_1.png}
+        \caption{The energy level diagram for the spin-up and spin-down states of the proton as a function of the magnetic field.}
+        \label{fig:1}
+    \end{figure}
+
+    \item 
+    \[
+    \triangle E_Z = E_{\frac{1}{2}} - E_{-\frac{1}{2}} = \gamma \hbar B
+    \]
+
+    \item The dependency of $\triangle E_Z $ on magnetic field, in MHz/T:
+    from 
+    \[
+        \triangle E_Z = \gamma \hbar B
+    \]
+    we know, the dependency of $\triangle E_Z$ on magnetic field is $2.823 \times 10^{-26} $\text{MHz/T}
+
+    \item let polarization be $P = \frac{N_{\uparrow} - N_{\downarrow}}{N_{\uparrow} + N_{\downarrow}}$.\\
+    Assume Boltzmann distribution, $P_i = \frac{1}{Z} exp(-\frac{E_i}{k_B T})$, $P = tanh\frac{\gamma \hbar B}{2 k_B T}$.
+\end{enumerate}
+
+\section{}
+Volume of the tube:
+\[
+    v_{tube} = \pi \times (\frac{d}{2})^2 \times l = 0.393\text{mL}
+\]
+volume of $H_2O$:
+\[
+    v_{H_2O} = 0.05 \times v_{tube} = 0.01965\text{mL}
+\]
+\begin{enumerate}[label=\alph*)]
+    \item 
+    \[
+        m_{H_2O} = 0.01965\text{g}
+    \]
+    \[
+        n_{H_2O} = \frac{0.01965\text{g}}{18\text{g/mol}} = 1.09 \times 10^{-3} \text{mol}
+    \]
+    \[
+        N_{H_2O} = n_{H_2O} \times N_A = 6.56 \times 10^{20} \text{molecules}
+    \]
+    which means $1.312 \times 10^{21}$ Hydrogen nuclei, that is $ 3.3 \times 10^{21}$ Hydrogen nuclei per mL.
+    \item $N_{H} = 1.312 \times 10^{21}$
+    \item $2.18 \times 10^{-3} \text{mol}$
+\end{enumerate}
+\section*{Larmor frequency, the rotating frame, and offset frequencies }
+\section{}
+\begin{enumerate}[label=\alph*)]
+    \item the number of protons in spin up/down states can be calculated as such:
+    \[
+        \triangle N = P N_H = 1.367 \times 10^{16}
+    \]
+    \[
+        N_{\uparrow} =\frac{1}{2} (1+P) N_H = 6.560 \times 10^{20}
+    \]
+    \[
+        N_{\downarrow} =\frac{1}{2} (1-P) N_H = 6.559 \times 10^{20}
+    \]
+
+    \item the net magnetic moment can be calculated as such:
+    \[
+    \mu_{net} = \triangle N \mu_{proton} = 7.716 \times 10^{-11}
+    \]
+
+    \item the order of magnitude of the magnetic field strength at 2cm is $10^{-12}\text{T}$
+\end{enumerate}
+
+\section{}
+the shifts are calculated as such:$\delta = 10^{6} \times \frac{\nu - \nu_{TMS}}{\nu_{TMS}}$, so in oreder to do get the physical value of the shifts, we do the revers of this calculation.
+\[
+    \triangle \delta = 3.80\text{ppm}
+\]
+
+\[
+    \triangle \nu = \triangle \delta \times 400.13 = 1520.494 \text{Hz} \approx 9550 \text{rads/s}
+\]
+
+\section{}
+The Larmor frequency is calculated as such: 
+\[
+    \nu = -\frac{1}{2\pi}\gamma(1+\delta)B
+\]
+using the conditions given in exercise, $\nu = -1.0072 \times 10^8 \text{Hz}$ or $ -6.3249 \times 10^{8}\text{rads/s}$
+
+\section{}
+What happened here is the RF pules rotates the net magnetization away from z-axis. The angle of rotation can be calculated as such:
+\[
+    \theta = \omega_1 t = 2\pi \nu_1 t
+\]
+
+From the data given, $\nu_1$ can be calculated as 
+\[
+    \nu_1 = \frac{\theta}{2 \pi t} \approx 24.4 \text{kHz}
+\]
+The $90$ degree pulse length is $10.25 \mu \text{s}$
+
+As for the second null, it is clear that the magnetization has returned to +z.
+
+\section{}
+It does not. Here's why:
+let's first get the $\omega_1$
+    \[
+        \omega_1 = \frac{\frac{\pi}{2}}{\tau_{pulse}} \approx 25 \text{kHz}
+    \]
+    The maximum offset here is:
+    \[
+        \triangle = 45 \text{MHz} \approx 2.83 \times 10^8 \text{rads/s}
+    \]
+    Notice $\triangle \gg \omega_1$, meaning the effective magnetic field is along the z-axis. The current magnitization can only tilte the spin by $\frac{\omega_1}{\triangle} \approx 1.4 \times 10^{-4}$ rads. Which is essentially negligible. Therefore the it does not have a significant effect on C-13 nuclei
+
+\section{}
+Before the added pules, the vector is along $+y$ direction. \\
+$\phi = +x$, the vector will be pointing at $-z$ direction\\
+$\phi = -x$, the vector will be pointgin at $+z$ direction\\
+for both$\phi = -y$ and $\phi = +y$, the vector will be pointing at $+y$ direction. \\
+% \begin{thebibliography}{9}
+% \bibitem{exampleRef} Author Name, \textit{Title of the Book}, Publisher, Year.
+% \end{thebibliography}
+
+%------------------------------------------------------------------------------
+% DOCUMENT END
+%------------------------------------------------------------------------------
+\end{document}

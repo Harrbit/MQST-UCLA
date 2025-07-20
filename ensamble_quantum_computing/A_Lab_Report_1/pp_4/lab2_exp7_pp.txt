@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:927bec21ed10e5529a2e5748084e5085d8d9f8cc288984bf917d2860556870b8
-size 501
+# Pulse sequence
+   initpp(dir) # Reset internal parameter list
+   
+      pulse(1,a90,p1,dPulse)                   # 90 RF pulse
+      delay(d90_180)                           # 90 - 180 delay
+      loop("l1",nEchoes)
+         pulse(1,a180,p2,dPulse)               # 180 RF pulse
+         delay(d180_acq)                       # 180 - acq delay
+         acquire("append",nPnts,dAcq_180)   # Integrate the acquire echo and wait
+      endloop("l1")
+
+   lst = endpp() # Return parameter list

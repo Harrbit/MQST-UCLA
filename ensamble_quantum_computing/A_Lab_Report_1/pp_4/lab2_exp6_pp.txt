@@ -1,3 +1,29 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:64077588a6c974454ec40f94cd2b5859476aa4f091abb1cadb86febb55e4186a
-size 858
+# Pulse sequence
+   initpp(dir) # Reset internal parameter list     
+  
+      cleardata(n1)
+      ###########
+      #Your Code Here
+      pulse(2,a90C,p1,d180C)
+      wait(w1)
+      pulse(2,a90C,p1,d90C)
+      ###########
+      delay(dAcq)                  # Pulse - acquire delay
+
+     # Acquire with 1H decoupling
+      acquireon(nPnts)
+      ttlon(0x40)
+      loop(l1,n1)
+         WALTZ16(1, aDEC, d90H, d180H, d270H, d360H, p2, p3, 1, 1, 0)
+      endloop(l1)   
+      ttloff(0x40)
+      acquireoff("overwrite", nPnts)
+
+   lst = endpp(mode) # Return parameter list
+
+# Phase cycle list
+  phaseList  = [0,2,0,2;   # Use this for FID pulse
+                #1,1,3,3;   # Use for inversion pulse
+                0,0,2,2;   # Decouple phase 1
+                2,2,0,0;   # Decouple phase 2
+                0,2,0,2]   # Acquire phase

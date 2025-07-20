@@ -1,3 +1,66 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:875144d7a36477bd4667e277dadc77b70d331945f7a492d384ae3d9ec2490b2c
-size 1948
+This is BibTeX, Version 0.99d (TeX Live 2024)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: report.aux
+The style file: apsrev4-2.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: reportNotes.bib
+Database file #2: report.bib
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
+apsrev4-2.bst 2019-01-14 (MD) hand-edited version of apsrev4-1.bst
+Control: key (0) 
+Control: author (72) initials jnrlst
+Control: editor formatted (1) identically to author
+Control: production of article title (-1) disabled
+Control: page (0) single
+Control: year (1) truncated
+Control: production of eprint (0) enabled
+You've used 11 entries,
+            6079 wiz_defined-function locations,
+            1719 strings with 17220 characters,
+and the built_in function-call counts, 11511 in all, are:
+= -- 834
+> -- 301
+< -- 63
++ -- 96
+- -- 72
+* -- 1750
+:= -- 1096
+add.period$ -- 11
+call.type$ -- 11
+change.case$ -- 46
+chr.to.int$ -- 11
+cite$ -- 11
+duplicate$ -- 1026
+empty$ -- 786
+format.name$ -- 175
+if$ -- 2330
+int.to.chr$ -- 1
+int.to.str$ -- 19
+missing$ -- 160
+newline$ -- 85
+num.names$ -- 33
+pop$ -- 433
+preamble$ -- 1
+purify$ -- 55
+quote$ -- 0
+skip$ -- 508
+stack$ -- 0
+substring$ -- 238
+swap$ -- 988
+text.length$ -- 34
+text.prefix$ -- 0
+top$ -- 8
+type$ -- 157
+warning$ -- 0
+while$ -- 31
+width$ -- 0
+write$ -- 141

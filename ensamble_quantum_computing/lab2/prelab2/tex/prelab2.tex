@@ -1,3 +1,156 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:cc89c75860283fe7d561f3d49a26cbaea12a6d590e99d1b11ba1763002dcf1e7
-size 8276
+\hbadness=10000
+%==============================================================================
+% Homework Assignment Template
+%==============================================================================
+\documentclass[11pt]{article}
+
+%------------------------------------------------------------------------------
+% PACKAGES
+%------------------------------------------------------------------------------
+\usepackage[margin=1in]{geometry}   % Adjust margins
+\usepackage{amsmath,amssymb,amsthm} % Math packages
+\usepackage{graphicx}               % Include images
+\usepackage{hyperref}               % Hyperlinks
+\usepackage{enumitem}               % Better control over lists
+\usepackage{fancyhdr}               % Header/footer customization
+
+%------------------------------------------------------------------------------
+% CUSTOM COMMANDS & SETTINGS
+%------------------------------------------------------------------------------
+\newcommand{\courseName}{Ensemble Quantum Computing Laboratory}     % Change to your course name
+\newcommand{\assignmentTitle}{Prelab 2} % Change to your assignment title
+\newcommand{\studentName}{Runzhao Guo}       % Change to your name
+\newcommand{\Date}{January 27, 2025}   % Change to your due date
+
+% Set up the page header
+\pagestyle{fancy}
+\fancyhf{} % Clear header and footer
+\lhead{\courseName}
+\chead{\assignmentTitle}
+\rhead{\studentName}
+\rfoot{\thepage}
+
+
+
+%------------------------------------------------------------------------------
+% DOCUMENT START
+%------------------------------------------------------------------------------
+\begin{document}
+%------------------------------------------------------------------------------
+% TITLE SECTION
+%------------------------------------------------------------------------------
+\begin{center}
+    {\large \textbf{\courseName}} \\
+    \vspace{3pt}
+    {\Large \textbf{\assignmentTitle}} \\
+    \vspace{3pt}
+    \studentName \\
+    \vspace{3pt}
+    \Date
+\end{center}
+
+\vspace{0.5in} % Add some space before the content starts
+
+\section*{Problem 1}
+Let's first analytically calculate the fourier transform of the given function $S(t) = e^{i\Omega t}e^{i\phi}e^{-\frac{t}{T_2}}$. The fourier transform is done as follows:\\
+\begin{align*}
+\tilde{S}(\omega) &=  \int_{0}^{+\infty} e^{i\Omega t}e^{i\phi}e^{-\frac{t}{T_2}}e^{-i\omega t}dt \\
+                    &= e^{i\phi}\int_{0}^{+\infty} e^{i(\Omega-\omega)t}e^{-\frac{t}{T_2}}dt\\
+                    &= e^{i\phi}\int_{0}^{+\infty} e^{i(\Omega-\omega)t-\frac{t}{T_2}}dt\\
+                    &= e^{i\phi}\int_{0}^{+\infty} e^{t(i(\Omega-\omega)-\frac{1}{T_2})}dt\\
+                    &= e^{i\phi} \frac{1}{\frac{1}{T_2} - i\Omega + i\omega}
+\end{align*}
+Therefore, the fourier transform of the given function is $\tilde{S}(\omega) = e^{\phi} \frac{1}{\frac{1}{T_2} - i\Omega + i\omega}$. And the real and imaginary parts are respectively:
+\begin{align*}
+    R &= \frac{T_2 \text{cos}(\phi) - T_2^2(\omega - \Omega)\text{sin}(\phi)}{1 + T_2^2(\omega - \Omega)^2}\\
+    I &= \frac{T_2 \text{sin}(\phi) + T_2^2(\omega - \Omega)\text{cos}(\phi)}{1 + T_2^2(\omega - \Omega)^2}
+\end{align*}
+It is easy to see(with a little trigonometry) that $R\text{cos}(\phi) + I\text{sin}(\phi) = \frac{T_2}{1 + T_2^2(\omega - \Omega)^2} = \frac{\frac{1}{T_2}}{\frac{1}{T_2^2}+(\omega - \Omega)^2}$, which is a lorentzian function. Therefore such spectrum has a pure absorption lineshape.\\
+
+A plot for the real and imaginary parts of the spectrum of several $\phi$ is shown below in figure \ref{fig:prob1}.\\
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{/Users/runzhaoguo/Documents/MQST-UCLA/411/lab 2/prelab2/img/prob1.png}
+    \caption{Plots for various valudes of $\phi$}
+    \label{fig:prob1}
+\end{figure}
+
+\section*{Problem 2}
+An intuitive way of understanding why reducing acquisition time to something similar to the duration of signal, some $nT_2$ where $ n\in[2,5]$ in this case if I'm not mistaken, or adding a weight reducing along time would increase the SNR would be to think in terms of energy. The energy of our signal in this case is finite while the energy of the noise is infinite. Notice how the energy of the signal is concentrated in the first several $T_2$ and the energy of the noise is distributed uniformly along the time. Therefore, the SNR would be higher if we are more focused on the first several $T_2$ of the signal, either by truncating or by adding a time-anti-correlated weight.\\
+
+Demonstration effort are made to show these methods works. Figure \ref{fig:prob2_1} shows the relation between SNR and window sizes. Figure \ref{fig:prob2_2} shows the relation between the weight function and SNR, the weight function here is the power of the function of the envelope of the original function, the weight index is the power.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{/Users/runzhaoguo/Documents/MQST-UCLA/411/lab 2/prelab2/img/prob3_1.png}
+    \caption{the relation between SNR and window size}
+    \label{fig:prob2_1}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{/Users/runzhaoguo/Documents/MQST-UCLA/411/lab 2/prelab2/img/prob3_2.png}
+    \caption{the relation between SNR and weight function}
+    \label{fig:prob2_2}
+\end{figure}
+
+\section*{Problem 3}
+
+The sketch is shown in Figure\ref{fig:prob3}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{/Users/runzhaoguo/Documents/MQST-UCLA/411/lab 2/prelab2/img/prob3.jpg}
+    \caption{the sketch of spectra arising from given operators}
+    \label{fig:prob3}
+\end{figure}
+
+\section*{Problem 4}
+
+The full Hamiltonian is written as $H_{IS} = \Omega_I I_Z +\Omega_S S_Z + 2 \pi J(I_X S_X+I_Y S_Y+I_Z S_Z)$:
+\[
+\begin{pmatrix}
+0.5\Omega_I + 0.5\Omega_S + 0.5\pi J & 0 & 0 & 0 \\
+0 & 0.5\Omega_I - 0.5\Omega_S - 0.5\pi J & \pi J & 0 \\
+0 & \pi J & -0.5\Omega_I + 0.5\Omega_S - 0.5\pi J & 0 \\
+0 & 0 & 0 & -0.5\Omega_I -0.5\Omega_S +0.5\pi J \\
+\end{pmatrix}
+\]
+
+The diagonal elements comes from $I_Z S_Z$ and Zeeman terms, i.e. $\Omega_I I_Z +\Omega_S I_S$. The off-diagonal elements are originated from $I_X S_X+I_Y S_Y$, terms that connects, assuming the four states are $|00\rangle$ $|01\rangle$ $|10\rangle$ $|11\rangle$, $|01\rangle$ and $|10\rangle$ states.
+
+The logitudinal approximation is valid when $|\Omega_I - \Omega_S| \gg 2\pi J$. Under this assumption, terms $I_X S_X$ and $I_Y S_Y$ are dropped.
+
+\section*{Problem 5}
+
+Notice for any operator $A$, we have:$\frac{dA}{dt} = \frac{i[H,A]}{\hbar} \text{ here } H = H_J = JI_zS_z$
+(The matrices are just not worth writting out one by one, I did the calculation and they are all zero)\\
+1. $A = I_XS_X$:$\frac{dA}{dt} = \frac{i}{\hbar}J(I_ZS_ZI_XS_X - I_XS_XI_ZS_Z) = 0$\\
+2. $A = I_XS_Y$:$\frac{dA}{dt} = \frac{i}{\hbar}J(I_ZS_ZI_XS_Y - I_XS_YI_ZS_Z) = 0$\\
+3. $A = I_YS_X$:$\frac{dA}{dt} = \frac{i}{\hbar}J(I_ZS_ZI_YS_X - I_YS_XI_ZS_Z) = 0$\\
+4. $A = I_YS_X$:$\frac{dA}{dt} = \frac{i}{\hbar}J(I_ZS_ZI_YS_Y - I_YS_YI_ZS_Z) = 0$\\
+
+Now we know all these operators commute with $H_J = JI_zS_z$. Therefore no evolution is caused by these operators in logitudinal coupling.
+
+\section*{Problem 6}
+
+The Operator$I_XS_X$ can be expressed by Paules $\rho = \sigma_X \otimes \sigma_X$ accurate up to some scalar(which we will find trivial later). Similarly $I_X=\sigma_X \otimes I$ and $S_X = I \otimes \sigma_X$. \\
+
+The expectation value of $I_X$ in $I_XS_X$ is $Tr(I_X \rho) = TR(\sigma_X\sigma_X \otimes I \sigma_X) = Tr(I)Tr(\sigma_X) = 0$.\\
+ The expectation value of $S_X$ in $I_XS_X$ is $Tr(S_X \rho) = TR(I\sigma_X \otimes \sigma_X \sigma_X) = Tr(\sigma_X)Tr(I) = 0$.\\
+Therefore there's no measureable magnetization in this state.\\
+Notice similar property for $I_ZS_Z$ and $I_YS_Y$, these two states also have no measureable magnetization.\\
+
+\section*{Problem 7}
+
+Problem 7 is done in a .ipynb file and hence is displayed seperately below
+
+    
+
+% \begin{thebibliography}{9}
+% \bibitem{exampleRef} Author Name, \textit{Title of the Book}, Publisher, Year.
+% \end{thebibliography}
+%------------------------------------------------------------------------------
+% DOCUMENT END
+%------------------------------------------------------------------------------
+\end{document}

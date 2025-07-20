@@ -1,3 +1,239 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:97758991f6473a03c806ba2c94b9280e315a2e084c979c512328f64f13c27621
-size 7679
+\hbadness=10000
+%==============================================================================
+% Homework Assignment Template
+%==============================================================================
+\documentclass[11pt]{article}
+
+%------------------------------------------------------------------------------
+% PACKAGES
+%------------------------------------------------------------------------------
+\usepackage[margin=1in]{geometry}   % Adjust margins
+\usepackage{amsmath,amssymb,amsthm} % Math packages
+\usepackage{graphicx}               % Include images
+\usepackage{hyperref}               % Hyperlinks
+\usepackage{enumitem}               % Better control over lists
+\usepackage{fancyhdr}               % Header/footer customization
+
+%------------------------------------------------------------------------------
+% CUSTOM COMMANDS & SETTINGS
+%------------------------------------------------------------------------------
+\newcommand{\courseName}{Ensemble Quantum Computing Laboratory}     % Change to your course name
+\newcommand{\assignmentTitle}{Prelab 3} % Change to your assignment title
+\newcommand{\studentName}{Runzhao Guo}       % Change to your name
+\newcommand{\Date}{Feb 17, 2025}   % Change to your due date
+
+% Set up the page header
+\pagestyle{fancy}
+\fancyhf{} % Clear header and footer
+\lhead{\courseName}
+\chead{\assignmentTitle}
+\rhead{\studentName}
+\rfoot{\thepage}
+
+
+
+%------------------------------------------------------------------------------
+% DOCUMENT START
+%------------------------------------------------------------------------------
+\begin{document}
+%------------------------------------------------------------------------------
+% TITLE SECTION
+%------------------------------------------------------------------------------
+\begin{center}
+    {\large \textbf{\courseName}} \\
+    \vspace{3pt}
+    {\Large \textbf{\assignmentTitle}} \\
+    \vspace{3pt}
+    \studentName \\
+    \vspace{3pt}
+    \Date
+\end{center}
+
+\vspace{0.5in} % Add some space before the content starts
+
+\section*{Problem 1}
+\subsection*{part a).}
+
+The spectra is shown in Figure \ref{fig:prob1a}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{/Users/runzhaoguo/Documents/MQST-UCLA/411/lab3/figure/prob1_a.jpeg}
+    \caption{the spectra for the four cases when only one of a, b, c, and d is nonzero}
+    \label{fig:prob1a}
+\end{figure}
+
+\subsection*{part b).}
+The integral of the given thermal equilibrium is shown in Figure \ref{fig:prob1b}. Notice the frequence increase from left to right.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{/Users/runzhaoguo/Documents/MQST-UCLA/411/lab3/figure/prob1_b.png}
+    \caption{the integral for given thermal equilibrium density matrix}
+    \label{fig:prob1b}
+\end{figure}
+
+\subsection*{part c).}
+
+For CNOT gate, the density matrix is processed as such:$\rho=U_{c n} \rho_{\text {therm }} U_{c n}^{\dagger}$, the result we get is: 
+\[
+\begin{pmatrix}
+1/4 + 5\times10^{-4} & 0 & 0 & 0 \\
+0 & 1/4 + 3\times10^{-4} & 0 & 0 \\
+0 & 0 & 1/4 - 5\times10^{-4} & 0 \\
+0 & 0 & 0 & 1/4 - 3\times10^{-4} \\
+\end{pmatrix}
+\]
+
+For near-CNOT gate, the density matrix is processed as such:$\rho=U_{n c n} \rho_{\text {therm }} U_{n c n}^{\dagger}$, the result we get is:
+\[
+\begin{pmatrix}
+1/4 - i5\times10^{-4} & 0 & 0 & 0 \\
+0 & 1/4 + i3\times10^{-4} & 0 & 0 \\
+0 & 0 & 1/4 + 5\times10^{-4} & 0 \\
+0 & 0 & 0 & 1/4 + 3\times10^{-4} \\
+\end{pmatrix}
+\]
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{/Users/runzhaoguo/Documents/MQST-UCLA/411/lab3/figure/prob1_c1.jpeg}
+    \caption{the integral for given thermal equilibrium density matrix after CNOT gate}
+    \label{fig:prob1c1}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{/Users/runzhaoguo/Documents/MQST-UCLA/411/lab3/figure/prob1_c2.jpeg}
+    \caption{the integral for given thermal equilibrium density matrix after near-CNOT gate}
+    \label{fig:prob1c1}
+\end{figure}
+
+The reletive relation between the integral of two peeks for Proton remain the same.
+
+\section*{Problem 2}
+
+\subsection*{part a).}
+For a given Hamiltonian, the thermal equilibrium density matrix $\rho_{eq}$ is given by:
+\[
+    \rho_{eq} = \frac{e^{-\beta H}}{Tr[e^{-\beta H}]}\\
+\]
+where $\beta = \frac{1}{K_B T}$
+
+The Hamiltonian for this two-qubit system is $\hat{H} = -\hbar \omega_{H}(1+\delta_H) \hat{I}_Z -\hbar \omega_{C}(1+\delta_C) \hat{S}_Z + 2\pi J\hat{I}_Z \hat{S}_Z$
+
+Thank goodness it's a diagonal matrix, so the exponential can be calculated directly:
+\[
+    \rho_{eq} = \frac{1}{\sum_{i=1}^{4}e^{-\beta E_i}}
+    \begin{pmatrix}
+        e^{-\beta E_1} & 0 & 0 & 0 \\
+        0 & e^{-\beta E_2} & 0 & 0 \\
+        0 & 0 & e^{-\beta E_3} & 0 \\
+        0 & 0 & 0 & e^{-\beta E_4} \\
+    \end{pmatrix}
+\]
+Where:\\
+    $E_1 = -0.5\hbar (\omega_{H}(1+\delta_H) + \omega_{C}(1+\delta_C) - \pi J)$ \\
+    $E_2 = -0.5\hbar (\omega_{H}(1+\delta_H) - \omega_{C}(1+\delta_C) + \pi J)$ \\
+    $E_3 = +0.5\hbar (\omega_{H}(1+\delta_H) - \omega_{C}(1+\delta_C) - \pi J)$ \\
+    $E_4 = +0.5\hbar (\omega_{H}(1+\delta_H) + \omega_{C}(1+\delta_C) + \pi J)$ \\
+After calculation, the thermal equilibrium density matrix is:
+\[
+    \frac{1}{4.000 + 5.66\times10^{-11}}
+    \begin{pmatrix}
+    1+6.306\times10^{-6} & 0 & 0 & 0 \\
+    0 & 1+3.771\times10^{-6} & 0 & 0 \\
+    0 & 0 & 1-3.771\times10^{-6} & 0 \\
+    0 & 0 & 0 & 1-6.306\times10^{-6} \\
+    \end{pmatrix}
+\]
+
+\subsection*{part b}
+In my understanding, expressed in product operators, the density matrix is:
+\[
+    0.25\hat{I_I}\hat{S_I} + 0.5\times10^{-5}\hat{I_I}\hat{S_Z} + 0.13\times10^{-5}\hat{I_Z}\hat{S_I}
+\]
+
+Expressing it in a similar way used in Knill paper: 
+\[
+    \frac{1}{4.000}
+    \begin{pmatrix}
+    1 & 0 & 0 & 0 \\
+    0 & 1 & 0 & 0 \\
+    0 & 0 & 1 & 0 \\
+    0 & 0 & 0 & 1 \\
+    \end{pmatrix}
+    + 10^{-5}
+    \begin{pmatrix}
+        0.157 & 0 & 0 & 0 \\
+        0 & 0.094 & 0 & 0 \\
+        0 & 0 & -0.094 & 0 \\
+        0 & 0 & 0 & -0.157 \\
+    \end{pmatrix}
+\]
+
+In comparison, the second element in my density matrix is 1/6 of that in the Knill paper. One possible reason is The magnetic field used in the Knill paper is stronger than that in my case, which leads to a larger value of $\omega_{H/C}$.
+
+
+\section*{Problem 3}
+The exaustive average is:
+\[
+    \begin{pmatrix}
+    0.25+1.57\times10^{-6} & 0 & 0 & 0 \\
+    0 & 0.25-3.2\times10^{-7} & 0 & 0 \\
+    0 & 0 & 0.25-3.2\times10^{-7} & 0 \\
+    0 & 0 & 0 & 0.25-3.2\times10^{-7} \\
+    \end{pmatrix}
+\]
+The excess probability is $\rho_{00} - \bar{p} = 1.89\times10^{-6}$
+
+\section*{Problem 4}
+
+\subsection*{part a).}
+\[
+\mathrm{CNOT}_{(1\to 2)} 
+= \frac{1}{2} \Bigl( |0\rangle \langle0| \otimes I + |1\rangle \langle1| \otimes X \Bigr).
+\]
+
+\[
+    |0\rangle \langle0| = \frac{1}{2} (I + Z)
+\]
+
+\[
+    |1\rangle \langle1| = \frac{1}{2} (I - Z)
+\]
+
+\[
+\mathrm{CNOT}_{(1\to 2)} 
+= \frac{1}{2} \Bigl( I \otimes I \;+\; Z \otimes I \;+\; I \otimes X \;-\; Z \otimes X \Bigr).
+\]
+\[
+=\frac{1}{4}
+    \begin{pmatrix}
+    1 + 1  & 1 - 1 & 0 & 0 \\
+    1 - 1 & 1 + 1  & 0 & 0 \\
+    0 & 0 & 1 - 1 & 1 + 1 \\
+    0 & 0 & 1 + 1 & 1 - 1 \\
+    \end{pmatrix}
+\]
+
+\[
+=\frac{1}{2}
+    \begin{pmatrix}
+    1 & 0 & 0 & 0 \\
+    0 & 1 & 0 & 0 \\
+    0 & 0 & 0 & 1 \\
+    0 & 0 & 1 & 0 \\
+    \end{pmatrix}
+\]
+
+\subsection*{part b).}
+
+
+% \begin{thebibliography}{9}
+% \bibitem{exampleRef} Author Name, \textit{Title of the Book}, Publisher, Year.
+% \end{thebibliography}
+%------------------------------------------------------------------------------
+% DOCUMENT END
+%------------------------------------------------------------------------------
+\end{document}
